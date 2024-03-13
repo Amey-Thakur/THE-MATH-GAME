@@ -1,4 +1,5 @@
 # THE-MATH-GAME
+
  👉🏻 It is a simple multiplication game to test how well we are at arithmetic.
  
  >**[Try The Web Application](https://amey-thakur.github.io/THE-MATH-GAME)**
@@ -17,4 +18,4 @@
 
 <p align="center"> <b> 👉🏻 Created The Math Game 👈🏻 <b> </p>
  
-<p align="center"><a href='https://github.com/Amey-Thakur/THE-MATH-GAME', style='color: greenyellow;'> ✌🏻 Back To Repository ✌🏻</p>
+<p align="center"><a href='https://github.com/Amey-Thakur/ENGINEERING', style='color: greenyellow;'> ✌🏻 Back To Engineering ✌🏻</p>
