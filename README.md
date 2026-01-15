@@ -159,13 +159,16 @@ THE-MATH-GAME/
      ========================================================================================= -->
 ## Usage Guidelines
 
-This repository is shared to encourage open learning and collaboration.
+This repository is openly shared to support learning and knowledge exchange across the academic community.
 
 **For Students**  
-Analyze the JavaScript logic to understand how to handle game states, timers, and user interactions in a web environment.
+Use this project as reference material for understanding interactive system design, web development patterns, and Human Machine Interaction principles. The source code is available for study to facilitate self-paced learning and exploration of user-centric design patterns.
 
 **For Educators**  
-Use this as a simple example of gamification in education or as a starter project for introduction to web development.
+This project may serve as a practical lab example or supplementary teaching resource for Human Machine Interaction and Human Machine Interaction Laboratory courses (`CSC801` & `CSL801`). Attribution is appreciated when utilizing content.
+
+**For Researchers**  
+The documentation and design approach may provide insights into academic project structuring and interactive web application development.
 
 ---
 
