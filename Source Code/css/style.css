@@ -1,3 +1,13 @@
+/*
+  Project: The Math Game
+  File: style.css
+  Date: February 17, 2022
+  Description: Styling for game container, score board, and responsive elements.
+
+  Created by: Amey Thakur (https://github.com/Amey-Thakur) & Mega Satish (https://github.com/msatmod)
+  Repository: https://github.com/Amey-Thakur/THE-MATH-GAME
+  License: MIT
+*/
 @import url('https://fonts.googleapis.com/css2?family=Play&display=swap');
 
 * {
