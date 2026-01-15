@@ -191,7 +191,7 @@ Copyright © 2022 Amey Thakur, Mega Satish
 **Institution**: [Terna Engineering College](https://ternaengg.ac.in/), Navi Mumbai  
 **University**: [University of Mumbai](https://mu.ac.in/)
 
-This project features **The Math Game**, developed as a **Human Machine Interaction** project during the engineering curriculum. It aims to make learning arithmetic fun and interactive through web technology.
+This project features **The Math Game**, developed as a **Human Machine Interaction** project during the **8th Semester Computer Engineering** curriculum. It aims to make learning arithmetic fun and interactive through web technology.
 
 **Connect:** [GitHub](https://github.com/Amey-Thakur) &nbsp;·&nbsp; [LinkedIn](https://www.linkedin.com/in/amey-thakur) &nbsp;·&nbsp; [ORCID](https://orcid.org/0000-0001-5644-1575)
 
