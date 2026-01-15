@@ -47,14 +47,17 @@
 <a name="overview"></a>
 ## Overview
 
-**The Math Game** is an educational web application focused on strengthening multiplication skills. It presents users with random arithmetic problems and multiple-choice answers, requiring quick thinking and accuracy.
+**The Math Game** is an educational interface designed to facilitate arithmetic learning through structured repetition and positive reinforcement. The application serves as a digital sandbox for mastering multiplication, providing a low-stress environment for skill acquisition.
 
-The project demonstrates the use of JavaScript for game logic, including random number generation, score keeping, and timer management, providing an engaging way to practice mental math.
+### HMI Principles
+The design is grounded in fundamental **Human-Machine Interaction** concepts:
+*   **Learnability**: The interface uses standard UI patterns (multiple choice) that require no prior training, allowing users to start "learning by doing" immediately.
+*   **Error Recovery**: The system provides clear, non-punitive feedback for incorrect answers, encouraging an iterative process where errors are treated as learning opportunities rather than failures.
 
 > [!TIP]
-> **Educational Value**
+> **Aesthetic-Usability Effect**
 >
-> Simple gamification elements like score tracking and immediate feedback mechanisms are effective in reinforcing learning and improving calculation speed.
+> The design utilizes a skeuomorphic "chalkboard" background not just for style, but to invoke the **Aesthetic-Usability Effect**. By triggering the user's existing mental association with a classroom setting, the interface inherently signals "learning mode," priming the user for educational interaction and increasing tolerance for minor errors during the learning curve.
 
 ---
 
