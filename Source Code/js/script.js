@@ -8,6 +8,9 @@
  * Repository: https://github.com/Amey-Thakur/THE-MATH-GAME
  * License: MIT
  */
+// Game State Variables
+// Tracks whether the game is active, the current score, the timer interval reference,
+// the remaining time, and the correct answer for the current question.
 var playing = false;
 var score = 0;
 var action;
@@ -79,6 +82,12 @@ for (let i = 1; i < 5; i++) {
     }
 }
 
+/**
+ * Countdown Timer Implementation
+ * Uses setInterval() to decrement the time every 1000ms (1 second).
+ * When time reaches zero, the game ends: score is displayed, UI is reset,
+ * and the game state is set to 'not playing'.
+ */
 function startCountdown() {
     action = setInterval(() => {
         //reduce time by 1sec in loops
@@ -120,6 +129,13 @@ function showElement(Id) {
     document.querySelector("#" + Id).style.display = "block";
 }
 
+/**
+ * Question & Answer Generation Algorithm
+ * Generates two random single-digit numbers (1-9) and calculates their product.
+ * Places the correct answer in a randomly selected box (1-4).
+ * Fills remaining boxes with unique wrong answers using a do-while loop
+ * to avoid duplicates (preventing identical distractor values).
+ */
 function generateQA() {
     //generating random number between 1-9
     var x = 1 + Math.round(9 * Math.random());

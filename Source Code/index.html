@@ -21,6 +21,11 @@
 
 <body>
     <h1>The Math Game</h1>
+    <!-- 
+        Main Game Container:
+        Houses all game UI elements including score, question display,
+        answer choices, start/reset button, and timer.
+    -->
     <div id="container">
         <div id="score">
             Score : <span id="scorevalue">0</span>
@@ -37,6 +42,11 @@
         <div id="instruction">
             Click on the Correct Answer
         </div>
+        <!-- 
+            Answer Choices:
+            Four answer boxes displayed using Flexbox layout.
+            Only one contains the correct answer; the rest are random distractors.
+        -->
         <div id="choices">
             <div id="box1" class="box"></div>
             <div id="box2" class="box"></div>

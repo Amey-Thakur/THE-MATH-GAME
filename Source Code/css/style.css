@@ -16,6 +16,11 @@
     box-sizing: border-box;
 }
 
+/*
+  Body Background:
+  Uses a radial-gradient() for a dynamic, visually appealing background.
+  The gradient creates a spotlight effect, transitioning from white (#fff) at the center to grey (#ccc) at the edges.
+*/
 body {
     width: 100%;
     height: 100vh;
@@ -102,6 +107,12 @@ h1 {
     justify-content: space-between;
 }
 
+/*
+  Answer Box Styling:
+  Flexbox column layout with centered content.
+  CSS transition provides smooth hover/active state animations.
+  The 'cursor: pointer' and ':hover'/':active' pseudo-classes enhance user interaction feedback.
+*/
 .box {
     width: 85px;
     height: 85px;
