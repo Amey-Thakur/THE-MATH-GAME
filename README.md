@@ -50,7 +50,7 @@
 **The Math Game** is an educational interface designed to facilitate arithmetic learning through structured repetition and positive reinforcement. The application serves as a digital sandbox for mastering multiplication, providing a low-stress environment for skill acquisition.
 
 ### HMI Principles
-The design is grounded in fundamental **Human-Machine Interaction** concepts:
+The development of this interface was guided by core **Human-Machine Interaction** paradigms:
 *   **Learnability**: The interface uses standard UI patterns (multiple choice) that require no prior training, allowing users to start "learning by doing" immediately.
 *   **Error Recovery**: The system provides clear, non-punitive feedback for incorrect answers, encouraging an iterative process where errors are treated as learning opportunities rather than failures.
 
