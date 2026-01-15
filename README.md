@@ -213,7 +213,7 @@ Special thanks to the mentors and peers whose encouragement, discussions, and su
 
   <br>
 
-  🔬 **[Human Machine Interaction Laboratory](https://github.com/Amey-Thakur/HUMAN-MACHINE-INTERACTION-AND-HUMAN-MACHINE-INTERACTION-LAB)** &nbsp; · &nbsp; ✖️ **[THE-MATH-GAME](https://amey-thakur.github.io/THE-MATH-GAME)**
+  🔬 **[Human Machine Interaction Laboratory](https://github.com/Amey-Thakur/HUMAN-MACHINE-INTERACTION-AND-HUMAN-MACHINE-INTERACTION-LAB)** &nbsp; · &nbsp; 🧮 **[THE-MATH-GAME](https://amey-thakur.github.io/THE-MATH-GAME)**
 
   ---
 
