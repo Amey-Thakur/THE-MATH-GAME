@@ -8,6 +8,44 @@
  * Repository: https://github.com/Amey-Thakur/THE-MATH-GAME
  * License: MIT
  */
+
+// =========================================
+//   CONSOLE EASTER EGG 🧮
+// =========================================
+console.log(
+    "%c🧮 The Math Game",
+    "font-size: 24px; font-weight: bold; color: #a855f7; text-shadow: 2px 2px 0 #1e1b4b;"
+);
+console.log(
+    "%c🔢 Test your multiplication skills!",
+    "font-size: 14px; color: #64748b;"
+);
+console.log(
+    "%c🎓 Developed by Amey Thakur & Mega Satish",
+    "font-size: 12px; color: #22c55e;"
+);
+console.log(
+    "%c🔗 https://github.com/Amey-Thakur/THE-MATH-GAME",
+    "font-size: 12px; color: #2563eb;"
+);
+console.log(
+    "%c⚠️ This game is protected. Please respect the authors' work!",
+    "font-size: 12px; color: #f59e0b; font-weight: bold;"
+);
+
+// =========================================
+//   SECURITY MEASURES 🔒
+// =========================================
+(function initSecurity() {
+    document.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+    document.addEventListener('dragstart', function (e) { e.preventDefault(); });
+    document.addEventListener('selectstart', function (e) {
+        if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') e.preventDefault();
+    });
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && ['I', 'J', 'C'].includes(e.key)) || (e.ctrlKey && e.key === 'u')) e.preventDefault();
+    });
+})();
 // Game State Variables
 // Tracks whether the game is active, the current score, the timer interval reference,
 // the remaining time, and the correct answer for the current question.
