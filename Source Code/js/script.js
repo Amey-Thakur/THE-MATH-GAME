@@ -1,3 +1,13 @@
+/**
+ * Project: The Math Game
+ * File: script.js
+ * Date: February 17, 2022
+ * Description: Game logic for multiplication questions, score tracking, and countdown timer.
+ * 
+ * Created by: Amey Thakur (https://github.com/Amey-Thakur) & Mega Satish (https://github.com/msatmod)
+ * Repository: https://github.com/Amey-Thakur/THE-MATH-GAME
+ * License: MIT
+ */
 var playing = false;
 var score = 0;
 var action;
@@ -5,8 +15,7 @@ var timeRemaining;
 var correctAnswer;
 
 //if we click on the start/reset
-document.querySelector("#startreset").onclick = () =>
-{
+document.querySelector("#startreset").onclick = () => {
     //if we are playing
     if (playing) {
         //reload page
@@ -38,8 +47,7 @@ document.querySelector("#startreset").onclick = () =>
 
 for (let i = 1; i < 5; i++) {
     //if we click on answer box
-    document.querySelector("#box" + i).onclick = () =>
-    {
+    document.querySelector("#box" + i).onclick = () => {
         //if we are playing
         if (playing) {
             //if correct answer
@@ -51,8 +59,7 @@ for (let i = 1; i < 5; i++) {
                 //hide wrong box and show correct box
                 hideElement("wrong");
                 showElement("correct");
-                setTimeout(() =>
-                {
+                setTimeout(() => {
                     hideElement("correct");
                 }, 1000);
 
@@ -64,8 +71,7 @@ for (let i = 1; i < 5; i++) {
                 //show wrong box and hide correct box
                 hideElement("correct");
                 showElement("wrong");
-                setTimeout(() =>
-                {
+                setTimeout(() => {
                     hideElement("wrong");
                 }, 1000);
             }
@@ -73,10 +79,8 @@ for (let i = 1; i < 5; i++) {
     }
 }
 
-function startCountdown()
-{
-    action = setInterval(() =>
-    {
+function startCountdown() {
+    action = setInterval(() => {
         //reduce time by 1sec in loops
         timeRemaining -= 1;
         //show countdown in sec
@@ -103,24 +107,20 @@ function startCountdown()
     }, 1000);
 }
 
-function stopCountdown()
-{
+function stopCountdown() {
     //stop countdown
     clearInterval(action);
 }
 
-function hideElement(Id)
-{
+function hideElement(Id) {
     document.querySelector("#" + Id).style.display = "none";
 }
 
-function showElement(Id)
-{
+function showElement(Id) {
     document.querySelector("#" + Id).style.display = "block";
 }
 
-function generateQA()
-{
+function generateQA() {
     //generating random number between 1-9
     var x = 1 + Math.round(9 * Math.random());
     var y = 1 + Math.round(9 * Math.random());
