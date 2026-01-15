@@ -116,21 +116,19 @@ THE-MATH-GAME/
 ## Results
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/54937357/154539531-9b586eed-c2d0-44f4-8e8d-a0c00fd66b95.png" alt="Start Screen" width="80%">
-  <br>
-  *Game Start Screen*
-  
+  <b>Game Start Screen</b>
   <br><br>
-  
-  <img src="https://user-images.githubusercontent.com/54937357/154540683-a58dad77-dabd-4bbe-bab4-59af34f2e9d1.png" alt="Correct Answer" width="60%">
-  <br>
-  *Gameplay - Correct Answer Feedback*
-  
+  <img src="https://user-images.githubusercontent.com/54937357/154539531-9b586eed-c2d0-44f4-8e8d-a0c00fd66b95.png" alt="Start Screen" width="80%">
   <br><br>
 
-  <img src="https://user-images.githubusercontent.com/54937357/154540932-927369bf-1e9c-4419-8dd1-c734dae04317.png" alt="Game Over" width="60%">
-  <br>
-  *Game Over Summary*
+  <b>Gameplay - Correct Answer Feedback</b>
+  <br><br>
+  <img src="https://user-images.githubusercontent.com/54937357/154540683-a58dad77-dabd-4bbe-bab4-59af34f2e9d1.png" alt="Correct Answer" width="80%">
+  <br><br>
+
+  <b>Game Over Summary</b>
+  <br><br>
+  <img src="https://user-images.githubusercontent.com/54937357/154540932-927369bf-1e9c-4419-8dd1-c734dae04317.png" alt="Game Over" width="80%">
 </div>
 
 ---
