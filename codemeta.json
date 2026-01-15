@@ -1,0 +1,44 @@
+{
+    "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
+    "@type": "SoftwareSourceCode",
+    "name": "THE-MATH-GAME",
+    "description": "An interactive educational web application designed to gamify arithmetic practice.",
+    "identifier": "THE-MATH-GAME",
+    "license": "https://spdx.org/licenses/MIT.html",
+    "programmingLanguage": [
+        "HTML",
+        "CSS",
+        "JavaScript"
+    ],
+    "author": [
+        {
+            "@type": "Person",
+            "givenName": "Amey",
+            "familyName": "Thakur",
+            "id": "https://orcid.org/0000-0001-5644-1575",
+            "affiliation": {
+                "@type": "Organization",
+                "name": "Terna Engineering College"
+            }
+        },
+        {
+            "@type": "Person",
+            "givenName": "Mega",
+            "familyName": "Satish",
+            "id": "https://orcid.org/0000-0002-1430-4961",
+            "affiliation": {
+                "@type": "Organization",
+                "name": "Terna Engineering College"
+            }
+        }
+    ],
+    "dateReleased": "2022-02-17",
+    "codeRepository": "https://github.com/Amey-Thakur/THE-MATH-GAME",
+    "developmentStatus": "complete",
+    "applicationCategory": "Educational Game",
+    "keywords": [
+        "Math Game",
+        "Arithmetic",
+        "Terna Engineering College"
+    ]
+}
