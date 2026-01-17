@@ -433,6 +433,12 @@ function startCountdown() {
             hideElement("wrong");
             showElement("secret-hint");
 
+            // Reset boxes to A, B, C, D
+            document.querySelector("#box1").innerHTML = "A";
+            document.querySelector("#box2").innerHTML = "B";
+            document.querySelector("#box3").innerHTML = "C";
+            document.querySelector("#box4").innerHTML = "D";
+
             const gameOverEl = document.querySelector("#gameOver");
 
             // Best Score Logic
@@ -445,10 +451,14 @@ function startCountdown() {
 
             // Score color: blue if new best, white otherwise
             const scoreColor = isNewBest ? '#38bdf8' : 'white';
+
+            // Clean/Pro Layout
             gameOverEl.innerHTML = `
-                <p style="font-size: 3rem; color: #ef4444; margin-bottom: 1rem; text-shadow: 0 0 20px rgba(239, 68, 68, 0.5);">GAME OVER</p>
-                <p style="font-size: 2.5rem; color: ${scoreColor}; margin-bottom: 0.5rem;">YOUR SCORE: ${score}</p>
-                <p style="font-size: 1.5rem; color: #38bdf8;">BEST SCORE: ${bestScore}</p>
+                <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; transform: translateY(-10px);">
+                    <p style="font-size: 3rem; font-weight: 800; color: #ef4444; margin: 0; text-shadow: 0 0 20px rgba(239, 68, 68, 0.5); text-transform: uppercase; letter-spacing: 2px;">GAME OVER</p>
+                    <p style="font-size: 2.2rem; font-weight: 700; color: ${scoreColor}; margin: 0;">YOUR SCORE: ${score}</p>
+                    <p style="font-size: 1.5rem; font-weight: 700; color: #38bdf8; margin: 0; opacity: 0.9;">BEST SCORE: ${bestScore}</p>
+                </div>
             `;
             gameOverEl.style.display = "flex";
 
