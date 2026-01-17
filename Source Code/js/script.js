@@ -370,28 +370,34 @@ function showElement(Id) {
  * to avoid duplicates (preventing identical distractor values).
  */
 function generateQA() {
-    //generating random number between 1-9
-    var x = 1 + Math.round(9 * Math.random());
-    var y = 1 + Math.round(9 * Math.random());
-    //correct answer
+    // Generate numbers 1-10
+    const x = Math.floor(Math.random() * 10) + 1;
+    const y = Math.floor(Math.random() * 10) + 1;
     correctAnswer = x * y;
-    //setting question
-    document.querySelector("#question").innerHTML = x + " x " + y;
-    //setting random position for correct answer
-    var correctPosition = 1 + Math.round(3 * Math.random());
-    document.querySelector("#box" + correctPosition).innerHTML = correctAnswer;
 
-    var answers = [correctAnswer];
+    console.log("New Question:", x, "x", y, "=", correctAnswer);
 
-    //checking and replacing duplicate values
+    // Set Question Text
+    document.querySelector("#question").textContent = x + " x " + y;
+
+    // Pick random box for correct answer
+    const correctPos = Math.floor(Math.random() * 4) + 1;
+    document.querySelector("#box" + correctPos).textContent = correctAnswer;
+
+    const usedAnswers = [correctAnswer];
+
+    // Fill other boxes
     for (let i = 1; i < 5; i++) {
-        if (i != correctPosition) {
-            var wrongAnswer;
-            do {
-                wrongAnswer = (1 + Math.round(9 * Math.random())) * (1 + Math.round(9 * Math.random()));
-            } while ((answers.indexOf(wrongAnswer)) > -1)
-            document.querySelector("#box" + i).innerHTML = wrongAnswer;
-            answers.push(wrongAnswer)
-        }
+        if (i === correctPos) continue;
+
+        let wrongAnswer;
+        do {
+            const wx = Math.floor(Math.random() * 10) + 1;
+            const wy = Math.floor(Math.random() * 10) + 1;
+            wrongAnswer = wx * wy;
+        } while (usedAnswers.includes(wrongAnswer));
+
+        document.querySelector("#box" + i).textContent = wrongAnswer;
+        usedAnswers.push(wrongAnswer);
     }
 }
