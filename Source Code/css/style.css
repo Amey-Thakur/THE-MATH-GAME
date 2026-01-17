@@ -177,8 +177,10 @@ h1 {
     /* Reduced initial size for instruction text */
     font-weight: 700;
     text-align: center;
-    margin: 6rem 2rem 0 2rem;
+    margin: 6rem 0 0 0;
     /* Top margin clears header pills */
+    width: 100%;
+    box-sizing: border-box;
     color: white;
     text-shadow: 0 0 15px rgba(255, 255, 255, 0.6), 0 0 30px var(--primary);
     flex-grow: 1;
