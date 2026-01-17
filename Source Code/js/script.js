@@ -66,38 +66,88 @@ document.querySelector("#startreset").onclick = () => {
     }
     // if we are not playing
     else {
-        //change the mode of playing
-        playing = true;
-        //set scores to 0
-        score = 0;
-        wrongScore = 0;
-        document.querySelector("#scorevalue").innerHTML = score;
-        document.querySelector("#wrong-score").innerHTML = wrongScore; // Sync wrong count
+        // Reset UI for countdown
+        document.querySelector("#hud-metrics").style.display = "none";
+        document.querySelector("#startreset").style.pointerEvents = "none"; // Disable button
+        document.querySelector("#startreset").innerHTML = "Get Ready...";
 
-        //show countdown box
-        document.querySelector("#hud-metrics").style.display = "flex"; // Show header row
-        showElement("timeremaining");
-        showElement("score");
-        showElement("missed"); // Reveal counters
-        //countdown time
-        timeRemaining = 60;
-        //show countdown in sec
-        document.querySelector("#timeremainingvalue").innerHTML = timeRemaining;
-        //Reset Style
-        document.querySelector("#timeremaining").classList.remove("timer-warning");
-        //hide the game over box
-        hideElement("gameOver");
-        //change button to reset
-        document.querySelector("#startreset").innerHTML = "Reset Game";
-        //start countdown
-        startCountdown();
-
-        //Switch to Math Mode Styles
-        document.querySelector("#question").style.fontSize = "5rem";
-
-        //generate new Q&A
-        generateQA();
+        // Start 3-2-1-GO Sequence
+        startCountdownSequence();
     }
+}
+
+function startCountdownSequence() {
+    let count = 3;
+    const questionBox = document.querySelector("#question");
+
+    // Audio Context Setup
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+    function playBeep(frequency, type) {
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        const oscillator = audioCtx.createOscillator();
+        const gainNode = audioCtx.createGain();
+
+        oscillator.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+
+        oscillator.type = type;
+        oscillator.frequency.value = frequency;
+
+        gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.5);
+
+        oscillator.start();
+        oscillator.stop(audioCtx.currentTime + 0.5);
+    }
+
+    // Initial Beep
+    playBeep(440, 'sine');
+    questionBox.innerHTML = count;
+
+    const countdownInterval = setInterval(() => {
+        count--;
+
+        if (count > 0) {
+            playBeep(440, 'sine'); // Standard beep
+            questionBox.innerHTML = count;
+        } else if (count === 0) {
+            playBeep(880, 'square'); // Go beep
+            questionBox.innerHTML = "GO!";
+            questionBox.style.color = "#4ade80"; // Green for GO
+            questionBox.style.textShadow = "0 0 20px #4ade80";
+        } else {
+            clearInterval(countdownInterval);
+            // Restore UI and Start Game
+            questionBox.style.color = "rgba(255, 255, 255, 0.9)";
+            questionBox.style.textShadow = "0 0 10px rgba(168, 85, 247, 0.5)";
+            document.querySelector("#startreset").style.pointerEvents = "auto";
+            startGameLogic();
+        }
+    }, 1000);
+}
+
+function startGameLogic() {
+    playing = true;
+    score = 0;
+    wrongScore = 0;
+    document.querySelector("#scorevalue").innerHTML = score;
+    document.querySelector("#wrong-score").innerHTML = wrongScore;
+
+    document.querySelector("#hud-metrics").style.display = "flex";
+    showElement("timeremaining");
+    showElement("score");
+    showElement("missed");
+
+    timeRemaining = 60;
+    document.querySelector("#timeremainingvalue").innerHTML = timeRemaining;
+    document.querySelector("#timeremaining").classList.remove("timer-warning");
+    hideElement("gameOver");
+    document.querySelector("#startreset").innerHTML = "Reset Game";
+
+    startCountdown(); // Game timer
+    document.querySelector("#question").style.fontSize = "5rem";
+    generateQA();
 }
 
 for (let i = 1; i < 5; i++) {
