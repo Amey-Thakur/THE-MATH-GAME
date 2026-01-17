@@ -207,8 +207,8 @@ function startCountdownSequence() {
         } else if (count === 0) {
             playBeep('go');
             hudAnimate("GO!");
-            questionBox.style.color = "#4ade80"; // Green for GO
-            questionBox.style.textShadow = "0 0 30px #4ade80";
+            questionBox.style.color = "#38bdf8"; // Blue for GO
+            questionBox.style.textShadow = "0 0 30px #38bdf8";
         } else {
             clearInterval(countdownInterval);
             // Restore UI and Start Game
