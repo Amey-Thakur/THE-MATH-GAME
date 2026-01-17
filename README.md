@@ -76,7 +76,7 @@ The development of this interface was guided by core **Human-Machine Interaction
 
 > [!NOTE]
 > ### Interactive Polish: The Commutative Singularity
-> We have embedded a **physics-driven atmospheric layer** ("Math Atmosphere") that renders floating mathematical symbols to create a dynamic visual depth. Additionally, the footer features a **"Commutative Singularity" event**: hovering over the author names triggers a quantum-tunneling animation where the names physically swap positions, playfully demonstrating the commutative property of multiplication ($A \times B = B \times A$) within the UI itself. Complementing this experience, the application includes a high-fidelity performance summary feature, with each shareable scorecard digitally signed by **Amey & Mega**.
+> We have embedded a **physics-driven atmospheric layer** ("Math Atmosphere") that renders floating mathematical symbols to create a dynamic visual depth. In the pre-game lobby, interacting with the answer grid reveals **Curated Math Facts**, designed to spark curiosity before the challenge begins. Additionally, the footer features a **"Commutative Singularity" event**: hovering over the author names triggers a quantum-tunneling animation where the names physically swap positions, playfully demonstrating the commutative property of multiplication ($A \times B = B \times A$) within the UI itself. Complementing this experience, the application includes a high-fidelity performance summary feature, with each shareable scorecard digitally signed by **Amey & Mega**.
 
 ### Tech Stack
 - **Languages**: HTML5, CSS3, JavaScript (ES6+)
