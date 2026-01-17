@@ -827,8 +827,8 @@ h1 {
     position: absolute;
     font-size: 120px;
     font-weight: 900;
-    color: rgba(168, 85, 247, 0.08);
-    /* Glow color */
+    color: rgba(168, 85, 247, 0.2);
+    /* Increased visibility for dark theme */
     pointer-events: none;
     user-select: none;
 }
@@ -851,7 +851,7 @@ h1 {
     left: -40px;
     transform: rotate(10deg);
     font-size: 160px;
-    color: rgba(168, 85, 247, 0.06);
+    color: rgba(168, 85, 247, 0.15);
 }
 
 .watermark-symbol.minus {
@@ -863,7 +863,7 @@ h1 {
 .watermark-symbol.equals {
     top: 45%;
     left: 40%;
-    opacity: 0.05;
+    opacity: 0.1;
     font-size: 180px;
     transform: translate(-50%, -50%) rotate(45deg);
 }
