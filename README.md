@@ -108,10 +108,9 @@ THE-MATH-GAME/
 │
 ├── screenshots/                     # Application Screenshots
 │   ├── 01-main-menu.png             # Game Start Screen
-│   ├── 02-lobby-fact-a.png          # Math Fact Lobby (Variation A)
-│   ├── 02-lobby-fact-b.png          # Math Fact Lobby (Variation B)
+│   ├── 02-lobby-fact-[a-c].png      # Math Fact Lobby Variations
 │   ├── 03-gameplay-active.png       # Active Gameplay State
-│   ├── 03-gameplay-var-[1-5].png    # Gameplay Variations
+│   ├── 03-gameplay-var-[1-4].png    # Gameplay Variations
 │   ├── 04-game-over.png             # Score Summary & Challenge
 │   ├── 05-share-card-[a-b].png      # Premium Analytics Cards
 │   └── 06-author-signature.jpg      # Signed Asset
@@ -148,8 +147,9 @@ THE-MATH-GAME/
   <br>
   <i>Interactive trivia before the game begins.</i>
   <br><br>
-  <img src="screenshots/02-lobby-fact-a.png" alt="Lobby 1" width="45%">
-  <img src="screenshots/02-lobby-fact-b.png" alt="Lobby 2" width="45%">
+  <img src="screenshots/02-lobby-fact-a.png" alt="Lobby 1" width="30%">
+  <img src="screenshots/02-lobby-fact-b.png" alt="Lobby 2" width="30%">
+  <img src="screenshots/02-lobby-fact-c.png" alt="Lobby 3" width="30%">
   <br><br>
 
   <b>3. Active Gameplay</b>
@@ -163,9 +163,7 @@ THE-MATH-GAME/
   <img src="screenshots/03-gameplay-var-1.png" alt="Gameplay Var 1" width="45%">
   <img src="screenshots/03-gameplay-var-2.png" alt="Gameplay Var 2" width="45%">
   <br>
-  <img src="screenshots/03-gameplay-var-3.png" alt="Gameplay Var 3" width="45%">
   <img src="screenshots/03-gameplay-var-4.png" alt="Gameplay Var 4" width="45%">
-  <br>
   <img src="screenshots/03-gameplay-var-5.png" alt="Gameplay Var 5" width="45%">
   <br><br>
 
