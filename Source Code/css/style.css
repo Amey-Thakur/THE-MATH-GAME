@@ -280,7 +280,8 @@ h1 {
 #choices {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 0.8rem;
+    gap: 1.2rem;
+    /* Standardized to match vertical spacing */
     margin-bottom: 1.2rem;
     /* Standardized gap to button */
     /* Standardized gap to button */
@@ -352,7 +353,10 @@ h1 {
 #bottom-deck {
     width: 100%;
     display: flex;
-    gap: 15px;
+    gap: 1.2rem;
+    /* Standardized gap */
+    margin-bottom: 1.2rem;
+    /* Spacing to footer */
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -617,8 +621,8 @@ h1 {
     width: 100%;
     text-align: center;
     margin-top: auto;
-    padding: 0 2rem 1rem 2rem;
-    /* Reduced padding for natural centering */
+    padding: 0 2rem 1.2rem 2rem;
+    /* Standardized bottom padding */
     /* Reduced top padding to balance new margin */
     position: relative;
     perspective: 1200px;
