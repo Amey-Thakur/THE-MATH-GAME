@@ -272,18 +272,15 @@ for (let i = 1; i < 5; i++) {
             // CORRECT
             score++;
             document.querySelector("#scorevalue").textContent = score;
-
+            // Keep hideElement calls for safety (elements exist)
             hideElement("wrong");
-            showElement("correct");
-            setTimeout(() => hideElement("correct"), 800);
+            hideElement("correct");
         } else {
             // WRONG
             wrongScore++;
             document.querySelector("#wrong-score").textContent = wrongScore;
-
             hideElement("correct");
-            showElement("wrong");
-            setTimeout(() => hideElement("wrong"), 800);
+            hideElement("wrong");
         }
 
         // ALWAYS generate new question
