@@ -88,6 +88,10 @@ document.querySelector("#startreset").onclick = () => {
         document.querySelector("#startreset").innerHTML = "Reset Game";
         //start countdown
         startCountdown();
+
+        //Switch to Math Mode Styles
+        document.querySelector("#question").style.fontSize = "5rem";
+
         //generate new Q&A
         generateQA();
     }
