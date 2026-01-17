@@ -83,7 +83,7 @@ function startCountdownSequence() {
     // Audio Context Setup
     const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
-    function playBeep(frequency, type) {
+    function playBeep(type) {
         if (audioCtx.state === 'suspended') audioCtx.resume();
         const oscillator = audioCtx.createOscillator();
         const gainNode = audioCtx.createGain();
@@ -91,31 +91,49 @@ function startCountdownSequence() {
         oscillator.connect(gainNode);
         gainNode.connect(audioCtx.destination);
 
-        oscillator.type = type;
-        oscillator.frequency.value = frequency;
+        if (type === 'count') {
+            // Sci-fi "Blip"
+            oscillator.type = 'sine';
+            oscillator.frequency.setValueAtTime(600, audioCtx.currentTime);
+            oscillator.frequency.exponentialRampToValueAtTime(300, audioCtx.currentTime + 0.1);
+            gainNode.gain.setValueAtTime(0.3, audioCtx.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.1);
+            oscillator.start();
+            oscillator.stop(audioCtx.currentTime + 0.1);
+        } else { // Assuming 'go' type
+            // "GO" Success Tone
+            oscillator.type = 'triangle';
+            oscillator.frequency.setValueAtTime(800, audioCtx.currentTime);
+            oscillator.frequency.linearRampToValueAtTime(1200, audioCtx.currentTime + 0.1);
+            gainNode.gain.setValueAtTime(0.3, audioCtx.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.6);
+            oscillator.start();
+            oscillator.stop(audioCtx.currentTime + 0.6);
+        }
+    }
 
-        gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
-        gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.5);
-
-        oscillator.start();
-        oscillator.stop(audioCtx.currentTime + 0.5);
+    function updateDisplay(val) {
+        questionBox.classList.remove('hud-animate');
+        void questionBox.offsetWidth; // Trigger reflow
+        questionBox.classList.add('hud-animate');
+        questionBox.innerHTML = val;
     }
 
     // Initial Beep
-    playBeep(440, 'sine');
-    questionBox.innerHTML = count;
+    playBeep('count');
+    updateDisplay(count);
 
     const countdownInterval = setInterval(() => {
         count--;
 
         if (count > 0) {
-            playBeep(440, 'sine'); // Standard beep
-            questionBox.innerHTML = count;
+            playBeep('count');
+            updateDisplay(count);
         } else if (count === 0) {
-            playBeep(880, 'square'); // Go beep
-            questionBox.innerHTML = "GO!";
+            playBeep('go');
+            updateDisplay("GO!");
             questionBox.style.color = "#4ade80"; // Green for GO
-            questionBox.style.textShadow = "0 0 20px #4ade80";
+            questionBox.style.textShadow = "0 0 30px #4ade80";
         } else {
             clearInterval(countdownInterval);
             // Restore UI and Start Game
