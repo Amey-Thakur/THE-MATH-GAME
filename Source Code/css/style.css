@@ -179,8 +179,7 @@ h1 {
     margin: 0;
     color: white;
     text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    flex-grow: 1;
-    /* Allow it to take available space */
+    /* Removed flex-grow to prevent gap */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -190,7 +189,10 @@ h1 {
     text-align: center;
     color: var(--secondary);
     font-size: 1.4rem;
-    margin-bottom: 2.5rem;
+    color: var(--secondary);
+    font-size: 1.4rem;
+    margin-bottom: 0;
+    /* Handled by wrapper gap */
     opacity: 0.8;
 }
 
@@ -198,9 +200,9 @@ h1 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
-    margin-bottom: 1rem;
-    flex-grow: 1;
-    /* Allow scaling */
+    margin-bottom: 0;
+    /* Handled by wrapper gap */
+    /* Removed flex-grow to prevent gap */
     justify-content: center;
     align-content: center;
 }
@@ -518,3 +520,15 @@ h1 {
     box-shadow: 0 4px 15px var(--primary-glow);
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
+
+/ *   G a m e   C o n t e n t   W r a p p e r   * /     # g a m e - c o n t e n t    {
+                 f l e x - g r o w :    1 ;
+                 d i s p l a y :    f l e x ;
+                 f l e x - d i r e c t i o n :    c o l u m n ;
+                 j u s t i f y - c o n t e n t :    c e n t e r ;
+                 g a p :    1 . 5 r e m ;
+                 / *   C o n s i s t e n t   s p a c i n g   * /             w i d t h :    1 0 0 % ;
+         
+}
+
+     
