@@ -195,6 +195,9 @@ h1 {
     flex-direction: column;
     padding: 1.5rem;
     box-sizing: border-box;
+    /* Prevent jitter during nested animations */
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
 
 /* Header Row for Metrics */
@@ -545,10 +548,12 @@ h1 {
 }
 
 /* Countdown Animation Class */
-.hud-animate {
+#question span.hud-animate {
+    display: inline-block;
     animation: count-pulse 0.6s ease-out forwards;
     font-size: 8rem !important;
     color: white !important;
+    will-change: transform, opacity;
 }
 
 @keyframes count-pulse {

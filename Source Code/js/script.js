@@ -218,10 +218,15 @@ function playTick() {
 
 function hudAnimate(val) {
     const questionBox = document.querySelector("#question");
-    questionBox.classList.remove('hud-animate');
-    void questionBox.offsetHeight;
-    questionBox.classList.add('hud-animate');
-    questionBox.innerHTML = val;
+    const span = questionBox.querySelector("span");
+    if (span) {
+        span.classList.remove('hud-animate');
+        void span.offsetHeight;
+        span.classList.add('hud-animate');
+        span.innerHTML = val;
+    } else {
+        questionBox.innerHTML = `<span>${val}</span>`;
+    }
 }
 
 function startCountdownSequence() {
@@ -279,7 +284,8 @@ function startGameLogic() {
 
     // ENSURE question is visible
     const questionEl = document.querySelector("#question");
-    questionEl.classList.remove('hud-animate');
+    const span = questionEl.querySelector("span");
+    if (span) span.classList.remove('hud-animate');
     questionEl.style.display = "flex";
     questionEl.style.fontSize = "5rem";
 
