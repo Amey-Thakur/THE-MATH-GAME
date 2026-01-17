@@ -355,12 +355,18 @@ h1 {
 }
 
 #gameOver {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     display: none;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 30px;
+    z-index: 50;
     animation: fadeIn 0.5s ease-out;
 }
 
