@@ -102,13 +102,20 @@ THE-MATH-GAME/
 ├── docs/                            # Technical Documentation
 │   └── SPECIFICATION.md             # Architecture & Design Specification
 │
-├── Mega/                                                         # Archival Attribution Assets
-│   ├── Filly.jpg                                                 # Companion (Filly)
-│   └── Mega.png                                                  # Author Profile Image (Mega Satish)
+├── Mega/                            # Archival Attribution Assets
+│   ├── Filly.jpg                    # Companion (Filly)
+│   └── Mega.png                     # Author Profile Image (Mega Satish)
+│
+├── screenshots/                     # Application Screenshots
+│   ├── main-menu.png                # Start Screen & Question Selection
+│   ├── math-fact.png                # Curated Math Facts (Lobby)
+│   ├── gameplay.png                 # Primary Gameplay Interface
+│   ├── game-over.png                # Score Summary & Challenge
+│   └── share-card.png               # Premium Score Analytics Asset
 │
 ├── Source Code/                     # Primary Application Layer
-│   ├── styling.css                  # Game Visuals
-│   ├── javascript.js                # Game Logic
+│   ├── css/                         # Game Visuals
+│   ├── js/                          # Game Logic
 │   ├── images/                      # Game Assets
 │   └── index.html                   # Game Entry Point
 │
@@ -127,19 +134,31 @@ THE-MATH-GAME/
 ## Results
 
 <div align="center">
-  <b>Game Start Screen</b>
+  <b>Main Menu & Selection</b>
   <br><br>
-  <img src="https://user-images.githubusercontent.com/54937357/154539531-9b586eed-c2d0-44f4-8e8d-a0c00fd66b95.png" alt="Start Screen" width="80%">
+  <img src="screenshots/main-menu.png" alt="Main Menu" width="90%">
   <br><br>
 
-  <b>Gameplay - Correct Answer Feedback</b>
+  <b>Curated Math Facts (Lobby Mode)</b>
   <br><br>
-  <img src="https://user-images.githubusercontent.com/54937357/154540683-a58dad77-dabd-4bbe-bab4-59af34f2e9d1.png" alt="Correct Answer" width="80%">
+  <img src="screenshots/math-fact.png" alt="Math Fact" width="90%">
+  <br><br>
+
+  <b>Active Gameplay Interface</b>
+  <br><br>
+  <img src="screenshots/gameplay.png" alt="Gameplay" width="90%">
   <br><br>
 
   <b>Game Over Summary</b>
+  <br>
+  <i>Challenge: 31 is the author score to beat!</i>
   <br><br>
-  <img src="https://user-images.githubusercontent.com/54937357/154540932-927369bf-1e9c-4419-8dd1-c734dae04317.png" alt="Game Over" width="80%">
+  <img src="screenshots/game-over.png" alt="Game Over" width="90%">
+  <br><br>
+
+  <b>Premium Analytics Share Card</b>
+  <br><br>
+  <img src="screenshots/share-card.png" alt="Share Card" width="90%">
 </div>
 
 ---
