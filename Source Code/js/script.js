@@ -72,7 +72,6 @@ document.querySelector("#startreset").onclick = () => {
         score = 0;
         wrongScore = 0;
         document.querySelector("#scorevalue").innerHTML = score;
-        document.querySelector("#correct-score").innerHTML = score; // Sync correct count
         document.querySelector("#wrong-score").innerHTML = wrongScore; // Sync wrong count
 
         //show countdown box
@@ -105,7 +104,6 @@ for (let i = 1; i < 5; i++) {
                 score++;
                 //set score value
                 document.querySelector("#scorevalue").innerHTML = score;
-                document.querySelector("#correct-score").innerHTML = score; // Update UI
 
                 //hide wrong box and show correct box
                 hideElement("wrong");
