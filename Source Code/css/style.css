@@ -807,6 +807,70 @@ h1 {
     align-items: center;
     border: 1px solid rgba(0, 0, 0, 0.1);
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle Mathematical Watermark Background */
+.share-watermark-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.watermark-symbol {
+    position: absolute;
+    font-size: 120px;
+    font-weight: 900;
+    color: rgba(124, 58, 237, 0.04);
+    pointer-events: none;
+    user-select: none;
+}
+
+.watermark-symbol.plus {
+    top: -20px;
+    left: -20px;
+    transform: rotate(-15deg);
+}
+
+.watermark-symbol.divide {
+    top: 40px;
+    right: -30px;
+    transform: rotate(20deg);
+    font-size: 140px;
+}
+
+.watermark-symbol.times {
+    bottom: 100px;
+    left: -40px;
+    transform: rotate(10deg);
+    font-size: 160px;
+    color: rgba(124, 58, 237, 0.03);
+}
+
+.watermark-symbol.minus {
+    bottom: -30px;
+    right: 20px;
+    transform: rotate(-10deg);
+}
+
+.watermark-symbol.equals {
+    top: 45%;
+    left: 40%;
+    opacity: 0.02;
+    font-size: 180px;
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.share-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
 }
 
 .share-header-group {
