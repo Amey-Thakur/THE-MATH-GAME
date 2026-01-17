@@ -226,28 +226,47 @@ function startGameLogic() {
 }
 
 for (let i = 1; i < 5; i++) {
-    setTimeout(() => {
-        hideElement("correct");
-    }, 1000);
-    //generate new Q&A
-    generateQA();
-}
-                //if wrong answer
-                else {
-    //increase wrong score
-    wrongScore++;
-    document.querySelector("#wrong-score").innerHTML = wrongScore; // Update UI
+    //if we click on answer box
+    document.querySelector("#box" + i).onclick = function () {
+        //if we are playing
+        if (playing) {
+            // Explicitly unlock audio on interaction
+            if (audioCtx.state === 'suspended') audioCtx.resume();
 
-    //show try again box for 1sec
-    hideElement("correct");
-    showElement("wrong");
-    setTimeout(() => {
-        hideElement("wrong");
-    }, 1000);
-}
+            const selectedVal = parseInt(this.textContent);
+
+            //if correct answer
+            if (selectedVal === correctAnswer) {
+                //increase score by 1
+                score++;
+                //set score value
+                document.querySelector("#scorevalue").innerHTML = score;
+
+                //hide wrong box and show correct box
+                hideElement("wrong");
+                showElement("correct");
+                setTimeout(() => {
+                    hideElement("correct");
+                }, 1000);
+                //generate new Q&A
+                generateQA();
+            }
+            //if wrong answer
+            else {
+                //increase wrong score
+                wrongScore++;
+                document.querySelector("#wrong-score").innerHTML = wrongScore; // Update UI
+
+                //show try again box for 1sec
+                hideElement("correct");
+                showElement("wrong");
+                setTimeout(() => {
+                    hideElement("wrong");
+                }, 1000);
             }
         }
     }
+}
 
 /**
  * Countdown Timer Implementation
