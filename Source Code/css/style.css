@@ -173,7 +173,8 @@ h1 {
 
 /* Premium HUD Question Display */
 #question {
-    font-size: 5rem;
+    font-size: 3rem;
+    /* Reduced initial size for instruction text */
     font-weight: 700;
     text-align: center;
     margin: 0 2rem;
