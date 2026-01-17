@@ -61,11 +61,13 @@ body {
 }
 
 h1 {
-    font-size: 4rem;
+    font-size: 3rem;
+    /* Reduced from 4rem */
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 4px;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
+    /* Reduced from 2rem */
     color: white;
     text-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary);
     animation: glow 2s ease-in-out infinite alternate;
@@ -89,23 +91,15 @@ h1 {
     -webkit-backdrop-filter: blur(12px);
     border: 2px solid var(--glass-border);
     border-radius: 30px;
-    padding: 2.5rem;
-    /* Reduced padding from 3rem */
+    padding: 2rem;
+    /* Reduced padding */
     position: relative;
     box-shadow: var(--shadow), 0 0 40px rgba(168, 85, 247, 0.1);
     animation: slideUp 0.8s ease-out;
-    max-height: 80vh;
-    /* Slightly increased to fit content */
+    /* Removed max-height/overflow to prevent scrollbar & clipping */
     display: flex;
-    /* Ensure flex layout for spacing */
     flex-direction: column;
-    justify-content: space-between;
-    /* Distribute space */
-    overflow-y: auto;
-    /* Keep as fallback */
-    /* Custom Scrollbar for container */
-    scrollbar-width: thin;
-    scrollbar-color: var(--primary) transparent;
+    justify-content: center;
 }
 
 @keyframes slideUp {
@@ -161,12 +155,12 @@ h1 {
 }
 
 #question {
-    font-size: 5rem;
-    /* Reduced from 6rem */
+    font-size: 4rem;
+    /* Reduced from 5rem */
     font-weight: 700;
     text-align: center;
-    margin: 1rem 0;
-    /* Reduced margin */
+    margin: 0.5rem 0;
+    /* Minimal margin */
     color: white;
     text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
@@ -174,8 +168,10 @@ h1 {
 #instruction {
     text-align: center;
     color: var(--secondary);
-    font-size: 1.2rem;
-    margin-bottom: 3rem;
+    font-size: 1rem;
+    /* Smaller text */
+    margin-bottom: 1.5rem;
+    /* Reduced margin */
     opacity: 0.8;
 }
 
@@ -184,19 +180,25 @@ h1 {
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
     /* Reduced gap */
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     /* Reduced margin */
 }
 
 .box {
-    aspect-ratio: 1;
+    height: 80px;
+    /* Fixed height for consistency */
+    width: 80px;
+    /* Fixed width */
+    margin: 0 auto;
+    /* Center in grid cell */
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
+    border-radius: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 3rem;
+    font-size: 2rem;
+    /* Reduced font size */
     font-weight: 700;
     cursor: pointer;
     transition: var(--transition);
