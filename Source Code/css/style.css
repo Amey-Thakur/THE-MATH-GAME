@@ -390,7 +390,12 @@ h1 {
     text-shadow: 0 0 20px rgba(239, 68, 68, 0.5);
     text-transform: uppercase;
     letter-spacing: 2px;
-    animation: slideInDown 0.5s ease-out forwards;
+    animation: hudScaleIn 0.4s ease-out forwards;
+}
+
+#gameOver p:nth-child(2) {
+    animation: hudScaleIn 0.4s ease-out 0.15s forwards;
+    opacity: 0;
 }
 
 #gameOver p:last-child {
@@ -399,18 +404,27 @@ h1 {
     text-transform: uppercase;
     letter-spacing: 1px;
     opacity: 0;
-    animation: fadeInUp 0.5s ease-out 0.5s forwards;
+    animation: hudScaleIn 0.4s ease-out 0.3s forwards;
 }
 
-@keyframes slideInDown {
-    from {
+/* HUD-style scale-in animation */
+@keyframes hudScaleIn {
+    0% {
         opacity: 0;
-        transform: translateY(-50px);
+        transform: scale(0.5);
+        filter: blur(10px);
     }
 
-    to {
+    70% {
         opacity: 1;
-        transform: translateY(0);
+        transform: scale(1.05);
+        filter: blur(0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0);
     }
 }
 
