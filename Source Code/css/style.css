@@ -25,7 +25,8 @@
 
 body {
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
+    /* Allow scroll if needed */
     font-family: 'Play', sans-serif;
     color: white;
     background-color: var(--bg-dark);
@@ -39,7 +40,10 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
+    overflow-y: auto;
+    /* Allow scroll */
+    padding: 20px 0;
+    /* Enhance vertical spacing */
 }
 
 @media (max-width: 768px) {
@@ -89,6 +93,12 @@ h1 {
     position: relative;
     box-shadow: var(--shadow), 0 0 40px rgba(168, 85, 247, 0.1);
     animation: slideUp 0.8s ease-out;
+    max-height: 75vh;
+    /* Leave room for header */
+    overflow-y: auto;
+    /* Custom Scrollbar for container */
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary) transparent;
 }
 
 @keyframes slideUp {
