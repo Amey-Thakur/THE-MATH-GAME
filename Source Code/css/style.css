@@ -521,7 +521,23 @@ h1 {
         /* Tighter padding on desktop/tablet */
         height: auto;
         min-height: auto;
-        margin: 1rem 0;
+        max-height: none;
+        /* Remove height limit for mobile */
+        margin: 1rem auto;
+        /* Centered on mobile */
+    }
+
+    /* Ensure footer wraps on smaller screens */
+    .footer h3 {
+        flex-wrap: wrap;
+        white-space: normal;
+        gap: 10px;
+        line-height: 1.6;
+    }
+
+    .footer-separator {
+        display: none;
+        /* Hide separator when wrapping might occur */
     }
 
     #hud-screen {
@@ -583,6 +599,8 @@ h1 {
         white-space: normal;
         font-size: 0.9rem;
         gap: 10px;
+        justify-content: center;
+        width: 100%;
         line-height: 1.6;
     }
 
