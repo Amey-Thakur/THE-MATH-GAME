@@ -288,6 +288,9 @@ for (let i = 1; i < 5; i++) {
                 setTimeout(() => {
                     hideElement("wrong");
                 }, 1000);
+
+                // Advance to next question even on wrong answer
+                generateQA();
             }
         }
     }
