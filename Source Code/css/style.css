@@ -361,9 +361,13 @@ h1 {
 
 #startreset:hover,
 #share-score-bottom:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 25px var(--primary-glow);
+    transform: translateY(-5px) scale(1.02);
+    background: linear-gradient(135deg, var(--primary), #7c3aed);
     filter: brightness(1.2);
+    box-shadow: 0 15px 30px rgba(168, 85, 247, 0.3),
+        inset 0 0 20px rgba(255, 255, 255, 0.2);
+    color: white;
+    text-shadow: 0 0 10px white;
 }
 
 #startreset:active,
