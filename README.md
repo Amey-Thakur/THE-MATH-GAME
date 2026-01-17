@@ -161,10 +161,9 @@ THE-MATH-GAME/
   <br><br>
   <u>Gameplay Variations</u>
   <br>
-  <img src="screenshots/03-gameplay-var-1.png" alt="Gameplay Var 1" width="45%">
   <img src="screenshots/03-gameplay-var-2.png" alt="Gameplay Var 2" width="45%">
-  <br>
   <img src="screenshots/03-gameplay-var-4.png" alt="Gameplay Var 4" width="45%">
+  <br>
   <img src="screenshots/03-gameplay-var-5.png" alt="Gameplay Var 5" width="45%">
   <br><br>
 
