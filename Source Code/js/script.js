@@ -305,35 +305,36 @@ for (let i = 1; i < 5; i++) {
  */
 function startCountdown() {
     action = setInterval(() => {
-        // Decrement first
-        timeRemaining -= 1;
+        // 1. Decrement timer
+        timeRemaining = timeRemaining - 1;
 
-        // Update display
-        document.querySelector("#timeremainingvalue").innerHTML = timeRemaining;
+        // 2. Update display FIRST
+        const timerEl = document.querySelector("#timeremainingvalue");
+        const wrapperEl = document.querySelector("#timeremaining");
+        timerEl.textContent = timeRemaining;
 
-        // Last 10 seconds: Red warning + Sound (when showing 10, 9, 8... 1)
-        if (timeRemaining <= 10 && timeRemaining > 0) {
-            document.querySelector("#timeremaining").classList.add("timer-warning");
+        console.log("Timer:", timeRemaining); // Debug
+
+        // 3. Check for last 10 seconds (10, 9, 8, 7, 6, 5, 4, 3, 2, 1)
+        if (timeRemaining <= 10 && timeRemaining >= 1) {
+            console.log("Red + Sound at:", timeRemaining); // Debug
+            wrapperEl.classList.add("timer-warning");
             try { playTick(); } catch (e) { console.error(e); }
         } else {
-            document.querySelector("#timeremaining").classList.remove("timer-warning");
+            wrapperEl.classList.remove("timer-warning");
         }
 
-        // Game Over
+        // 4. Game Over at 0
         if (timeRemaining === 0) {
             stopCountdown();
-
-            // Play Game Over Sound
             playBeep('gameover');
 
-            // Hide game elements
             document.querySelector("#question").style.display = "none";
             document.querySelector("#hud-metrics").style.display = "none";
-            hideElement("timeremaining");
+            wrapperEl.style.display = "none";
             hideElement("correct");
             hideElement("wrong");
 
-            // Show Game Over screen
             const gameOverEl = document.querySelector("#gameOver");
             gameOverEl.innerHTML = "<p>GAME OVER</p><p>FINAL SCORE: " + score + "</p>";
             gameOverEl.style.display = "flex";
