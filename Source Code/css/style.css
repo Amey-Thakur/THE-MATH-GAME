@@ -521,14 +521,13 @@ h1 {
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/ *   G a m e   C o n t e n t   W r a p p e r   * /     # g a m e - c o n t e n t    {
-                 f l e x - g r o w :    1 ;
-                 d i s p l a y :    f l e x ;
-                 f l e x - d i r e c t i o n :    c o l u m n ;
-                 j u s t i f y - c o n t e n t :    c e n t e r ;
-                 g a p :    1 . 5 r e m ;
-                 / *   C o n s i s t e n t   s p a c i n g   * /             w i d t h :    1 0 0 % ;
-         
+/* Game Content Wrapper */
+#game-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.5rem;
+    /* Consistent spacing */
+    width: 100%;
 }
-
-     
