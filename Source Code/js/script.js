@@ -75,6 +75,8 @@ document.querySelector("#startreset").onclick = () => {
         timeRemaining = 60;
         //show countdown in sec
         document.querySelector("#timeremainingvalue").innerHTML = timeRemaining;
+        //Reset Style
+        document.querySelector("#timeremaining").classList.remove("timer-warning");
         //hide the game over box
         hideElement("gameOver");
         //change button to reset
@@ -132,6 +134,14 @@ function startCountdown() {
         timeRemaining -= 1;
         //show countdown in sec
         document.querySelector("#timeremainingvalue").innerHTML = timeRemaining;
+
+        // Pulse Animation for last 10 seconds
+        if (timeRemaining < 11) {
+            document.querySelector("#timeremaining").classList.add("timer-warning");
+        } else {
+            document.querySelector("#timeremaining").classList.remove("timer-warning");
+        }
+
         //no time left
         if (timeRemaining == 0) {
             //game over
