@@ -120,6 +120,8 @@ function startCountdownSequence() {
     hideElement("correct");
     hideElement("wrong");
     hideElement("secret-hint"); // Hide hint immediately
+    hideElement("score");
+    hideElement("missed");
     document.querySelector("#hud-metrics").style.display = "none";
     document.querySelector("#timeremaining").style.display = "none";
 
@@ -145,6 +147,8 @@ function startGameLogic() {
     timeRemaining = 60;
     document.querySelector("#timeremainingvalue").textContent = timeRemaining;
     showElement("timeremaining");
+    showElement("score");
+    showElement("missed");
     document.querySelector("#hud-metrics").style.display = "flex";
 
     const questionEl = document.querySelector("#question");

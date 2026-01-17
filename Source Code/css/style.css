@@ -128,10 +128,9 @@ h1 {
     color: rgba(255, 255, 255, 0.9);
     font-weight: 700;
     font-size: 1.2rem;
-    display: none;
-    /* Hide initially */
+    display: block;
+    /* Show Score items */
     text-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
-    /* Subtle glow */
 }
 
 #score #scorevalue {
@@ -204,13 +203,12 @@ h1 {
 #hud-metrics {
     width: 100%;
     display: none;
-    /* Hidden initially so it doesn't take space */
     justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 2rem;
-    /* Space before question */
+    align-items: center;
+    /* Better vertical alignment for metrics */
+    margin-bottom: 0.5rem;
+    /* Reduced to allow question to use full space */
     min-height: 30px;
-    /* Keep space even if hidden */
 }
 
 /* The Question Text Itself */
@@ -362,8 +360,6 @@ h1 {
     display: none;
     white-space: nowrap;
     text-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
-    margin: 0 auto;
-    /* Center the middle item */
 }
 
 #timeremainingvalue {
@@ -694,8 +690,8 @@ h1 {
     color: rgba(255, 255, 255, 0.9);
     font-weight: 700;
     font-size: 1.2rem;
-    display: none;
-    /* Hide initially */
+    display: block;
+    /* Show missed items */
     text-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
 }
 
