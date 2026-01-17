@@ -135,6 +135,38 @@ function playBeep(type) {
         oscillator1.stop(now + 1);
         oscillator2.start(now);
         oscillator2.stop(now + 1);
+    } else if (type === 'correct') {
+        // Happy ascending chime
+        oscillator1.type = 'sine';
+        oscillator1.frequency.setValueAtTime(523, now); // C5
+        oscillator1.frequency.setValueAtTime(659, now + 0.1); // E5
+
+        oscillator2.type = 'sine';
+        oscillator2.frequency.setValueAtTime(784, now + 0.1); // G5
+
+        gainNode.gain.setValueAtTime(0.2, now);
+        gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.2);
+
+        oscillator1.start(now);
+        oscillator1.stop(now + 0.2);
+        oscillator2.start(now + 0.1);
+        oscillator2.stop(now + 0.2);
+    } else if (type === 'wrong') {
+        // Low buzz error sound
+        oscillator1.type = 'sawtooth';
+        oscillator1.frequency.setValueAtTime(150, now);
+        oscillator1.frequency.exponentialRampToValueAtTime(100, now + 0.15);
+
+        oscillator2.type = 'square';
+        oscillator2.frequency.setValueAtTime(120, now);
+
+        gainNode.gain.setValueAtTime(0.25, now);
+        gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.2);
+
+        oscillator1.start(now);
+        oscillator1.stop(now + 0.2);
+        oscillator2.start(now);
+        oscillator2.stop(now + 0.2);
     } else {
         // Default: "Hyperdrive" GO Sound
         oscillator1.type = 'square';
