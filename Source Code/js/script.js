@@ -248,53 +248,43 @@ function startGameLogic() {
 }
 
 for (let i = 1; i < 5; i++) {
-    //if we click on answer box
-    document.querySelector("#box" + i).onclick = function () {
-        //if we are playing
-        if (playing) {
-            // Explicitly unlock audio on interaction
-            if (audioCtx.state === 'suspended') audioCtx.resume();
+    const box = document.querySelector("#box" + i);
+    box.addEventListener("click", function () {
+        if (!playing) return;
 
-            // Robust number parsing
-            const clickedText = this.innerText.trim();
-            const selectedVal = parseFloat(clickedText);
+        // Resume audio if needed
+        if (audioCtx.state === 'suspended') audioCtx.resume();
 
-            console.log("Clicked:", selectedVal, "Correct:", correctAnswer); // Debug
+        // Get clicked value using textContent (consistent with how we set it)
+        const clickedValue = parseInt(this.textContent, 10);
 
-            //if correct answer
-            if (selectedVal == correctAnswer) {
-                //increase score by 1
-                score++;
-                document.querySelector("#scorevalue").innerHTML = score;
+        console.log("=== CLICK EVENT ===");
+        console.log("Clicked box:", i, "Value:", clickedValue);
+        console.log("Correct answer:", correctAnswer);
+        console.log("Match:", clickedValue === correctAnswer);
 
-                //hide wrong box and show correct box
-                hideElement("wrong");
-                showElement("correct");
-                setTimeout(() => {
-                    hideElement("correct");
-                }, 1000);
+        if (clickedValue === correctAnswer) {
+            // CORRECT
+            score++;
+            document.querySelector("#scorevalue").textContent = score;
 
-                //generate new Q&A
-                generateQA();
-            }
-            //if wrong answer
-            else {
-                //increase wrong score
-                wrongScore++;
-                document.querySelector("#wrong-score").innerHTML = wrongScore;
+            hideElement("wrong");
+            showElement("correct");
+            setTimeout(() => hideElement("correct"), 800);
+        } else {
+            // WRONG
+            wrongScore++;
+            document.querySelector("#wrong-score").textContent = wrongScore;
 
-                //show try again box for 1sec
-                hideElement("correct");
-                showElement("wrong");
-                setTimeout(() => {
-                    hideElement("wrong");
-                }, 1000);
-
-                // Advance to next question even on wrong answer
-                generateQA();
-            }
+            hideElement("correct");
+            showElement("wrong");
+            setTimeout(() => hideElement("wrong"), 800);
         }
-    }
+
+        // ALWAYS generate new question
+        console.log("Generating new question...");
+        generateQA();
+    });
 }
 
 /**
