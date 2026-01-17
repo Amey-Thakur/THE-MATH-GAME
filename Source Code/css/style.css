@@ -506,97 +506,198 @@ h1 {
     color: #38bdf8;
     text-decoration: none;
     font-weight: 700;
-    padding: 8px 18px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 14px;
+    padding: 10px 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(168, 85, 247, 0.2);
+    border-radius: 12px;
     font-size: 1rem;
     position: relative;
-    overflow: hidden;
-    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* Unimaginable 3D Reactor Styles */
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
     display: inline-block;
-    animation: footerFloat 4s ease-in-out infinite;
-}
-
-/* Stagger the animations */
-.footer a.link-right {
-    animation-delay: -2s;
-}
-
-@keyframes footerFloat {
-
-    0%,
-    100% {
-        transform: translateY(0);
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    }
-
-    50% {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
-    }
 }
 
 .footer a:hover {
-    background: rgba(168, 85, 247, 0.25);
-    border-color: #a855f7;
-    color: #fff;
-    letter-spacing: 2px;
-    transform: scale(1.1) translateY(-10px) !important;
+    border-color: #38bdf8;
+    background: rgba(168, 85, 247, 0.1);
     box-shadow:
-        0 10px 30px rgba(168, 85, 247, 0.4),
-        0 0 20px rgba(56, 189, 248, 0.3);
-    /* Holographic Layering Effect */
-    text-shadow:
-        3px 0 rgba(239, 68, 68, 0.8),
-        -3px 0 rgba(56, 189, 248, 0.8);
+        0 0 30px rgba(56, 189, 248, 0.4),
+        inset 0 0 15px rgba(168, 85, 247, 0.2);
+    transform: scale(1.15) rotateX(10deg) rotateY(-10deg);
 }
 
-.footer a::before {
-    content: '×';
+/* The Orbit System */
+.orbit-container {
     position: absolute;
-    left: 50%;
     top: 50%;
-    transform: translate(-50%, -50%) scale(0) rotate(0deg);
-    font-size: 3rem;
-    color: rgba(255, 255, 255, 0.1);
-    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    left: 50%;
+    width: 140%;
+    height: 140%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.footer a:hover .orbit-container {
+    opacity: 1;
+}
+
+.orbit-item {
+    position: absolute;
+    font-size: 0.9rem;
+    color: #a855f7;
+    font-weight: bold;
+    text-shadow: 0 0 10px #a855f7;
+    animation: orbit 3s linear infinite;
+    white-space: nowrap;
+}
+
+/* Staggered positions for the 4 satellites */
+.orbit-item:nth-child(1) {
+    top: 0;
+    left: 50%;
+    animation-delay: 0s;
+}
+
+.orbit-item:nth-child(2) {
+    top: 50%;
+    right: 0;
+    animation-delay: -0.75s;
+}
+
+.orbit-item:nth-child(3) {
+    bottom: 0;
+    left: 50%;
+    animation-delay: -1.5s;
+}
+
+.orbit-item:nth-child(4) {
+    top: 50%;
+    left: 0;
+    animation-delay: -2.25s;
+}
+
+@keyframes orbit {
+    0% {
+        transform: rotate(0deg) translateX(70px) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: rotate(360deg) translateX(70px) rotate(-360deg);
+        opacity: 0;
+    }
+}
+
+/* Chromatic Aberration Idle Effect */
+.footer a .text {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.footer a:hover .text {
+    transform: translateZ(20px);
+    color: #fff;
+    text-shadow:
+        1px 1px 0 rgba(255, 0, 0, 0.5),
+        -1px -1px 0 rgba(0, 255, 255, 0.5);
+}
+
+.math-operator-wrap {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    margin: 0 10px;
+    z-index: 20;
+}
+
+.math-operator {
+    color: #38bdf8;
+    font-weight: 800;
+    font-size: 1.8rem;
+    text-shadow: 0 0 15px rgba(56, 189, 248, 0.8);
+    transition: all 0.3s ease;
+    animation: operatorGlow 2s ease-in-out infinite;
+    cursor: default;
+    user-select: none;
+}
+
+@keyframes operatorGlow {
+
+    0%,
+    100% {
+        transform: scale(1);
+        text-shadow: 0 0 15px rgba(56, 189, 248, 0.8);
+    }
+
+    50% {
+        transform: scale(1.2) rotate(10deg);
+        text-shadow: 0 0 25px #38bdf8, 0 0 5px white;
+    }
+}
+
+.particle-field {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
     pointer-events: none;
     z-index: -1;
 }
 
-.footer a:hover::before {
-    transform: translate(-50%, -50%) scale(2.8) rotate(180deg);
-    opacity: 0.4;
-    color: #a855f7;
-}
-
-.footer a::after {
-    content: '';
+.energy-particle {
     position: absolute;
-    top: -50%;
-    left: -150%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(45deg,
-            transparent,
-            rgba(255, 255, 255, 0.1),
-            transparent);
-    transition: 0.7s;
+    color: #a855f7;
+    font-size: 0.8rem;
+    font-weight: bold;
+    opacity: 0;
+    filter: blur(1px);
     pointer-events: none;
 }
 
-.footer a:hover::after {
-    left: 100%;
+/* Background Math Distortion effect */
+.footer::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: 0;
+    width: 100%;
+    height: calc(100% + 50px);
+    background: radial-gradient(circle at 50% 100%, rgba(168, 85, 247, 0.05) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: -1;
+    animation: fieldPulse 5s ease-in-out infinite;
 }
 
-.math-operator,
-.footer-separator {
-    color: #38bdf8;
-    /* Neon Sky Blue */
-    font-weight: bold;
-    font-size: 1.2rem;
-    text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+@keyframes fieldPulse {
+
+    0%,
+    100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.6;
+        transform: scale(1.1);
+    }
 }
 
 /* Timer Warning Animation */

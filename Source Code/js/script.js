@@ -528,3 +528,107 @@ function generateQA() {
         usedAnswers.push(wrongAnswer);
     }
 }
+
+// =========================================
+//   MULTIPLICATION SINGULARITY (FOOTER) 🚀
+// =========================================
+const mathSymbols = "0123456789+-×÷=∑∞√ππ∫";
+
+function setupFooterScramble() {
+    const footerLinks = document.querySelectorAll(".footer a");
+
+    footerLinks.forEach(link => {
+        const originalText = link.getAttribute("data-value");
+        const textSpan = link.querySelector(".text");
+        let interval = null;
+
+        link.onmouseover = () => {
+            let iteration = 0;
+            clearInterval(interval);
+
+            interval = setInterval(() => {
+                textSpan.innerText = originalText
+                    .split("")
+                    .map((char, index) => {
+                        if (index < iteration) {
+                            return originalText[index];
+                        }
+                        return mathSymbols[Math.floor(Math.random() * mathSymbols.length)];
+                    })
+                    .join("");
+
+                if (iteration >= originalText.length) {
+                    clearInterval(interval);
+                }
+
+                iteration += 1 / 3;
+            }, 30);
+        };
+    });
+}
+
+// Initialize on load
+window.addEventListener('DOMContentLoaded', setupFooterScramble);
+
+// =========================================
+//   QUANTUM CORE ENGINE (CONTINUOUS) 🌀
+// =========================================
+function initQuantumCore() {
+    const operator = document.querySelector(".math-operator");
+    const particleField = document.querySelector(".particle-field");
+    const creators = document.querySelectorAll(".footer a");
+    const operators = ["&", "×", "*", "÷", "∑", "√"];
+    let opIndex = 0;
+
+    // 1. Morph the Operator
+    setInterval(() => {
+        opIndex = (opIndex + 1) % operators.length;
+        operator.style.opacity = 0;
+        setTimeout(() => {
+            operator.innerText = operators[opIndex];
+            operator.style.opacity = 1;
+        }, 300);
+    }, 3000);
+
+    // 2. Shoot Energy Pulses
+    setInterval(() => {
+        createPulse();
+    }, 4000);
+
+    function createPulse() {
+        const numParticles = 8;
+        for (let i = 0; i < numParticles; i++) {
+            const p = document.createElement("span");
+            p.className = "energy-particle";
+            p.innerText = mathSymbols[Math.floor(Math.random() * mathSymbols.length)];
+            
+            // Random direction: Left or Right
+            const isLeft = Math.random() > 0.5;
+            const target = isLeft ? creators[0] : creators[1];
+            
+            particleField.appendChild(p);
+
+            const angle = isLeft ? (Math.PI + (Math.random() - 0.5)) : (Math.random() - 0.5);
+            const distance = 150 + Math.random() * 50;
+            const destX = Math.cos(angle) * distance;
+            const destY = Math.sin(angle) * 50;
+
+            p.animate([
+                { opacity: 0, transform: 'translate(0, 0) scale(0.5)', filter: 'blur(5px)' },
+                { opacity: 1, transform: 'translate(' + (destX/2) + 'px, ' + (destY/2) + 'px) scale(1.2)', offset: 0.5 },
+                { opacity: 0, transform: 'translate(' + destX + 'px, ' + destY + 'px) scale(0.5)', filter: 'blur(3px)' }
+            ], {
+                duration: 1500 + Math.random() * 1000,
+                easing: 'cubic-bezier(0.4, 0, 0.2, 1)'
+            }).onfinish = () => {
+                p.remove();
+                // "Hit" effect on name
+                target.style.filter = 'brightness(2) contrast(1.2) drop-shadow(0 0 10px #38bdf8)';
+                setTimeout(() => target.style.filter = '', 100);
+            };
+        }
+    }
+}
+
+// Start core
+window.addEventListener('DOMContentLoaded', initQuantumCore);
