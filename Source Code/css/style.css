@@ -101,8 +101,8 @@ h1 {
     flex-direction: column;
     justify-content: center;
     /* Stability Fix */
-    min-height: 600px;
-    /* Ensure card stays consistent size */
+    min-height: 850px;
+    /* Increased to accommodate full game state */
 }
 
 @keyframes slideUp {
