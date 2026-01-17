@@ -248,43 +248,36 @@ h1 {
 }
 
 #choices {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-    margin-bottom: 1rem;
-    flex-grow: 1;
-    /* Allow scaling */
+    display: flex;
     justify-content: center;
-    align-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding: 0 1rem;
 }
 
 /* Premium Floating Glass Keys */
 .box {
-    height: 100%;
-    width: 100%;
-    aspect-ratio: 1;
-    max-height: 130px;
-    max-width: 130px;
-    margin: 0 auto;
-
+    width: 100px;
+    height: 100px;
     /* Glass Surface */
     background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-top: 1px solid rgba(255, 255, 255, 0.3);
     /* Catch light on top */
-    border-radius: 25px;
+    border-radius: 20px;
 
     /* Layout & Type */
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     font-weight: 700;
     color: rgba(255, 255, 255, 0.9);
     cursor: pointer;
 
     /* Depth & Shadow */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2),
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3),
         inset 0 0 15px rgba(255, 255, 255, 0.05);
     transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     /* Bouncy spring */
