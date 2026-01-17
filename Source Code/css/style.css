@@ -324,10 +324,18 @@ h1 {
     pointer-events: none;
 }
 
-#startreset {
+#bottom-deck {
     width: 100%;
+    display: flex;
+    gap: 15px;
+    /* Space between buttons on Game Over */
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#startreset {
+    flex: 1;
+    /* Grows to fill available space */
     padding: 1rem;
-    /* Reduced padding */
     background: linear-gradient(135deg, var(--primary), #7c3aed);
     color: white;
     font-size: 1.5rem;
@@ -339,12 +347,44 @@ h1 {
     border: none;
     box-shadow: 0 8px 20px var(--primary-glow);
     text-align: center;
-    /* Force center alignment */
     display: flex;
-    /* Flex fallback for vertical align */
     justify-content: center;
     align-items: center;
     transition: var(--transition);
+}
+
+#share-score-bottom {
+    display: none;
+    /* Hidden until Game Over */
+    flex: 0 0 30%;
+    /* Compact share button */
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    color: var(--secondary);
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+#share-score-bottom:hover {
+    background: rgba(168, 85, 247, 0.2);
+    border-color: var(--primary);
+    color: white;
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+}
+
+#share-score-bottom svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
 }
 
 #startreset:hover {
@@ -819,41 +859,6 @@ h1 {
     font-size: 1rem;
     opacity: 0.6;
     letter-spacing: 1px;
-}
-
-/* Subtle Share Button in Game Over */
-#share-btn {
-    margin-top: 15px;
-    padding: 8px 20px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    color: var(--secondary);
-    font-size: 0.9rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    margin-left: auto;
-    margin-right: auto;
-    align-items: center;
-    gap: 8px;
-}
-
-#share-btn:hover {
-    background: rgba(168, 85, 247, 0.2);
-    border-color: var(--primary);
-    color: white;
-    box-shadow: 0 0 15px rgba(168, 85, 247, 0.3);
-    transform: translateY(-2px);
-}
-
-#share-btn svg {
-    width: 16px;
-    height: 16px;
-    fill: currentColor;
 }
 
 @keyframes feedbackPop {
