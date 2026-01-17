@@ -61,12 +61,13 @@ body {
 }
 
 h1 {
-    font-size: 5rem;
-    /* Large, bold title */
+    font-size: 4rem;
+    /* Slightly reduced to fit */
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 4px;
-    margin-bottom: 2rem;
+    margin-bottom: 0;
+    /* Let flex handle spacing */
     color: white;
     text-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary);
     animation: glow 2s ease-in-out infinite alternate;
@@ -99,10 +100,14 @@ h1 {
     /* Removed max-height/overflow to prevent scrollbar & clipping */
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    /* Stability Fix */
-    min-height: 850px;
-    /* Increased to accommodate full game state */
+    justify-content: space-between;
+    /* Distribute space evenly */
+    height: 85vh;
+    /* Fixed height relative to screen */
+    min-height: 500px;
+    /* Prevent it from being too small on tiny screens */
+    overflow: hidden;
+    /* Strictly prevent scroll */
 }
 
 @keyframes slideUp {
@@ -158,13 +163,18 @@ h1 {
 }
 
 #question {
-    font-size: 7rem;
-    /* Massive question text */
+    font-size: 6rem;
+    /* Still massive but slightly managed */
     font-weight: 700;
     text-align: center;
-    margin: 1.5rem 0;
+    margin: 0;
     color: white;
     text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    flex-grow: 1;
+    /* Allow it to take available space */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #instruction {
@@ -178,15 +188,24 @@ h1 {
 #choices {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-    /* Larger gap */
-    margin-bottom: 3rem;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+    flex-grow: 1;
+    /* Allow scaling */
+    justify-content: center;
+    align-content: center;
 }
 
 .box {
-    height: 140px;
-    /* Large touch targets */
-    width: 140px;
+    height: 100%;
+    /* Fill grid cell */
+    width: 100%;
+    /* Fill grid cell */
+    aspect-ratio: 1;
+    /* Keep square */
+    max-height: 130px;
+    /* Limit max size */
+    max-width: 130px;
     margin: 0 auto;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
