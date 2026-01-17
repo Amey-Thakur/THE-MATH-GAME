@@ -305,26 +305,25 @@ for (let i = 1; i < 5; i++) {
  */
 function startCountdown() {
     action = setInterval(() => {
-        // 1. Decrement timer
-        timeRemaining = timeRemaining - 1;
-
-        // 2. Update display FIRST
         const timerEl = document.querySelector("#timeremainingvalue");
         const wrapperEl = document.querySelector("#timeremaining");
-        timerEl.textContent = timeRemaining;
 
-        console.log("Timer:", timeRemaining); // Debug
+        // Calculate next value FIRST
+        const nextValue = timeRemaining - 1;
 
-        // 3. Check for last 10 seconds (10, 9, 8, 7, 6, 5, 4, 3, 2, 1)
-        if (timeRemaining <= 10 && timeRemaining >= 1) {
-            console.log("Red + Sound at:", timeRemaining); // Debug
+        // Play sound BEFORE updating display (for better perceived sync)
+        if (nextValue <= 10 && nextValue >= 1) {
+            try { playTick(); } catch (e) { }
             wrapperEl.classList.add("timer-warning");
-            try { playTick(); } catch (e) { console.error(e); }
         } else {
             wrapperEl.classList.remove("timer-warning");
         }
 
-        // 4. Game Over at 0
+        // NOW update timer and display
+        timeRemaining = nextValue;
+        timerEl.textContent = timeRemaining;
+
+        // Game Over at 0
         if (timeRemaining === 0) {
             stopCountdown();
             playBeep('gameover');
