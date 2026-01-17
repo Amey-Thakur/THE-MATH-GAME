@@ -359,7 +359,21 @@ function startCountdown() {
             hideElement("wrong");
 
             const gameOverEl = document.querySelector("#gameOver");
-            gameOverEl.innerHTML = "<p>GAME OVER</p><p>FINAL SCORE: " + score + "</p>";
+
+            // Best Score Logic
+            let bestScore = parseInt(localStorage.getItem('mathGameBestScore')) || 0;
+            let isNewBest = score > bestScore;
+            if (isNewBest) {
+                bestScore = score;
+                localStorage.setItem('mathGameBestScore', bestScore);
+            }
+
+            // Score color: blue if new best, white otherwise
+            const scoreColor = isNewBest ? '#38bdf8' : 'white';
+            gameOverEl.innerHTML = `
+                <p style="font-size: 2.5rem; color: ${scoreColor}; margin-bottom: 0.5rem;">YOUR SCORE: ${score}</p>
+                <p style="font-size: 1.5rem; color: #38bdf8;">BEST SCORE: ${bestScore}</p>
+            `;
             gameOverEl.style.display = "flex";
 
             playing = false;
