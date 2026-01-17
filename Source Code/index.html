@@ -25,19 +25,26 @@
     <h1>THE MATH GAME</h1>
 
     <div id="container">
-        <div id="score">
-            Score: <span id="scorevalue">0</span>
+        <!-- Premium HUD Screen -->
+        <div id="hud-screen">
+            <!-- Top HUD Metrics Row -->
+            <div id="hud-metrics">
+                <div id="missed">
+                    Missed: <span id="wrong-score">0</span>
+                </div>
+
+                <div id="timeremaining">
+                    Time remaining: <span id="timeremainingvalue">60</span> sec
+                </div>
+
+                <div id="score">
+                    Score: <span id="scorevalue">0</span>
+                </div>
+            </div>
+
+            <!-- Main Question Display -->
+            <div id="question">Choose the correct answer to score!</div>
         </div>
-
-        <!-- Accuracy Pill (Left) -->
-        <div id="missed">
-            Missed: <span id="wrong-score">0</span>
-        </div>
-
-        <div id="correct">Correct! 🎯</div>
-        <div id="wrong">Try Again! ❌</div>
-
-        <div id="question">Choose the correct answer to score!</div>
 
         <div id="choices">
             <div id="box1" class="box"></div>
