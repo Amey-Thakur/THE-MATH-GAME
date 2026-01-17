@@ -291,8 +291,17 @@ function startCountdown() {
                     <p style="font-size: 3rem; font-weight: 800; color: #ef4444; margin: 0; text-shadow: 0 0 20px rgba(239, 68, 68, 0.5); text-transform: uppercase;">GAME OVER</p>
                     <p style="font-size: 2.2rem; font-weight: 700; color: ${scoreColor}; margin: 0;">SCORE: ${score}</p>
                     <p style="font-size: 1.5rem; font-weight: 700; color: #38bdf8; margin: 0; opacity: 0.9;">BEST: ${bestScore}</p>
+                    <button id="share-btn" onclick="shareScore()">
+                        <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92z"/></svg>
+                        Share Score
+                    </button>
                 </div>
             `;
+
+            // Populate hidden share card for image generation
+            document.querySelector("#share-score-value").textContent = score;
+            document.querySelector("#share-best-value").textContent = bestScore;
+
             gameOverEl.style.display = "flex";
 
             playing = false;
@@ -427,4 +436,52 @@ function initCommutativeSingularity() {
     }, 3000);
 }
 
-window.addEventListener('DOMContentLoaded', initCommutativeSingularity);
+// Generate Image & Share (Download)
+function shareScore() {
+    const shareCard = document.querySelector("#share-card");
+    const shareBtn = document.querySelector("#share-btn");
+
+    if (!shareCard) return;
+
+    // Visual feedback on button
+    if (shareBtn) {
+        shareBtn.innerHTML = "Generating...";
+        shareBtn.style.opacity = "0.7";
+    }
+
+    // Check availability
+    if (typeof html2canvas === 'undefined') {
+        alert("Error: html2canvas library not loaded.");
+        if (shareBtn) shareBtn.innerHTML = "Share Error";
+        return;
+    }
+
+    // Capture the hidden card
+    html2canvas(shareCard, {
+        scale: 2, // High resolution
+        backgroundColor: null,
+        useCORS: true,
+        logging: false
+    }).then(canvas => {
+        const link = document.createElement('a');
+        const score = document.querySelector("#share-score-value").textContent;
+        link.download = `MathGame-Score-${score}.png`;
+        link.href = canvas.toDataURL('image/png', 1.0);
+        link.click();
+
+        if (shareBtn) {
+            shareBtn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92z"/></svg> Shared!';
+            setTimeout(() => {
+                shareBtn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92z"/></svg> Share Score';
+                shareBtn.style.opacity = "1";
+            }, 2000);
+        }
+    }).catch(err => {
+        console.error("html2canvas error:", err);
+        if (shareBtn) shareBtn.innerHTML = "Error";
+    });
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+    initCommutativeSingularity();
+});
