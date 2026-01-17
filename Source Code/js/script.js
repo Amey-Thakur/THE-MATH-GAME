@@ -117,23 +117,6 @@ function playBeep(type) {
         oscillator1.stop(now + 0.3);
         oscillator2.start(now);
         oscillator2.stop(now + 0.3);
-    } else {
-        // "Hyperdrive" GO Sound
-        oscillator1.type = 'square';
-        oscillator1.frequency.setValueAtTime(400, now);
-        oscillator1.frequency.exponentialRampToValueAtTime(1500, now + 0.4);
-
-        oscillator2.type = 'triangle';
-        oscillator2.frequency.setValueAtTime(800, now);
-        oscillator2.frequency.exponentialRampToValueAtTime(2000, now + 0.4);
-
-        gainNode.gain.setValueAtTime(0.3, now);
-        gainNode.gain.linearRampToValueAtTime(0.001, now + 0.8);
-
-        oscillator1.start(now);
-        oscillator1.stop(now + 0.8);
-        oscillator2.start(now);
-        oscillator2.stop(now + 0.8);
     } else if (type === 'gameover') {
         // "Power Down" Descent
         oscillator1.type = 'sawtooth';
@@ -151,6 +134,23 @@ function playBeep(type) {
         oscillator1.stop(now + 1);
         oscillator2.start(now);
         oscillator2.stop(now + 1);
+    } else {
+        // Default: "Hyperdrive" GO Sound
+        oscillator1.type = 'square';
+        oscillator1.frequency.setValueAtTime(400, now);
+        oscillator1.frequency.exponentialRampToValueAtTime(1500, now + 0.4);
+
+        oscillator2.type = 'triangle';
+        oscillator2.frequency.setValueAtTime(800, now);
+        oscillator2.frequency.exponentialRampToValueAtTime(2000, now + 0.4);
+
+        gainNode.gain.setValueAtTime(0.3, now);
+        gainNode.gain.linearRampToValueAtTime(0.001, now + 0.8);
+
+        oscillator1.start(now);
+        oscillator1.stop(now + 0.8);
+        oscillator2.start(now);
+        oscillator2.stop(now + 0.8);
     }
 }
 
