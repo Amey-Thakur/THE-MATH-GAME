@@ -1,11 +1,29 @@
 /*
-  Project: THE MATH GAME
-  Description: Vibrant Neon Math Theme with Custom BG
+  ================================================================================
+  PROJECT: THE MATH GAME
+  AUTHORS: Amey Thakur & Mega Satish
+  DATE:    2022
+  
+  DESCRIPTION:
+  A production-grade CSS stylesheet defining the "Neon-Glass" aesthetic.
+  This system prioritizes visual hierarchy using variable-based color theming,
+  hardware-accelerated animations, and a responsive layout engine that adapts
+  from 4K desktops to mobile interfaces.
+  ================================================================================
 */
 
 @import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap');
 
 :root {
+    /* 
+       DESIGN TOKENS:
+       ----------------------------------------------------------------------
+       --primary:       Core brand color (Electric Purple).
+       --primary-glow:  Soft emission layer for neon effects.
+       --glass:         Semi-transparent background for glassmorphism.
+       --shadow:        Deep ambient occlusion shadow.
+       --transition:    Standardized cubic-bezier for fluid UI state changes.
+    */
     --primary: #a855f7;
     --primary-glow: rgba(168, 85, 247, 0.4);
     --secondary: #e9d5ff;
@@ -576,7 +594,14 @@ h1 {
     }
 }
 
-/* The Commutative Singularity Footer */
+/* 
+   ----------------------------------------------------------------------
+   COMPONENT: THE COMMUTATIVE SINGULARITY
+   LOGIC:     Demonstrates the mathematical property A x B = B x A.
+   VISUALS:   Interactive 3D footer where elements slingshot around a
+              central 'singularity' (multiplier) on interaction.
+   ----------------------------------------------------------------------
+*/
 .footer.event-horizon {
     width: 100%;
     text-align: center;
