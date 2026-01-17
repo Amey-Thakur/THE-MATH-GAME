@@ -550,3 +550,49 @@ h1 {
     /* Hide initially */
     text-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
 }
+
+/* =========================================
+   FEEDBACK MESSAGES (Correct / Wrong)
+   ========================================= */
+#correct,
+#wrong {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 1.5rem 3rem;
+    font-size: 2rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 16px;
+    display: none;
+    z-index: 100;
+    animation: feedbackPop 0.3s ease-out;
+}
+
+#correct {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.9), rgba(22, 163, 74, 0.9));
+    color: white;
+    box-shadow: 0 0 30px rgba(34, 197, 94, 0.5);
+    border: 2px solid rgba(34, 197, 94, 0.8);
+}
+
+#wrong {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.9), rgba(220, 38, 38, 0.9));
+    color: white;
+    box-shadow: 0 0 30px rgba(239, 68, 68, 0.5);
+    border: 2px solid rgba(239, 68, 68, 0.8);
+}
+
+@keyframes feedbackPop {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
