@@ -41,9 +41,9 @@
         }
 
         #loading-logo {
-            width: 120px;
-            height: 120px;
-            animation: logoPulse 1.5s ease-in-out infinite;
+            width: 140px;
+            filter: drop-shadow(0 0 20px rgba(168, 85, 247, 0.3));
+            opacity: 1;
         }
 
         #loading-bar-container {
@@ -51,7 +51,7 @@
             height: 4px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 2px;
-            margin-top: 30px;
+            margin-top: 25px;
             overflow: hidden;
         }
 
@@ -63,18 +63,14 @@
             transition: width 0.3s ease;
         }
 
-        @keyframes logoPulse {
-
-            0%,
-            100% {
-                transform: scale(1);
-                opacity: 0.8;
-            }
-
-            50% {
-                transform: scale(1.05);
-                opacity: 1;
-            }
+        #loading-message {
+            font-family: 'Play', sans-serif;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #bbbbbb;
+            margin: 20px 0 0 0;
+            font-weight: 700;
         }
     </style>
 </head>
@@ -86,6 +82,7 @@
         <div id="loading-bar-container">
             <div id="loading-bar"></div>
         </div>
+        <p id="loading-message">Initializing Game...</p>
     </div>
 
     <div class="bg-overlay"></div>
