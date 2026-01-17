@@ -248,6 +248,12 @@ h1 {
     cursor: pointer;
     border: none;
     box-shadow: 0 8px 20px var(--primary-glow);
+    text-align: center;
+    /* Force center alignment */
+    display: flex;
+    /* Flex fallback for vertical align */
+    justify-content: center;
+    align-items: center;
     transition: var(--transition);
 }
 
