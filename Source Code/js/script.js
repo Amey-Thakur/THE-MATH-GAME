@@ -70,7 +70,10 @@ document.querySelector("#startreset").onclick = () => {
         if (audioCtx.state === 'suspended') audioCtx.resume();
 
         // Reset UI for countdown
+        // Reset UI for countdown
         document.querySelector("#hud-metrics").style.display = "none";
+        document.querySelector("#question").style.display = "flex"; // Ensure visible
+        document.querySelector("#gameOver").style.display = "none";
         document.querySelector("#startreset").style.pointerEvents = "none"; // Disable button
         document.querySelector("#startreset").innerHTML = "Get Ready...";
 
@@ -131,6 +134,23 @@ function playBeep(type) {
         oscillator1.stop(now + 0.8);
         oscillator2.start(now);
         oscillator2.stop(now + 0.8);
+    } else if (type === 'gameover') {
+        // "Power Down" Descent
+        oscillator1.type = 'sawtooth';
+        oscillator1.frequency.setValueAtTime(300, now);
+        oscillator1.frequency.exponentialRampToValueAtTime(50, now + 1); // Drop to low bass
+
+        oscillator2.type = 'triangle';
+        oscillator2.frequency.setValueAtTime(150, now);
+        oscillator2.frequency.exponentialRampToValueAtTime(30, now + 1);
+
+        gainNode.gain.setValueAtTime(0.3, now);
+        gainNode.gain.linearRampToValueAtTime(0.001, now + 1);
+
+        oscillator1.start(now);
+        oscillator1.stop(now + 1);
+        oscillator2.start(now);
+        oscillator2.stop(now + 1);
     }
 }
 
@@ -299,9 +319,14 @@ function startCountdown() {
             //game over
             stopCountdown();
             //show game over box
+            // Manually Toggle HUD elements
+            document.querySelector("#question").style.display = "none";
+            document.querySelector("#hud-metrics").style.display = "none";
             showElement("gameOver");
+
             //show game over message and score
             document.querySelector("#gameOver").innerHTML = "<p>Game Over!</p><p>Your score is : " + score + ".</p>";
+
             //hide countdown
             hideElement("timeremaining");
             //hide correct box
@@ -312,6 +337,9 @@ function startCountdown() {
             playing = false;
             //change button to start 
             document.querySelector("#startreset").innerHTML = "Start Game";
+
+            // Play Game Over Sound
+            playBeep('gameover');
         }
     }, 1000);
 }
