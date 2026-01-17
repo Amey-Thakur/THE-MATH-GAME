@@ -377,8 +377,9 @@ h1 {
     font-size: 3rem;
     font-weight: 800;
     margin-bottom: 1rem;
-    color: var(--accent);
-    text-shadow: 0 0 20px rgba(245, 158, 11, 0.5);
+    color: #ef4444;
+    /* High-Visibility Red */
+    text-shadow: 0 0 20px rgba(239, 68, 68, 0.5);
     text-transform: uppercase;
     letter-spacing: 2px;
 }
@@ -386,6 +387,8 @@ h1 {
 #gameOver p:last-child {
     font-size: 1.8rem;
     color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 @media (max-width: 480px) {
