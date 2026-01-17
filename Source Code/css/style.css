@@ -89,13 +89,20 @@ h1 {
     -webkit-backdrop-filter: blur(12px);
     border: 2px solid var(--glass-border);
     border-radius: 30px;
-    padding: 3rem;
+    padding: 2.5rem;
+    /* Reduced padding from 3rem */
     position: relative;
     box-shadow: var(--shadow), 0 0 40px rgba(168, 85, 247, 0.1);
     animation: slideUp 0.8s ease-out;
-    max-height: 75vh;
-    /* Leave room for header */
+    max-height: 80vh;
+    /* Slightly increased to fit content */
+    display: flex;
+    /* Ensure flex layout for spacing */
+    flex-direction: column;
+    justify-content: space-between;
+    /* Distribute space */
     overflow-y: auto;
+    /* Keep as fallback */
     /* Custom Scrollbar for container */
     scrollbar-width: thin;
     scrollbar-color: var(--primary) transparent;
@@ -154,10 +161,12 @@ h1 {
 }
 
 #question {
-    font-size: 6rem;
+    font-size: 5rem;
+    /* Reduced from 6rem */
     font-weight: 700;
     text-align: center;
-    margin: 1.5rem 0;
+    margin: 1rem 0;
+    /* Reduced margin */
     color: white;
     text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
@@ -173,8 +182,10 @@ h1 {
 #choices {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-    margin-bottom: 3rem;
+    gap: 1rem;
+    /* Reduced gap */
+    margin-bottom: 2rem;
+    /* Reduced margin */
 }
 
 .box {
@@ -205,7 +216,8 @@ h1 {
 
 #startreset {
     width: 100%;
-    padding: 1.5rem;
+    padding: 1rem;
+    /* Reduced padding */
     background: linear-gradient(135deg, var(--primary), #7c3aed);
     color: white;
     font-size: 1.5rem;
