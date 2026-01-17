@@ -474,107 +474,129 @@ h1 {
     }
 }
 
-/* Authorship Footer */
-/* The Product Engine Footer */
-.footer {
+/* The Commutative Singularity Footer */
+.footer.event-horizon {
     width: 100%;
     text-align: center;
     margin-top: auto;
-    padding: 2.5rem 0 1rem;
+    padding: 3rem 0 1.5rem;
     position: relative;
+    perspective: 1000px;
     z-index: 10;
-}
-
-/* The Energy Link Beam */
-.footer::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 0%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #a855f7, #38bdf8, #a855f7, transparent);
-    box-shadow: 0 0 15px #a855f7;
-    transition: width 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    pointer-events: none;
-    z-index: 5;
-    opacity: 0;
-}
-
-.footer.linking::after {
-    width: 80%;
-    opacity: 0.6;
+    overflow: visible;
 }
 
 .footer h3 {
     font-family: 'Play', sans-serif;
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: #38bdf8;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
-    gap: 15px;
+    flex-wrap: nowrap;
+    gap: 20px;
+    transform-style: preserve-3d;
 }
 
 .creator-link {
     color: #38bdf8;
     text-decoration: none;
     font-weight: 700;
-    padding: 10px 20px;
-    background: rgba(255, 255, 255, 0.05);
+    padding: 12px 24px;
+    background: rgba(255, 255, 255, 0.04);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
     display: inline-block;
 }
 
 .creator-link:hover {
-    background: rgba(168, 85, 247, 0.3);
+    background: rgba(168, 85, 247, 0.2);
     border-color: #a855f7;
-    color: white;
-    transform: translateY(-8px) scale(1.1);
-    box-shadow: 0 15px 30px rgba(168, 85, 247, 0.5);
-    letter-spacing: 2px;
+    box-shadow: 0 0 40px rgba(168, 85, 247, 0.4);
+    z-index: 50;
 }
 
-/* Sympathetic Reactive State */
-.creator-link.sympathetic {
-    opacity: 0.7;
-    transform: scale(0.95);
-    border-color: rgba(56, 189, 248, 0.3);
-    filter: blur(0.5px);
-}
-
-.multiplier-core {
-    font-size: 2.2rem;
+.multiplier-core.singularity {
+    font-size: 2.5rem;
     font-weight: 900;
-    color: #a855f7;
-    text-shadow: 0 0 20px #a855f7, 0 0 5px white;
+    color: #ff00ff;
+    text-shadow: 0 0 20px #ff00ff, 0 0 5px white;
     display: inline-block;
-    animation: gearRotate 10s linear infinite;
-    cursor: default;
+    cursor: pointer;
     user-select: none;
-    margin: 0 8px;
+    z-index: 100;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-@keyframes gearRotate {
-    from {
-        transform: rotate(0deg);
+/* 3D Slingshot States */
+.node-a.tunneling {
+    animation: slingshot-left 1.2s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+}
+
+.node-b.tunneling {
+    animation: slingshot-right 1.2s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+}
+
+@keyframes slingshot-left {
+    0% {
+        transform: translateX(0) translateZ(0);
+        opacity: 1;
     }
 
-    to {
-        transform: rotate(360deg);
+    40% {
+        transform: translateX(100px) translateZ(-200px) scale(0.2);
+        opacity: 0.5;
+        filter: blur(5px);
     }
+
+    60% {
+        transform: translateX(-100px) translateZ(-200px) scale(0.2);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: translateX(0) translateZ(0) scale(1);
+        opacity: 1;
+        filter: blur(0);
+    }
+}
+
+@keyframes slingshot-right {
+    0% {
+        transform: translateX(0) translateZ(0);
+        opacity: 1;
+    }
+
+    40% {
+        transform: translateX(-100px) translateZ(-200px) scale(0.2);
+        opacity: 0.5;
+        filter: blur(5px);
+    }
+
+    60% {
+        transform: translateX(100px) translateZ(-200px) scale(0.2);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: translateX(0) translateZ(0) scale(1);
+        opacity: 1;
+        filter: blur(0);
+    }
+}
+
+.singularity.active {
+    transform: scale(1.5) rotate(720deg);
+    color: white;
+    text-shadow: 0 0 50px #38bdf8, 0 0 20px #ff00ff;
 }
 
 .footer-separator,
 .footer-year {
-    opacity: 0.7;
-    font-size: 1rem;
-    color: #38bdf8;
+    opacity: 0.6;
+    margin-left: 10px;
 }
 
 /* Timer Warning Animation */

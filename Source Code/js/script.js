@@ -330,82 +330,80 @@ function generateQA() {
 }
 
 // =========================================
-//   PRODUCT ENGINE (FOOTER) ⚙️
+//   COMMUTATIVE SINGULARITY (FOOTER) 🛰️
 // =========================================
-const mathSymbols = "0123456789×÷+-∑√π";
+const mathSymbols = "0123456789×÷+-∑√π∮∇";
 
-function initProductEngine() {
-    const creatorLinks = document.querySelectorAll(".creator-link");
-    const multiplier = document.querySelector(".multiplier-core");
+function initCommutativeSingularity() {
+    const nodeA = document.querySelector(".node-a");
+    const nodeB = document.querySelector(".node-b");
+    const singularity = document.querySelector(".singularity");
     const footer = document.querySelector(".footer");
 
-    creatorLinks.forEach((link, index) => {
-        const originalName = link.getAttribute("data-name");
-        const otherLink = creatorLinks[1 - index]; // Get the other creator
-        let interval = null;
-        let sympatheticInterval = null;
+    if (!nodeA || !nodeB || !singularity) return;
 
-        link.onmouseover = () => {
-            // activate linking beam
-            footer.classList.add("linking");
+    let isSwapped = false;
 
-            // Speed up the engine
-            multiplier.style.animationDuration = "1.5s";
-            multiplier.style.color = "white";
-            multiplier.style.transform = "scale(1.3)";
+    const triggerSingularity = () => {
+        if (nodeA.classList.contains("tunneling")) return;
 
-            // Primary Scramble
-            let iteration = 0;
-            clearInterval(interval);
-            interval = setInterval(() => {
-                link.innerText = originalName
-                    .split("")
-                    .map((char, i) => {
-                        if (i < iteration) return originalName[i];
-                        return mathSymbols[Math.floor(Math.random() * mathSymbols.length)];
-                    })
-                    .join("");
+        // Activate Singularity Visuals
+        singularity.classList.add("active");
+        nodeA.classList.add("tunneling");
+        nodeB.classList.add("tunneling");
 
-                if (iteration >= originalName.length) clearInterval(interval);
-                iteration += 1 / 3;
-            }, 30);
+        // Scramble during warp
+        let warpInterval = setInterval(() => {
+            nodeA.innerText = Array(nodeA.getAttribute("data-name").length)
+                .fill(0).map(() => mathSymbols[Math.floor(Math.random() * mathSymbols.length)]).join("");
+            nodeB.innerText = Array(nodeB.getAttribute("data-name").length)
+                .fill(0).map(() => mathSymbols[Math.floor(Math.random() * mathSymbols.length)]).join("");
+        }, 50);
 
-            // Sympathetic Reaction on the OTHER link
-            otherLink.classList.add("sympathetic");
-            const otherOriginal = otherLink.getAttribute("data-name");
-            clearInterval(sympatheticInterval);
-            sympatheticInterval = setInterval(() => {
-                otherLink.innerText = otherOriginal
-                    .split("")
-                    .map(() => mathSymbols[Math.floor(Math.random() * mathSymbols.length)])
-                    .join("");
-            }, 100);
-        };
+        // Resolve half-way through or at end
+        setTimeout(() => {
+            clearInterval(warpInterval);
+            const nameA = nodeA.getAttribute("data-name");
+            const nameB = nodeB.getAttribute("data-name");
 
-        link.onmouseleave = () => {
-            footer.classList.remove("linking");
-            multiplier.style.animationDuration = "10s";
-            multiplier.style.color = "#a855f7";
-            multiplier.style.transform = "scale(1)";
+            // Physically swap text content to simulate commutative property
+            if (!isSwapped) {
+                nodeA.innerText = nameB;
+                nodeB.innerText = nameA;
+                nodeA.href = "https://github.com/msatmod";
+                nodeB.href = "https://github.com/Amey-Thakur";
+            } else {
+                nodeA.innerText = nameA;
+                nodeB.innerText = nameB;
+                nodeA.href = "https://github.com/Amey-Thakur";
+                nodeB.href = "https://github.com/msatmod";
+            }
 
-            clearInterval(interval);
-            clearInterval(sympatheticInterval);
+            isSwapped = !isSwapped;
 
-            link.innerText = originalName;
-            otherLink.classList.remove("sympathetic");
-            otherLink.innerText = otherLink.getAttribute("data-name");
-        };
+            // Clean up animation classes
+            setTimeout(() => {
+                singularity.classList.remove("active");
+                nodeA.classList.remove("tunneling");
+                nodeB.classList.remove("tunneling");
+            }, 600);
+        }, 1200);
+    };
+
+    // Trigger on any footer link or multiplier hover
+    [nodeA, nodeB, singularity].forEach(el => {
+        el.addEventListener("mouseenter", triggerSingularity);
     });
 
-    // Periodic "Power Surge"
+    // Subtitle periodic flicker
     setInterval(() => {
-        if (!footer.classList.contains("linking") && Math.random() > 0.5) {
-            multiplier.style.textShadow = "0 0 40px white, 0 0 20px #a855f7";
+        if (!nodeA.classList.contains("tunneling") && Math.random() > 0.8) {
+            singularity.style.textShadow = "0 0 40px #ff00ff, 0 0 20px white";
             setTimeout(() => {
-                multiplier.style.textShadow = "0 0 20px #a855f7, 0 0 5px white";
-            }, 500);
+                singularity.style.textShadow = "0 0 20px #ff00ff, 0 0 5px white";
+            }, 300);
         }
-    }, 5000);
+    }, 3000);
 }
 
-window.addEventListener('DOMContentLoaded', initProductEngine);
+window.addEventListener('DOMContentLoaded', initCommutativeSingularity);
