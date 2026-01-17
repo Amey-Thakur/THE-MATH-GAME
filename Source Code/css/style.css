@@ -125,18 +125,15 @@ h1 {
 #score {
     position: absolute;
     top: 20px;
-    /* Brought inside container */
-    right: 25px;
-    /* Slightly adjusted right margin */
-    background: linear-gradient(135deg, var(--primary), #7c3aed);
-    color: white;
-    padding: 0.8rem 1.8rem;
-    border-radius: 50px;
+    right: 30px;
+    color: rgba(255, 255, 255, 0.9);
     font-weight: 700;
-    box-shadow: 0 4px 15px var(--primary-glow);
-    border: 1px solid rgba(255, 255, 255, 0.2);
     z-index: 20;
-    /* Float above HUD */
+    font-size: 1.2rem;
+    display: none;
+    /* Hide initially */
+    text-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+    /* Subtle glow */
 }
 
 #missed #wrong-score {
@@ -330,18 +327,13 @@ h1 {
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
-    background: rgba(255, 255, 255, 0.1);
-    color: white;
-    padding: 0.8rem 1.8rem;
-    border-radius: 50px;
+    color: rgba(255, 255, 255, 0.9);
     font-weight: 700;
-    font-size: 1rem;
+    font-size: 1.2rem;
     display: none;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    white-space: nowrap;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     z-index: 20;
-    /* Float above HUD */
+    white-space: nowrap;
+    text-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
 }
 
 #timeremainingvalue {
@@ -565,15 +557,12 @@ h1 {
 #missed {
     position: absolute;
     top: 20px;
-    left: 20px;
-    background: linear-gradient(135deg, var(--primary), #7c3aed);
-    color: white;
-    padding: 0.8rem 1.8rem;
-    /* Match Score metrics */
-    border-radius: 50px;
+    left: 30px;
+    color: rgba(255, 255, 255, 0.9);
     font-weight: 700;
-    box-shadow: 0 4px 15px var(--primary-glow);
-    border: 1px solid rgba(255, 255, 255, 0.2);
     z-index: 20;
-    /* Float above HUD */
+    font-size: 1.2rem;
+    display: none;
+    /* Hide initially */
+    text-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
 }
