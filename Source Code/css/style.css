@@ -485,6 +485,28 @@ h1 {
     z-index: 10;
 }
 
+/* The Energy Link Beam */
+.footer::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #a855f7, #38bdf8, #a855f7, transparent);
+    box-shadow: 0 0 15px #a855f7;
+    transition: width 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    pointer-events: none;
+    z-index: 5;
+    opacity: 0;
+}
+
+.footer.linking::after {
+    width: 80%;
+    opacity: 0.6;
+}
+
 .footer h3 {
     font-family: 'Play', sans-serif;
     font-size: 1rem;
@@ -516,6 +538,14 @@ h1 {
     transform: translateY(-8px) scale(1.1);
     box-shadow: 0 15px 30px rgba(168, 85, 247, 0.5);
     letter-spacing: 2px;
+}
+
+/* Sympathetic Reactive State */
+.creator-link.sympathetic {
+    opacity: 0.7;
+    transform: scale(0.95);
+    border-color: rgba(56, 189, 248, 0.3);
+    filter: blur(0.5px);
 }
 
 .multiplier-core {
