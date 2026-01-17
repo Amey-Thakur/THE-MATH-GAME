@@ -107,11 +107,14 @@ THE-MATH-GAME/
 │   └── Mega.png                     # Author Profile Image (Mega Satish)
 │
 ├── screenshots/                     # Application Screenshots
-│   ├── main-menu.png                # Start Screen & Question Selection
-│   ├── math-fact.png                # Curated Math Facts (Lobby)
-│   ├── gameplay.png                 # Primary Gameplay Interface
-│   ├── game-over.png                # Score Summary & Challenge
-│   └── share-card.png               # Premium Score Analytics Asset
+│   ├── 01-main-menu.png             # Game Start Screen
+│   ├── 02-lobby-fact-a.png          # Math Fact Lobby (Variation A)
+│   ├── 02-lobby-fact-b.png          # Math Fact Lobby (Variation B)
+│   ├── 03-gameplay-active.png       # Active Gameplay State
+│   ├── 03-gameplay-var-[1-5].png    # Gameplay Variations
+│   ├── 04-game-over.png             # Score Summary & Challenge
+│   ├── 05-share-card-[a-b].png      # Premium Analytics Cards
+│   └── 06-author-signature.jpg      # Signed Asset
 │
 ├── Source Code/                     # Primary Application Layer
 │   ├── css/                         # Game Visuals
@@ -131,55 +134,61 @@ THE-MATH-GAME/
 
 <!-- RESULTS -->
 <a name="results"></a>
-## Results
+## Visual Walkthrough
 
 <div align="center">
-  <b>Main Menu & Selection</b>
+  <b>1. Main Menu</b>
+  <br>
+  <i>The entry point to the challenge.</i>
   <br><br>
-  <img src="screenshots/main-menu.png" alt="Main Menu" width="90%">
+  <img src="screenshots/01-main-menu.png" alt="Main Menu" width="90%">
   <br><br>
 
-  <b>Curated Math Facts (Lobby Mode)</b>
+  <b>2. The Lobby: Curated Math Facts</b>
+  <br>
+  <i>Interactive trivia before the game begins.</i>
   <br><br>
-  <img src="screenshots/math-fact.png" alt="Math Fact" width="90%">
+  <img src="screenshots/02-lobby-fact-a.png" alt="Lobby 1" width="45%">
+  <img src="screenshots/02-lobby-fact-b.png" alt="Lobby 2" width="45%">
   <br><br>
 
-  <b>Active Gameplay Interface</b>
+  <b>3. Active Gameplay</b>
+  <br>
+  <i>Fast-paced multiplication drills with immediate feedback.</i>
   <br><br>
-  <img src="screenshots/gameplay.png" alt="Gameplay" width="90%">
+  <img src="screenshots/03-gameplay-active.png" alt="Gameplay Active" width="90%">
+  <br><br>
+  <u>Gameplay Variations</u>
+  <br>
+  <img src="screenshots/03-gameplay-var-1.png" alt="Gameplay Var 1" width="45%">
+  <img src="screenshots/03-gameplay-var-2.png" alt="Gameplay Var 2" width="45%">
+  <br>
+  <img src="screenshots/03-gameplay-var-3.png" alt="Gameplay Var 3" width="45%">
+  <img src="screenshots/03-gameplay-var-4.png" alt="Gameplay Var 4" width="45%">
+  <br>
+  <img src="screenshots/03-gameplay-var-5.png" alt="Gameplay Var 5" width="45%">
   <br><br>
 
-  <b>Game Over Summary</b>
+  <b>4. Game Over & Challenge</b>
   <br>
-  <i>Challenge: 31 is the author score to beat!</i>
+  <i>"Challenge: 31 is the author score to beat!"</i>
   <br><br>
-  <img src="screenshots/game-over.png" alt="Game Over" width="90%">
+  <img src="screenshots/04-game-over.png" alt="Game Over" width="90%">
   <br><br>
 
-  <b>Premium Analytics Share Card</b>
+  <b>5. Social Sharing & Stats</b>
+  <br>
+  <i>High-fidelity shareable scorecards.</i>
   <br><br>
-  <img src="screenshots/share-card.png" alt="Share Card" width="90%">
-</div>
+  <img src="screenshots/05-share-card-a.png" alt="Share Card A" width="45%">
+  <img src="screenshots/05-share-card-b.png" alt="Share Card B" width="45%">
+  <br><br>
 
-### Detailed Visual Walkthrough
-<div align="center">
-  <img src="screenshots/reference-features.png" alt="Features" width="45%">
-  <img src="screenshots/gallery-01.jpg" alt="Gallery 1" width="45%">
+  <b>6. Signed Attribution</b>
   <br>
-  <img src="screenshots/gallery-02.jpg" alt="Gallery 2" width="45%">
-  <img src="screenshots/gallery-03.png" alt="Gallery 3" width="45%">
-  <br>
-  <img src="screenshots/gallery-04.png" alt="Gallery 4" width="45%">
-  <img src="screenshots/gallery-05.png" alt="Gallery 5" width="45%">
-  <br>
-  <img src="screenshots/gallery-06.png" alt="Gallery 6" width="45%">
-  <img src="screenshots/gallery-07.png" alt="Gallery 7" width="45%">
-  <br>
-  <img src="screenshots/gallery-08.png" alt="Gallery 8" width="45%">
-  <img src="screenshots/gallery-09.png" alt="Gallery 9" width="45%">
-  <br>
-  <img src="screenshots/gallery-10.png" alt="Gallery 10" width="45%">
-  <img src="screenshots/gallery-11.png" alt="Gallery 11" width="45%">
+  <i>Digitally signed by the creators.</i>
+  <br><br>
+  <img src="screenshots/06-author-signature.jpg" alt="Signature" width="90%">
 </div>
 
 ---
