@@ -88,28 +88,20 @@ h1 {
 #container {
     width: 95%;
     max-width: 700px;
-    /* Much wider container */
     background: var(--glass);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 2px solid var(--glass-border);
     border-radius: 40px;
-    padding: 1rem 2rem 1rem 2rem;
-    /* Reduced bottom padding */
+    padding: 1.5rem;
     position: relative;
     box-shadow: var(--shadow), 0 0 40px rgba(168, 85, 247, 0.1);
     animation: slideUp 0.8s ease-out;
-    /* Removed max-height/overflow to prevent scrollbar & clipping */
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    /* Distribute space evenly */
-    height: 85vh;
-    /* Fixed height relative to screen */
-    min-height: 500px;
-    /* Prevent it from being too small on tiny screens */
-    overflow: hidden;
-    /* Strictly prevent scroll */
+    height: auto;
+    min-height: 85vh;
+    margin: 1rem 0;
 }
 
 @keyframes slideUp {
@@ -481,21 +473,106 @@ h1 {
     }
 }
 
-@media (max-width: 480px) {
+/* Responsive Scaling for Mobile & Tablets */
+@media (max-width: 768px) {
     h1 {
-        font-size: 2.5rem;
-    }
-
-    #question {
-        font-size: 4rem;
-    }
-
-    .box {
-        font-size: 2.5rem;
+        font-size: 2.8rem;
     }
 
     #container {
-        padding: 2rem;
+        padding: 1rem;
+        min-height: auto;
+    }
+
+    #hud-screen {
+        height: 180px;
+        min-height: 180px;
+        padding: 1rem;
+    }
+
+    #question {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2rem;
+        letter-spacing: 2px;
+    }
+
+    #hud-screen {
+        height: 150px;
+        min-height: 150px;
+        margin-bottom: 1.5rem;
+    }
+
+    #question {
+        font-size: 1.8rem;
+    }
+
+    #instruction {
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    #choices {
+        gap: 0.6rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .box {
+        min-height: 70px;
+        font-size: 2rem;
+    }
+
+    #bottom-deck {
+        gap: 10px;
+    }
+
+    #startreset,
+    #share-score-bottom {
+        padding: 1rem;
+        font-size: 1.1rem;
+        border-radius: 15px;
+    }
+
+    /* Footer Responsive Wrap */
+    .footer h3 {
+        flex-wrap: wrap;
+        white-space: normal;
+        font-size: 0.9rem;
+        gap: 10px;
+        line-height: 1.6;
+    }
+
+    .creator-link {
+        padding: 8px 16px;
+        font-size: 0.85rem;
+    }
+
+    .footer-separator {
+        display: none;
+    }
+}
+
+/* Tiny Device Optimization (e.g. iPhone SE) */
+@media (max-width: 360px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    #question {
+        font-size: 1.5rem;
+    }
+
+    .box {
+        min-height: 60px;
+        font-size: 1.8rem;
+    }
+
+    #container {
+        padding: 0.8rem;
     }
 }
 
