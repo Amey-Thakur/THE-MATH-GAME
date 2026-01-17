@@ -326,7 +326,8 @@ h1 {
 
 .footer h3 {
     font-family: 'Play', sans-serif;
-    font-size: 0.9rem;
+    font-size: 1.1rem;
+    /* Increased size */
     color: rgba(255, 255, 255, 0.6);
     margin: 0;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
@@ -334,19 +335,22 @@ h1 {
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 5px;
+    gap: 8px;
+    /* Increased gap */
 }
 
 .footer a {
     color: var(--primary);
     text-decoration: none;
     font-weight: 700;
-    padding: 4px 12px;
+    padding: 6px 16px;
+    /* Increased padding */
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
+    border-radius: 12px;
     transition: var(--transition);
-    font-size: 0.9rem;
+    font-size: 1.1rem;
+    /* Increased size */
 }
 
 .footer a:hover {
@@ -357,7 +361,10 @@ h1 {
     border-color: var(--primary);
 }
 
-.math-operator {
+.math-operator,
+.footer-separator {
     color: var(--accent);
     font-weight: bold;
+    font-size: 1.2rem;
+    /* Larger separator/operator */
 }
