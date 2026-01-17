@@ -161,6 +161,27 @@ THE-MATH-GAME/
   <img src="screenshots/share-card.png" alt="Share Card" width="90%">
 </div>
 
+### Detailed Visual Walkthrough
+<div align="center">
+  <img src="screenshots/reference-features.png" alt="Features" width="45%">
+  <img src="screenshots/gallery-01.jpg" alt="Gallery 1" width="45%">
+  <br>
+  <img src="screenshots/gallery-02.jpg" alt="Gallery 2" width="45%">
+  <img src="screenshots/gallery-03.png" alt="Gallery 3" width="45%">
+  <br>
+  <img src="screenshots/gallery-04.png" alt="Gallery 4" width="45%">
+  <img src="screenshots/gallery-05.png" alt="Gallery 5" width="45%">
+  <br>
+  <img src="screenshots/gallery-06.png" alt="Gallery 6" width="45%">
+  <img src="screenshots/gallery-07.png" alt="Gallery 7" width="45%">
+  <br>
+  <img src="screenshots/gallery-08.png" alt="Gallery 8" width="45%">
+  <img src="screenshots/gallery-09.png" alt="Gallery 9" width="45%">
+  <br>
+  <img src="screenshots/gallery-10.png" alt="Gallery 10" width="45%">
+  <img src="screenshots/gallery-11.png" alt="Gallery 11" width="45%">
+</div>
+
 ---
 
 <!-- QUICK START -->
