@@ -179,22 +179,33 @@ h1 {
     /* Reduced initial size for instruction text */
     font-weight: 700;
     text-align: center;
-    margin: 6rem 0 0 0;
-    /* Top margin clears header pills */
+    margin: 0;
+    padding-top: 5rem;
+    /* Push content down so pills have space */
     width: 100%;
     box-sizing: border-box;
+    align-items: flex-start;
+    /* Start content from top (with padding) */
+    padding-bottom: 2rem;
+    /* Balance spacing */
     color: white;
     text-shadow: 0 0 15px rgba(255, 255, 255, 0.6), 0 0 30px var(--primary);
     flex-grow: 1;
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 20px 20px 0 0;
+    /* Keep rounded top, maybe flat bottom if connecting? or just rounded */
+    border-bottom: none;
+    /* If connecting to grid, but lets keep it separate for now as requested "screen" */
 
     /* HUD Container Styling */
     background: rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(168, 85, 247, 0.3);
-    border-radius: 20px;
-    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
+    border-radius: 30px;
+    /* Fully rounded screen */
+    box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.4);
+    /* Deep screen look */
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     margin-bottom: 2rem;
