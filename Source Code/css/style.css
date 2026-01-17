@@ -92,8 +92,8 @@ h1 {
     -webkit-backdrop-filter: blur(12px);
     border: 2px solid var(--glass-border);
     border-radius: 40px;
-    padding: 3.5rem;
-    /* Enhanced padding */
+    padding: 3.5rem 3.5rem 1rem 3.5rem;
+    /* Reduced bottom padding */
     position: relative;
     box-shadow: var(--shadow), 0 0 40px rgba(168, 85, 247, 0.1);
     animation: slideUp 0.8s ease-out;
@@ -319,7 +319,10 @@ h1 {
     text-align: center;
     margin-top: auto;
     /* Push to bottom of flex container */
-    padding-top: 1rem;
+    padding-top: 2rem;
+    /* Space from button */
+    padding-bottom: 0.5rem;
+    /* Minimal bottom padding */
     position: relative;
     z-index: 10;
 }
