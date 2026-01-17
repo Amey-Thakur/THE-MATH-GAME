@@ -123,12 +123,8 @@ h1 {
 }
 
 #score {
-    position: absolute;
-    top: 20px;
-    right: 30px;
     color: rgba(255, 255, 255, 0.9);
     font-weight: 700;
-    z-index: 20;
     font-size: 1.2rem;
     display: none;
     /* Hide initially */
@@ -171,44 +167,52 @@ h1 {
 }
 
 /* Premium HUD Question Display */
+/* Premium Screen Wrapper */
+#hud-screen {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    border-radius: 30px;
+    box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    box-sizing: border-box;
+    flex-grow: 1;
+    /* Allow it to take up space */
+}
+
+/* Header Row for Metrics */
+#hud-metrics {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+    /* Space before question */
+    min-height: 30px;
+    /* Keep space even if hidden */
+}
+
+/* The Question Text Itself */
 #question {
     font-size: 3rem;
-    /* Reduced initial size for instruction text */
     font-weight: 700;
     text-align: center;
-    margin: 0;
-    padding-top: 5rem;
-    /* Push content down so pills have space */
-    width: 100%;
-    box-sizing: border-box;
-    align-items: flex-start;
-    /* Start content from top (with padding) */
-    padding-bottom: 2rem;
-    /* Balance spacing */
     color: white;
     text-shadow: 0 0 15px rgba(255, 255, 255, 0.6), 0 0 30px var(--primary);
     flex-grow: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 20px 20px 0 0;
-    /* Keep rounded top, maybe flat bottom if connecting? or just rounded */
-    border-bottom: none;
-    /* If connecting to grid, but lets keep it separate for now as requested "screen" */
-
-    /* HUD Container Styling */
-    background: rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(168, 85, 247, 0.3);
-    border-radius: 30px;
-    /* Fully rounded screen */
-    box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.4);
-    /* Deep screen look */
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    margin-bottom: 2rem;
-    /* Space from instruction */
-    position: relative;
-    overflow: hidden;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 /* Optional scanline effect overlay */
@@ -323,17 +327,14 @@ h1 {
 }
 
 #timeremaining {
-    position: absolute;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
     color: rgba(255, 255, 255, 0.9);
     font-weight: 700;
     font-size: 1.2rem;
     display: none;
-    z-index: 20;
     white-space: nowrap;
     text-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+    margin: 0 auto;
+    /* Center the middle item */
 }
 
 #timeremainingvalue {
@@ -470,97 +471,10 @@ h1 {
     }
 }
 
-/* Accuracy Counters */
-#accuracy-counts {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    display: flex;
-    flex-direction: column;
-    /* Stack them vertically for neatness or row if preferred */
-    gap: 8px;
-}
-
-.acc-box {
-    background: rgba(255, 255, 255, 0.1);
-    color: white;
-    padding: 6px 16px;
-    border-radius: 20px;
-    font-weight: 700;
-    font-size: 0.9rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    min-width: 100px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-}
-
-.acc-box.correct {
-    border-left: 4px solid #4ade80;
-    /* Green indicator */
-}
-
-.acc-box.wrong {
-    border-left: 4px solid #f87171;
-    /* Red indicator */
-}
-
-.acc-box span:first-child {
-    font-size: 0.8rem;
-    opacity: 0.8;
-    margin-right: 8px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-/* Accuracy Pill */
-#accuracy {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    /* Symmetrical to Score */
-    background: linear-gradient(135deg, var(--primary), #7c3aed);
-    /* Match Score score */
-    color: white;
-    padding: 0.8rem 1.5rem;
-    border-radius: 50px;
-    font-weight: 700;
-    box-shadow: 0 4px 15px var(--primary-glow);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 1rem;
-    white-space: nowrap;
-}
-
-.acc-correct {
-    color: #4ade80;
-    /* Green */
-}
-
-.acc-wrong {
-    color: #f87171;
-    /* Red */
-}
-
-.acc-divider {
-    color: rgba(255, 255, 255, 0.4);
-    font-size: 1.2rem;
-    font-weight: 300;
-}
-
 /* Missed Counter (Symmetrical to Score) */
 #missed {
-    position: absolute;
-    top: 20px;
-    left: 30px;
     color: rgba(255, 255, 255, 0.9);
     font-weight: 700;
-    z-index: 20;
     font-size: 1.2rem;
     display: none;
     /* Hide initially */
