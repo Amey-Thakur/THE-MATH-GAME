@@ -164,7 +164,12 @@ function hideElement(Id) {
 }
 
 function showElement(Id) {
-    document.querySelector("#" + Id).style.display = "block";
+    const el = document.querySelector("#" + Id);
+    if (Id === "gameOver") {
+        el.style.display = "flex";
+    } else {
+        el.style.display = "block";
+    }
 }
 
 /**

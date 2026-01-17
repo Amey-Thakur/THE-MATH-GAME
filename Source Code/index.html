@@ -1,19 +1,9 @@
-<!--
-  Project: The Math Game
-  File: index.html
-  Date: February 17, 2022
-  Description: Main HTML structure for the interactive multiplication game.
-
-  Created by: Amey Thakur (https://github.com/Amey-Thakur) & Mega Satish (https://github.com/msatmod)
-  Repository: https://github.com/Amey-Thakur/THE-MATH-GAME
-  License: MIT
--->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <title>AMEY & MEGA</title>
+    <title>THE MATH GAME | Amey & Mega</title>
     <meta name="author" content="Amey Thakur & Mega Satish">
     <link rel="icon" type="image/png" href="favicon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
@@ -25,53 +15,43 @@
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <link rel="canonical" href="https://amey-thakur.github.io/THE-MATH-GAME/">
 
+    <link href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <h1>The Math Game</h1>
-    <!-- 
-        Main Game Container:
-        Houses all game UI elements including score, question display,
-        answer choices, start/reset button, and timer.
-    -->
+    <div class="bg-overlay"></div>
+
+    <h1>THE MATH GAME</h1>
+
     <div id="container">
         <div id="score">
-            Score : <span id="scorevalue">0</span>
+            Score: <span id="scorevalue">0</span>
         </div>
-        <div id="correct">
-            Correct
-        </div>
-        <div id="wrong">
-            Try Again
-        </div>
-        <div id="question">
 
-        </div>
+        <div id="correct">Correct! 🎯</div>
+        <div id="wrong">Try Again! ❌</div>
+
+        <div id="question"></div>
+
         <div id="instruction">
-            Click on the Correct Answer
+            Choose the correct answer to score!
         </div>
-        <!-- 
-            Answer Choices:
-            Four answer boxes displayed using Flexbox layout.
-            Only one contains the correct answer; the rest are random distractors.
-        -->
+
         <div id="choices">
             <div id="box1" class="box"></div>
             <div id="box2" class="box"></div>
             <div id="box3" class="box"></div>
             <div id="box4" class="box"></div>
         </div>
-        <div id="startreset">
-            Start Game
-        </div>
+
+        <div id="startreset">Start Game</div>
+
         <div id="timeremaining">
-            Time remaining :
-            <span id="timeremainingvalue">60</span>
-            sec
+            Time remaining: <span id="timeremainingvalue">60</span> sec
         </div>
-        <div id="gameOver">
-        </div>
+
+        <div id="gameOver"></div>
     </div>
 
     <!-- script -->
