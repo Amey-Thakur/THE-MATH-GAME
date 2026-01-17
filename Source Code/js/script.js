@@ -375,6 +375,7 @@ function startCountdown() {
             // Score color: blue if new best, white otherwise
             const scoreColor = isNewBest ? '#38bdf8' : 'white';
             gameOverEl.innerHTML = `
+                <p style="font-size: 3rem; color: #ef4444; margin-bottom: 1rem; text-shadow: 0 0 20px rgba(239, 68, 68, 0.5);">GAME OVER</p>
                 <p style="font-size: 2.5rem; color: ${scoreColor}; margin-bottom: 0.5rem;">YOUR SCORE: ${score}</p>
                 <p style="font-size: 1.5rem; color: #38bdf8;">BEST SCORE: ${bestScore}</p>
             `;
