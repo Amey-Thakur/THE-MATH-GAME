@@ -797,16 +797,16 @@ h1 {
 #share-card {
     width: 500px;
     padding: 50px;
-    background: white;
-    color: #333;
+    background: linear-gradient(135deg, #0f0a1e 0%, #1a0a2e 50%, #0d1528 100%);
+    color: white;
     border-radius: 40px;
     font-family: 'Play', sans-serif;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+    border: 3px solid var(--primary);
+    box-shadow: 0 0 50px rgba(168, 85, 247, 0.4);
     position: relative;
     overflow: hidden;
 }
@@ -827,7 +827,8 @@ h1 {
     position: absolute;
     font-size: 120px;
     font-weight: 900;
-    color: rgba(124, 58, 237, 0.04);
+    color: rgba(168, 85, 247, 0.08);
+    /* Glow color */
     pointer-events: none;
     user-select: none;
 }
@@ -850,7 +851,7 @@ h1 {
     left: -40px;
     transform: rotate(10deg);
     font-size: 160px;
-    color: rgba(124, 58, 237, 0.03);
+    color: rgba(168, 85, 247, 0.06);
 }
 
 .watermark-symbol.minus {
@@ -862,7 +863,7 @@ h1 {
 .watermark-symbol.equals {
     top: 45%;
     left: 40%;
-    opacity: 0.02;
+    opacity: 0.05;
     font-size: 180px;
     transform: translate(-50%, -50%) rotate(45deg);
 }
@@ -880,32 +881,33 @@ h1 {
 .share-header {
     font-size: 36px;
     font-weight: 800;
-    color: #7c3aed;
-    /* Use game primary */
+    color: white;
     text-transform: uppercase;
     letter-spacing: 3px;
     margin-bottom: 5px;
+    text-shadow: 0 0 10px var(--primary);
 }
 
 .share-slogan {
     font-size: 14px;
-    color: #666;
+    color: rgba(255, 255, 255, 0.7);
     font-weight: 700;
     letter-spacing: 1px;
 }
 
 .share-score-container {
-    background: rgba(124, 58, 237, 0.05);
-    border: 2px solid rgba(124, 58, 237, 0.1);
+    background: rgba(168, 85, 247, 0.1);
+    border: 2px solid rgba(168, 85, 247, 0.3);
     padding: 40px 20px;
     border-radius: 30px;
     width: 100%;
     margin-bottom: 30px;
+    box-shadow: inset 0 0 20px rgba(168, 85, 247, 0.2);
 }
 
 .share-score-label {
     font-size: 12px;
-    color: #888;
+    color: var(--secondary);
     text-transform: uppercase;
     letter-spacing: 3px;
     font-weight: 800;
@@ -915,14 +917,15 @@ h1 {
 .share-value {
     font-size: 85px;
     font-weight: 900;
-    color: #222;
+    color: #38bdf8;
     line-height: 1;
+    text-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
 }
 
 .share-stat-value {
     font-size: 32px;
     font-weight: 800;
-    color: #444;
+    color: white;
 }
 
 .share-body {
@@ -934,7 +937,7 @@ h1 {
 
 .share-label {
     font-size: 11px;
-    color: #999;
+    color: rgba(255, 255, 255, 0.5);
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-bottom: 8px;
@@ -944,12 +947,12 @@ h1 {
 .share-authorship {
     width: 100%;
     padding-top: 30px;
-    border-top: 1px solid #eee;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .share-authorship-label {
     font-size: 11px;
-    color: #888;
+    color: rgba(255, 255, 255, 0.6);
     text-transform: uppercase;
     letter-spacing: 3px;
     margin-bottom: 25px;
@@ -975,7 +978,7 @@ h1 {
 
 .share-hmi-label {
     font-size: 10px;
-    color: #999;
+    color: rgba(255, 255, 255, 0.4);
     font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -984,16 +987,17 @@ h1 {
 
 .share-project-name {
     font-size: 16px;
-    color: #7c3aed;
+    color: var(--primary);
     font-weight: 900;
     letter-spacing: 3px;
     text-transform: uppercase;
     margin-bottom: 15px;
+    text-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
 }
 
 .share-project-link {
     font-size: 11px;
-    color: #666;
+    color: rgba(255, 255, 255, 0.5);
     font-family: monospace;
     font-weight: 700;
 }
