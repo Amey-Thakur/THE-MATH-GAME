@@ -502,202 +502,227 @@ h1 {
     gap: 8px;
 }
 
-.footer a {
-    color: #38bdf8;
-    text-decoration: none;
-    font-weight: 700;
-    padding: 10px 20px;
-    background: rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(168, 85, 247, 0.2);
-    border-radius: 12px;
-    font-size: 1rem;
+.footer.paradox-viewport {
     position: relative;
-    /* Unimaginable 3D Reactor Styles */
-    transform-style: preserve-3d;
-    perspective: 1000px;
-    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-    display: inline-block;
+    width: 100%;
+    margin-top: auto;
+    padding: 3rem 0;
+    overflow: visible;
+    perspective: 2000px;
+    transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.footer a:hover {
-    border-color: #38bdf8;
-    background: rgba(168, 85, 247, 0.1);
-    box-shadow:
-        0 0 30px rgba(56, 189, 248, 0.4),
-        inset 0 0 15px rgba(168, 85, 247, 0.2);
-    transform: scale(1.15) rotateX(10deg) rotateY(-10deg);
-}
-
-/* The Orbit System */
-.orbit-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 140%;
-    height: 140%;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    z-index: -1;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-}
-
-.footer a:hover .orbit-container {
-    opacity: 1;
-}
-
-.orbit-item {
-    position: absolute;
-    font-size: 0.9rem;
-    color: #a855f7;
-    font-weight: bold;
-    text-shadow: 0 0 10px #a855f7;
-    animation: orbit 3s linear infinite;
-    white-space: nowrap;
-}
-
-/* Staggered positions for the 4 satellites */
-.orbit-item:nth-child(1) {
-    top: 0;
-    left: 50%;
-    animation-delay: 0s;
-}
-
-.orbit-item:nth-child(2) {
-    top: 50%;
-    right: 0;
-    animation-delay: -0.75s;
-}
-
-.orbit-item:nth-child(3) {
-    bottom: 0;
-    left: 50%;
-    animation-delay: -1.5s;
-}
-
-.orbit-item:nth-child(4) {
-    top: 50%;
-    left: 0;
-    animation-delay: -2.25s;
-}
-
-@keyframes orbit {
-    0% {
-        transform: rotate(0deg) translateX(70px) rotate(0deg);
-        opacity: 0;
-    }
-
-    10% {
-        opacity: 1;
-    }
-
-    90% {
-        opacity: 1;
-    }
-
-    100% {
-        transform: rotate(360deg) translateX(70px) rotate(-360deg);
-        opacity: 0;
-    }
-}
-
-/* Chromatic Aberration Idle Effect */
-.footer a .text {
-    display: inline-block;
-    transition: transform 0.3s ease;
-}
-
-.footer a:hover .text {
-    transform: translateZ(20px);
-    color: #fff;
-    text-shadow:
-        1px 1px 0 rgba(255, 0, 0, 0.5),
-        -1px -1px 0 rgba(0, 255, 255, 0.5);
-}
-
-.math-operator-wrap {
-    position: relative;
-    display: inline-flex;
+.footer.paradox-viewport h3 {
+    display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
-    margin: 0 10px;
-    z-index: 20;
+    gap: 30px;
+    transform-style: preserve-3d;
+    transition: transform 0.8s ease;
+    margin: 0;
+    flex-wrap: wrap;
 }
 
-.math-operator {
-    color: #38bdf8;
-    font-weight: 800;
-    font-size: 1.8rem;
-    text-shadow: 0 0 15px rgba(56, 189, 248, 0.8);
-    transition: all 0.3s ease;
-    animation: operatorGlow 2s ease-in-out infinite;
-    cursor: default;
-    user-select: none;
+.footer.paradox-viewport:hover h3 {
+    transform: rotateX(25deg) translateZ(50px);
 }
 
-@keyframes operatorGlow {
-
-    0%,
-    100% {
-        transform: scale(1);
-        text-shadow: 0 0 15px rgba(56, 189, 248, 0.8);
-    }
-
-    50% {
-        transform: scale(1.2) rotate(10deg);
-        text-shadow: 0 0 25px #38bdf8, 0 0 5px white;
-    }
-}
-
-.particle-field {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 200px;
-    height: 200px;
-    pointer-events: none;
-    z-index: -1;
-}
-
-.energy-particle {
-    position: absolute;
-    color: #a855f7;
-    font-size: 0.8rem;
-    font-weight: bold;
-    opacity: 0;
-    filter: blur(1px);
-    pointer-events: none;
-}
-
-/* Background Math Distortion effect */
-.footer::before {
+/* Cinematic Letterbox Effect */
+.footer.paradox-viewport::before,
+.footer.paradox-viewport::after {
     content: '';
     position: absolute;
-    top: -50px;
     left: 0;
     width: 100%;
-    height: calc(100% + 50px);
-    background: radial-gradient(circle at 50% 100%, rgba(168, 85, 247, 0.05) 0%, transparent 70%);
-    pointer-events: none;
-    z-index: -1;
-    animation: fieldPulse 5s ease-in-out infinite;
+    height: 0;
+    background: #000;
+    z-index: 200;
+    transition: height 0.6s ease;
 }
 
-@keyframes fieldPulse {
+.footer.paradox-viewport::before {
+    top: 0;
+}
+
+.footer.paradox-viewport::after {
+    bottom: 0;
+}
+
+.footer.paradox-viewport:hover::before,
+.footer.paradox-viewport:hover::after {
+    height: 40px;
+}
+
+/* Singularity Core Style */
+.singularity-container {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transform-style: preserve-3d;
+}
+
+.singularity-core {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    animation: coreRotate 10s linear infinite;
+}
+
+.singularity-core .ring {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #38bdf8;
+    border-radius: 50%;
+    box-shadow: 0 0 15px #38bdf8, inset 0 0 15px #38bdf8;
+}
+
+.singularity-core .ring:nth-child(1) {
+    transform: rotateY(0deg);
+}
+
+.singularity-core .ring:nth-child(2) {
+    transform: rotateY(60deg);
+    border-color: #a855f7;
+    box-shadow: 0 0 15px #a855f7;
+}
+
+.singularity-core .ring:nth-child(3) {
+    transform: rotateX(60deg);
+    border-color: #fff;
+    box-shadow: 0 0 15px #fff;
+}
+
+.operator-void {
+    position: absolute;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #fff;
+    text-shadow: 0 0 20px #38bdf8, 0 0 40px #a855f7;
+    animation: voidPulse 2s ease-in-out infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@keyframes coreRotate {
+    from {
+        transform: rotateX(0) rotateY(0);
+    }
+
+    to {
+        transform: rotateX(360deg) rotateY(360deg);
+    }
+}
+
+@keyframes voidPulse {
 
     0%,
     100% {
-        opacity: 0.3;
-        transform: scale(1);
+        transform: scale(1) translateZ(20px);
+        opacity: 1;
     }
 
     50% {
-        opacity: 0.6;
-        transform: scale(1.1);
+        transform: scale(1.3) translateZ(40px);
+        opacity: 0.7;
+        filter: hue-rotate(90deg);
     }
+}
+
+/* Hologram Projections */
+.hologram-projection {
+    position: relative;
+    text-decoration: none;
+    color: #38bdf8;
+    font-weight: 800;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    display: block;
+    padding: 10px 20px;
+}
+
+.glitch-text {
+    position: relative;
+    display: inline-block;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+
+.hologram-projection:hover .glitch-text::before {
+    opacity: 0.5;
+    color: #ff00ff;
+    animation: glitchAnim 0.3s infinite;
+    transform: translateX(-2px);
+}
+
+.hologram-projection:hover .glitch-text::after {
+    opacity: 0.5;
+    color: #00ffff;
+    animation: glitchAnim 0.3s infinite reverse;
+    transform: translateX(2px);
+}
+
+@keyframes glitchAnim {
+    0% {
+        clip: rect(20px, 9999px, 40px, 0);
+    }
+
+    20% {
+        clip: rect(10px, 9999px, 30px, 0);
+    }
+
+    40% {
+        clip: rect(40px, 9999px, 50px, 0);
+    }
+
+    60% {
+        clip: rect(0px, 9999px, 20px, 0);
+    }
+
+    80% {
+        clip: rect(30px, 9999px, 40px, 0);
+    }
+
+    100% {
+        clip: rect(10px, 9999px, 30px, 0);
+    }
+}
+
+.footer-separator,
+.footer-year {
+    color: #38bdf800;
+    /* Use color: rgba(255,255,255,0.4) for a subtle look */
+}
+
+/* Matrix Rain Layer */
+#math-matrix-rain {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    width: 100%;
+    height: calc(100% + 100px);
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+    opacity: 0.3;
 }
 
 /* Timer Warning Animation */
