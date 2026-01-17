@@ -66,8 +66,9 @@ h1 {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 4px;
-    margin-bottom: 1rem;
-    margin-top: 0;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
     /* Let flex handle spacing */
     color: white;
     text-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary);
@@ -93,7 +94,7 @@ h1 {
     -webkit-backdrop-filter: blur(12px);
     border: 2px solid var(--glass-border);
     border-radius: 40px;
-    padding: 2rem 3rem 1rem 3rem;
+    padding: 1rem 2rem 1rem 2rem;
     /* Reduced bottom padding */
     position: relative;
     box-shadow: var(--shadow), 0 0 40px rgba(168, 85, 247, 0.1);
