@@ -141,6 +141,26 @@ function startCountdownSequence() {
         questionBox.innerHTML = val;
     }
 
+    function playTick() {
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        const oscillator = audioCtx.createOscillator();
+        const gainNode = audioCtx.createGain();
+
+        oscillator.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+
+        // Urgency Tick
+        oscillator.type = 'sine';
+        oscillator.frequency.setValueAtTime(1000, audioCtx.currentTime);
+        oscillator.frequency.exponentialRampToValueAtTime(1200, audioCtx.currentTime + 0.05);
+
+        gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);
+
+        oscillator.start();
+        oscillator.stop(audioCtx.currentTime + 0.05);
+    }
+
     // Initial Beep
     playBeep('count');
     updateDisplay(count);
@@ -242,8 +262,10 @@ function startCountdown() {
         document.querySelector("#timeremainingvalue").innerHTML = timeRemaining;
 
         // Pulse Animation for last 10 seconds
-        if (timeRemaining < 11) {
+        // Pulse Animation & Sound for last 10 seconds
+        if (timeRemaining < 11 && timeRemaining > 0) {
             document.querySelector("#timeremaining").classList.add("timer-warning");
+            playTick();
         } else {
             document.querySelector("#timeremaining").classList.remove("timer-warning");
         }
