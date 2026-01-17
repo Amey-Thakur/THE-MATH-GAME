@@ -514,6 +514,8 @@ h1 {
 /* Countdown Animation Class */
 .hud-animate {
     animation: glitch-flash 0.8s ease-out forwards;
+    font-size: 8rem !important;
+    /* Large countdown numbers */
 }
 
 @keyframes glitch-flash {
