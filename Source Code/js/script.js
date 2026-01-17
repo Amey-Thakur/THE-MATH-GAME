@@ -288,42 +288,36 @@ function startGameLogic() {
 for (let i = 1; i < 5; i++) {
     const box = document.querySelector("#box" + i);
     box.addEventListener("click", function () {
-        // Fun animation when NOT playing (home screen)
         if (!playing) {
-            // Resume audio if needed
+            // LOBBY INTERACTIVITY
+            // 1. Play animation
+            this.classList.add("rubberBand");
+            setTimeout(() => {
+                this.classList.remove("rubberBand");
+            }, 600);
+
+            // 2. Play sound
             if (audioCtx.state === 'suspended') audioCtx.resume();
+            try { playBeep('count'); } catch (e) { }
 
-            // Play a playful "boop" sound
-            const osc = audioCtx.createOscillator();
-            const gain = audioCtx.createGain();
-            osc.connect(gain);
-            gain.connect(audioCtx.destination);
-            osc.type = 'sine';
-            osc.frequency.setValueAtTime(400 + (i * 100), audioCtx.currentTime);
-            osc.frequency.exponentialRampToValueAtTime(600 + (i * 100), audioCtx.currentTime + 0.1);
-            gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
-            gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.15);
-            osc.start();
-            osc.stop(audioCtx.currentTime + 0.15);
+            // 3. Show Math Fact
+            const facts = [
+                "40 is the only number whose letters are in alphabetical order.",
+                "Zero is the only number that can't be represented in Roman numerals.",
+                "Multiplying any number by 9? The sum of digits of the answer is always 9!",
+                "Have you heard of Fibonacci? 1, 1, 2, 3, 5, 8, 13...",
+                "A 'jiffy' is an actual unit of time: 1/100th of a second.",
+                "The symbol for division (÷) is called an obelus.",
+                "Pi (3.14...) is irrational - it goes on forever without repeating!",
+                "-40°C is exactly the same as -40°F.",
+                "The spiral shapes of sunflowers follow the Fibonacci sequence.",
+                "There are different sizes of infinity!"
+            ];
+            const randomFact = facts[Math.floor(Math.random() * facts.length)];
+            const questionEl = document.querySelector("#question");
 
-            // Random fun color for each box
-            const colors = ['#38bdf8', '#a855f7', '#22c55e', '#f97316', '#ec4899'];
-            const randomColor = colors[Math.floor(Math.random() * colors.length)];
-
-            // Bounce + color flash animation
-            this.style.transform = 'scale(0.9)';
-            this.style.background = `linear-gradient(135deg, ${randomColor}, ${randomColor}88)`;
-            this.style.boxShadow = `0 0 30px ${randomColor}80`;
-
-            setTimeout(() => {
-                this.style.transform = 'scale(1.05)';
-            }, 80);
-
-            setTimeout(() => {
-                this.style.transform = '';
-                this.style.background = '';
-                this.style.boxShadow = '';
-            }, 200);
+            questionEl.style.fontSize = "2rem"; // Smaller text for facts
+            questionEl.innerHTML = randomFact;
 
             return;
         }
