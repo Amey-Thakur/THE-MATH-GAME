@@ -305,44 +305,39 @@ for (let i = 1; i < 5; i++) {
  */
 function startCountdown() {
     action = setInterval(() => {
-        // Play tick FIRST for instant sync
-        if (timeRemaining <= 10 && timeRemaining > 0) {
-            try { playTick(); } catch (e) { console.error(e); }
-        }
-
-        //reduce time by 1sec in loops
+        // Decrement first
         timeRemaining -= 1;
-        //show countdown in sec
+
+        // Update display
         document.querySelector("#timeremainingvalue").innerHTML = timeRemaining;
 
-        // Pulse Animation for last 10 seconds
-        if (timeRemaining < 10 && timeRemaining > 0) {
+        // Last 10 seconds: Red warning + Sound (when showing 10, 9, 8... 1)
+        if (timeRemaining <= 10 && timeRemaining > 0) {
             document.querySelector("#timeremaining").classList.add("timer-warning");
+            try { playTick(); } catch (e) { console.error(e); }
         } else {
             document.querySelector("#timeremaining").classList.remove("timer-warning");
         }
 
-        //no time left
-        if (timeRemaining == 0) {
-            //game over
+        // Game Over
+        if (timeRemaining === 0) {
             stopCountdown();
 
-            // Play Game Over Sound immediately
+            // Play Game Over Sound
             playBeep('gameover');
 
-            // Toggle HUD elements
+            // Hide game elements
             document.querySelector("#question").style.display = "none";
             document.querySelector("#hud-metrics").style.display = "none";
             hideElement("timeremaining");
             hideElement("correct");
             hideElement("wrong");
 
-            // Animated Game Over Sequence
+            // Show Game Over screen
             const gameOverEl = document.querySelector("#gameOver");
-            gameOverEl.innerHTML = "<p class='go-title'>GAME OVER</p><p class='go-score'>FINAL SCORE: " + score + "</p>";
-            showElement("gameOver");
+            gameOverEl.innerHTML = "<p>GAME OVER</p><p>FINAL SCORE: " + score + "</p>";
+            gameOverEl.style.display = "flex";
 
-            //change the mode of playing
             playing = false;
             document.querySelector("#startreset").innerHTML = "Play Again";
         }
