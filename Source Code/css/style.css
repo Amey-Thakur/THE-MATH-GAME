@@ -464,7 +464,8 @@ h1 {
     box-shadow: none !important;
 }
 
-.timer-warning #timeremainingvalue {
+.timer-warning #timeremainingvalue,
+.timer-warning #timer-unit {
     color: #f87171 !important;
     /* Red Text */
     text-shadow: 0 0 20px;
