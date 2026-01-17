@@ -563,4 +563,6 @@ h1 {
     font-weight: 700;
     box-shadow: 0 4px 15px var(--primary-glow);
     border: 1px solid rgba(255, 255, 255, 0.2);
+    z-index: 20;
+    /* Float above HUD */
 }
