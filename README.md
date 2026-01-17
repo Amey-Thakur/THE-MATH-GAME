@@ -67,16 +67,23 @@ The development of this interface was guided by core **Human-Machine Interaction
 
 | Feature | Description |
 |---------|-------------|
-| **Multiplication Drills** | Randomized multiplication problems to challenge the player. |
-| **Score System** | Real-time score tracking to monitor progress. |
-| **Timer Constraint** | Time-limited rounds to encourage rapid mental processing. |
-| **Responsive UI** | Clean and accessible interface suitable for all devices. |
-| **Immediate Feedback** | Visual cues for correct and incorrect answers. |
+| **Gamified Drills** | Randomized multiplication challenges designed to test **instant recall**. |
+| **Real-Time Scoring** | Dynamic score tracking with **integrated penalty logic** for incorrect attempts. |
+| **Time-Pressure** | Strictly timed 60-second rounds to induce **cognitive flow state**. |
+| **Binary Feedback** | Instantaneous visual validation (Green/Red) providing **immediate learning reinforcement**. |
+| **Adaptive UI** | Fully **responsive glassmorphic interface** optimized for mobile, tablet, and desktop. |
+| **Social Sharing** | Integrated **high-fidelity image generation** for sharing scores via custom digital cards. |
+
+> [!NOTE]
+> ### Interactive Polish: The Commutative Singularity
+> We have embedded a **physics-driven atmospheric layer** ("Math Atmosphere") that renders floating mathematical symbols to create a dynamic visual depth. Additionally, the footer features a **"Commutative Singularity" event**: hovering over the author names triggers a quantum-tunneling animation where the names physically swap positions, playfully demonstrating the commutative property of multiplication ($A \times B = B \times A$) within the UI itself.
 
 ### Tech Stack
-- **Languages**: HTML5, CSS3, JavaScript
-- **Framework**: Vanilla JS
-- **Deployment**: GitHub Actions (Staging Workflow)
+- **Languages**: HTML5, CSS3, JavaScript (ES6+)
+- **Logic**: Vanilla JS (DOM Manipulation & Game Loop)
+- **Imaging**: **html2canvas** (Client-side localized capture engine)
+- **UI System**: Custom Vanilla CSS3 (Neon Glassmorphism & Animations)
+- **Deployment**: GitHub Actions (Staging & Continuous Delivery Workflow)
 - **Hosting**: GitHub Pages
 
 ---
