@@ -49,8 +49,10 @@ console.log(
 // Game State Variables
 // Tracks whether the game is active, the current score, the timer interval reference,
 // the remaining time, and the correct answer for the current question.
+// Game State Variables
 var playing = false;
 var score = 0;
+var wrongScore = 0; // New variable for wrong answers
 var action;
 var timeRemaining;
 var correctAnswer;
@@ -66,9 +68,13 @@ document.querySelector("#startreset").onclick = () => {
     else {
         //change the mode of playing
         playing = true;
-        //set score to 0
+        //set scores to 0
         score = 0;
+        wrongScore = 0;
         document.querySelector("#scorevalue").innerHTML = score;
+        document.querySelector("#correct-score").innerHTML = score; // Sync correct count
+        document.querySelector("#wrong-score").innerHTML = wrongScore; // Sync wrong count
+
         //show countdown box
         showElement("timeremaining");
         //countdown time
@@ -99,19 +105,24 @@ for (let i = 1; i < 5; i++) {
                 score++;
                 //set score value
                 document.querySelector("#scorevalue").innerHTML = score;
+                document.querySelector("#correct-score").innerHTML = score; // Update UI
+
                 //hide wrong box and show correct box
                 hideElement("wrong");
                 showElement("correct");
                 setTimeout(() => {
                     hideElement("correct");
                 }, 1000);
-
                 //generate new Q&A
                 generateQA();
             }
             //if wrong answer
             else {
-                //show wrong box and hide correct box
+                //increase wrong score
+                wrongScore++;
+                document.querySelector("#wrong-score").innerHTML = wrongScore; // Update UI
+
+                //show try again box for 1sec
                 hideElement("correct");
                 showElement("wrong");
                 setTimeout(() => {
