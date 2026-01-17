@@ -142,16 +142,7 @@ function startCountdownSequence() {
  * Main Game Initialization
  * Resets scores, starts the main timer, and generates the first question.
  */
-// ============================================================================
-// FUNCTION: startGame
-// PURPOSE:  Initializes the game state, resetting all counters and triggering
-//           the game loop.
-// LOGIC:    
-//   1. Checks current play state to toggle between Reset and Start.
-//   2. Resets scores and visibility of HUD elements.
-//   3. Invokes the countdown timer and question generator.
-// ============================================================================
-function startGame() {
+function startGameLogic() {
     playing = true;
     timeRemaining = 60;
     document.querySelector("#timeremainingvalue").textContent = timeRemaining;
@@ -450,14 +441,6 @@ function initCommutativeSingularity() {
 }
 
 // Generate Image & Share (Download)
-// ============================================================================
-// FUNCTION: shareScore
-// PURPOSE:  Generates a high-fidelity image of the player's performance for sharing.
-// MECHANISM:
-//   1. Populates a hidden DOM element (#share-card) with current session data.
-//   2. Uses html2canvas to render this DOM node into a PNG blob.
-//   3. Triggers a client-side download of the asset.
-// ============================================================================
 function shareScore() {
     const shareCard = document.querySelector("#share-card");
     const shareBtn = document.querySelector("#share-score-bottom");
