@@ -264,11 +264,20 @@ h1 {
 }
 
 #timeremaining {
-    margin-top: 2rem;
-    text-align: center;
-    font-size: 1.2rem;
-    color: var(--secondary);
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    padding: 0.8rem 1.8rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1rem;
     display: none;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    white-space: nowrap;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 #timeremainingvalue {
