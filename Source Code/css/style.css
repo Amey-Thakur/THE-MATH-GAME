@@ -530,4 +530,6 @@ h1 {
     gap: 1.5rem;
     /* Consistent spacing */
     width: 100%;
+    margin-top: 80px;
+    /* Clear absolute header elements */
 }
