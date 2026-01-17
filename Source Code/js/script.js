@@ -288,7 +288,45 @@ function startGameLogic() {
 for (let i = 1; i < 5; i++) {
     const box = document.querySelector("#box" + i);
     box.addEventListener("click", function () {
-        if (!playing) return;
+        // Fun animation when NOT playing (home screen)
+        if (!playing) {
+            // Resume audio if needed
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+
+            // Play a playful "boop" sound
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(400 + (i * 100), audioCtx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(600 + (i * 100), audioCtx.currentTime + 0.1);
+            gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.15);
+            osc.start();
+            osc.stop(audioCtx.currentTime + 0.15);
+
+            // Random fun color for each box
+            const colors = ['#38bdf8', '#a855f7', '#22c55e', '#f97316', '#ec4899'];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+
+            // Bounce + color flash animation
+            this.style.transform = 'scale(0.9)';
+            this.style.background = `linear-gradient(135deg, ${randomColor}, ${randomColor}88)`;
+            this.style.boxShadow = `0 0 30px ${randomColor}80`;
+
+            setTimeout(() => {
+                this.style.transform = 'scale(1.05)';
+            }, 80);
+
+            setTimeout(() => {
+                this.style.transform = '';
+                this.style.background = '';
+                this.style.boxShadow = '';
+            }, 200);
+
+            return;
+        }
 
         // Resume audio if needed
         if (audioCtx.state === 'suspended') audioCtx.resume();
