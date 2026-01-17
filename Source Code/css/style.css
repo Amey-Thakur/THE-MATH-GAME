@@ -261,7 +261,8 @@ h1 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 0.8rem;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
+    /* Increased to 2rem to match HUD margin for symmetry */
     padding: 0 1rem;
     flex-grow: 1;
 }
@@ -488,14 +489,18 @@ h1 {
 
 .footer h3 {
     font-family: 'Play', sans-serif;
-    font-size: 1.1rem;
+    font-size: 1rem;
+    /* Reduced to fit on one line */
     color: #38bdf8;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-wrap: nowrap;
-    gap: 25px;
+    gap: 15px;
+    /* Reduced gap to prevent wrapping */
     transform-style: preserve-3d;
+    white-space: nowrap;
+    /* Strictly enforce single line */
 }
 
 .creator-link {
