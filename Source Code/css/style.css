@@ -510,169 +510,7 @@ h1 {
     }
 }
 
-/* Responsive Scaling for Mobile & Tablets */
-@media (max-width: 768px) {
-    h1 {
-        font-size: 2.8rem;
-    }
 
-    #container {
-        padding: 1rem;
-        /* Tighter padding on desktop/tablet */
-        height: auto;
-        min-height: auto;
-        max-height: none;
-        /* Remove height limit for mobile */
-        margin: 1rem auto;
-        /* Centered on mobile */
-    }
-
-    /* Ensure footer wraps on smaller screens */
-    .footer h3 {
-        flex-wrap: wrap;
-        white-space: normal;
-        gap: 10px;
-        line-height: 1.6;
-    }
-
-    .footer-separator {
-        display: none;
-        /* Hide separator when wrapping might occur */
-    }
-
-    #hud-screen {
-        height: auto;
-        /* Allow height to grow with wrapped content */
-        min-height: 180px;
-        padding: 1rem;
-        display: flex;
-        flex-direction: column;
-    }
-
-    #hud-metrics {
-        flex-wrap: wrap;
-        gap: 5px;
-        margin-bottom: 0.5rem;
-    }
-
-    #missed {
-        order: 1;
-        width: 50%;
-        text-align: left;
-        font-size: 1rem;
-    }
-
-    #score {
-        order: 2;
-        width: 50%;
-        text-align: right;
-        font-size: 1rem;
-    }
-
-    #timeremaining {
-        order: 3;
-        width: 100%;
-        text-align: center;
-        margin-top: 5px;
-        font-size: 1rem;
-    }
-
-    #question {
-        font-size: 2rem;
-        margin-top: 0.5rem;
-    }
-}
-
-@media (max-width: 480px) {
-    h1 {
-        font-size: 2rem;
-        letter-spacing: 2px;
-    }
-
-    #hud-screen {
-        height: auto;
-        /* Allow height to grow */
-        min-height: 170px;
-        margin-bottom: 1.5rem;
-    }
-
-    #question {
-        font-size: 1.8rem;
-    }
-
-    #instruction {
-        font-size: 1.1rem;
-        margin-bottom: 1.5rem;
-    }
-
-    #choices {
-        gap: 0.6rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .box {
-        min-height: 70px;
-        font-size: 2rem;
-    }
-
-    #bottom-deck {
-        gap: 10px;
-        align-items: stretch;
-        /* Ensure buttons match height */
-    }
-
-    #startreset,
-    #share-score-bottom {
-        padding: 1rem;
-        font-size: 1.1rem;
-        border-radius: 15px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        /* Ensure consistent height */
-        min-height: 3.5rem;
-    }
-
-    /* Footer Responsive Wrap */
-    .footer h3 {
-        flex-wrap: wrap;
-        white-space: normal;
-        font-size: 0.9rem;
-        gap: 10px;
-        justify-content: center;
-        width: 100%;
-        line-height: 1.6;
-    }
-
-    .creator-link {
-        padding: 8px 16px;
-        font-size: 0.85rem;
-    }
-
-    .footer-separator {
-        display: none;
-    }
-}
-
-/* Tiny Device Optimization (e.g. iPhone SE) */
-@media (max-width: 360px) {
-    h1 {
-        font-size: 1.8rem;
-    }
-
-    #question {
-        font-size: 1.5rem;
-    }
-
-    .box {
-        min-height: 60px;
-        font-size: 1.8rem;
-    }
-
-    #container {
-        padding: 0.8rem;
-    }
-}
 
 /* The Commutative Singularity Footer */
 .footer.event-horizon {
@@ -1188,5 +1026,169 @@ h1 {
     100% {
         opacity: 1;
         transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+/* Responsive Scaling for Mobile & Tablets */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.8rem;
+    }
+
+    #container {
+        padding: 1rem;
+        /* Tighter padding on desktop/tablet */
+        height: auto;
+        min-height: auto;
+        max-height: none;
+        /* Remove height limit for mobile */
+        margin: 1rem auto;
+        /* Centered on mobile */
+    }
+
+    /* Ensure footer wraps on smaller screens */
+    .footer h3 {
+        flex-wrap: wrap;
+        white-space: normal;
+        gap: 10px;
+        line-height: 1.6;
+    }
+
+    .footer-separator {
+        display: none;
+        /* Hide separator when wrapping might occur */
+    }
+
+    #hud-screen {
+        height: auto;
+        /* Allow height to grow with wrapped content */
+        min-height: 180px;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #hud-metrics {
+        flex-wrap: wrap;
+        gap: 5px;
+        margin-bottom: 0.5rem;
+    }
+
+    #missed {
+        order: 1;
+        width: 50%;
+        text-align: left;
+        font-size: 1rem;
+    }
+
+    #score {
+        order: 2;
+        width: 50%;
+        text-align: right;
+        font-size: 1rem;
+    }
+
+    #timeremaining {
+        order: 3;
+        width: 100%;
+        text-align: center;
+        margin-top: 5px;
+        font-size: 1rem;
+    }
+
+    #question {
+        font-size: 2rem;
+        margin-top: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2rem;
+        letter-spacing: 2px;
+    }
+
+    #hud-screen {
+        height: auto;
+        /* Allow height to grow */
+        min-height: 170px;
+        margin-bottom: 1.5rem;
+    }
+
+    #question {
+        font-size: 1.8rem;
+    }
+
+    #instruction {
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    #choices {
+        gap: 0.6rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .box {
+        min-height: 70px;
+        font-size: 2rem;
+    }
+
+    #bottom-deck {
+        gap: 10px;
+        align-items: stretch;
+        /* Ensure buttons match height */
+    }
+
+    #startreset,
+    #share-score-bottom {
+        padding: 1rem;
+        font-size: 1.1rem;
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* Ensure consistent height */
+        min-height: 3.5rem;
+    }
+
+    /* Footer Responsive Wrap */
+    .footer h3 {
+        flex-wrap: wrap;
+        white-space: normal;
+        font-size: 0.9rem;
+        gap: 10px;
+        justify-content: center;
+        width: 100%;
+        line-height: 1.6;
+    }
+
+    .creator-link {
+        padding: 8px 16px;
+        font-size: 0.85rem;
+    }
+
+    .footer-separator {
+        display: none;
+    }
+}
+
+/* Tiny Device Optimization (e.g. iPhone SE) */
+@media (max-width: 360px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    #question {
+        font-size: 1.5rem;
+    }
+
+    .box {
+        min-height: 60px;
+        font-size: 1.8rem;
+    }
+
+    #container {
+        padding: 0.8rem;
     }
 }
