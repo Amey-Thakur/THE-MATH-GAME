@@ -61,12 +61,12 @@ body {
 }
 
 h1 {
-    font-size: 3.5rem;
-    /* Balanced size */
+    font-size: 5rem;
+    /* Large, bold title */
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 4px;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
     color: white;
     text-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary);
     animation: glow 2s ease-in-out infinite alternate;
@@ -83,16 +83,16 @@ h1 {
 }
 
 #container {
-    width: 90%;
-    max-width: 500px;
-    /* Slightly tighter width for better proportions */
+    width: 95%;
+    max-width: 700px;
+    /* Much wider container */
     background: var(--glass);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 2px solid var(--glass-border);
-    border-radius: 30px;
-    padding: 3rem;
-    /* Restored padding */
+    border-radius: 40px;
+    padding: 3.5rem;
+    /* Enhanced padding */
     position: relative;
     box-shadow: var(--shadow), 0 0 40px rgba(168, 85, 247, 0.1);
     animation: slideUp 0.8s ease-out;
@@ -155,11 +155,11 @@ h1 {
 }
 
 #question {
-    font-size: 4.5rem;
-    /* Balanced size */
+    font-size: 7rem;
+    /* Massive question text */
     font-weight: 700;
     text-align: center;
-    margin: 1rem 0;
+    margin: 1.5rem 0;
     color: white;
     text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
@@ -167,30 +167,32 @@ h1 {
 #instruction {
     text-align: center;
     color: var(--secondary);
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
+    font-size: 1.4rem;
+    margin-bottom: 2.5rem;
     opacity: 0.8;
 }
 
 #choices {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.2rem;
-    margin-bottom: 2.5rem;
+    gap: 2rem;
+    /* Larger gap */
+    margin-bottom: 3rem;
 }
 
 .box {
-    height: 100px;
-    /* Larger boxes */
-    width: 100px;
+    height: 140px;
+    /* Large touch targets */
+    width: 140px;
     margin: 0 auto;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 18px;
+    border-radius: 25px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2.5rem;
+    font-size: 4rem;
+    /* Larger numbers */
     font-weight: 700;
     cursor: pointer;
     transition: var(--transition);
