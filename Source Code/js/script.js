@@ -278,10 +278,13 @@ for (let i = 1; i < 5; i++) {
             // Blue flash on clicked box
             this.style.background = 'linear-gradient(135deg, #38bdf8, #0ea5e9)';
             this.style.boxShadow = '0 0 30px rgba(56, 189, 248, 0.8)';
+
+            const clickedBox = this;
             setTimeout(() => {
-                this.style.background = '';
-                this.style.boxShadow = '';
-            }, 300);
+                clickedBox.style.background = '';
+                clickedBox.style.boxShadow = '';
+                generateQA(); // Generate AFTER color resets
+            }, 600);
 
             hideElement("wrong");
             hideElement("correct");
@@ -302,22 +305,23 @@ for (let i = 1; i < 5; i++) {
                 correctBox.style.boxShadow = '0 0 30px rgba(56, 189, 248, 0.8)';
             }
 
+            const clickedBox = this;
             setTimeout(() => {
-                this.style.background = '';
-                this.style.boxShadow = '';
+                clickedBox.style.background = '';
+                clickedBox.style.boxShadow = '';
                 if (correctBox) {
                     correctBox.style.background = '';
                     correctBox.style.boxShadow = '';
                 }
-            }, 400);
+                generateQA(); // Generate AFTER colors reset
+            }, 800); // Longer delay for wrong so player can see correct answer
 
             hideElement("correct");
             hideElement("wrong");
         }
 
-        // ALWAYS generate new question
-        console.log("Generating new question...");
-        generateQA();
+        // Question is now generated inside timeouts above
+        console.log("Feedback shown, waiting before next question...");
     });
 }
 
