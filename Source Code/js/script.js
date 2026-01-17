@@ -337,55 +337,75 @@ const mathSymbols = "0123456789×÷+-∑√π";
 function initProductEngine() {
     const creatorLinks = document.querySelectorAll(".creator-link");
     const multiplier = document.querySelector(".multiplier-core");
+    const footer = document.querySelector(".footer");
 
-    creatorLinks.forEach(link => {
+    creatorLinks.forEach((link, index) => {
         const originalName = link.getAttribute("data-name");
+        const otherLink = creatorLinks[1 - index]; // Get the other creator
         let interval = null;
+        let sympatheticInterval = null;
 
         link.onmouseover = () => {
-            // Speed up the engine
-            multiplier.style.animationDuration = "2s";
-            multiplier.style.color = "white";
+            // activate linking beam
+            footer.classList.add("linking");
 
+            // Speed up the engine
+            multiplier.style.animationDuration = "1.5s";
+            multiplier.style.color = "white";
+            multiplier.style.transform = "scale(1.3)";
+
+            // Primary Scramble
             let iteration = 0;
             clearInterval(interval);
-
             interval = setInterval(() => {
                 link.innerText = originalName
                     .split("")
-                    .map((char, index) => {
-                        if (index < iteration) return originalName[index];
+                    .map((char, i) => {
+                        if (i < iteration) return originalName[i];
                         return mathSymbols[Math.floor(Math.random() * mathSymbols.length)];
                     })
                     .join("");
 
-                if (iteration >= originalName.length) {
-                    clearInterval(interval);
-                    multiplier.style.animationDuration = "10s";
-                    multiplier.style.color = "#a855f7";
-                }
+                if (iteration >= originalName.length) clearInterval(interval);
                 iteration += 1 / 3;
             }, 30);
+
+            // Sympathetic Reaction on the OTHER link
+            otherLink.classList.add("sympathetic");
+            const otherOriginal = otherLink.getAttribute("data-name");
+            clearInterval(sympatheticInterval);
+            sympatheticInterval = setInterval(() => {
+                otherLink.innerText = otherOriginal
+                    .split("")
+                    .map(() => mathSymbols[Math.floor(Math.random() * mathSymbols.length)])
+                    .join("");
+            }, 100);
         };
 
         link.onmouseleave = () => {
-            // Ensure name is restored if mouse moves too fast
-            clearInterval(interval);
-            link.innerText = originalName;
+            footer.classList.remove("linking");
             multiplier.style.animationDuration = "10s";
             multiplier.style.color = "#a855f7";
+            multiplier.style.transform = "scale(1)";
+
+            clearInterval(interval);
+            clearInterval(sympatheticInterval);
+
+            link.innerText = originalName;
+            otherLink.classList.remove("sympathetic");
+            otherLink.innerText = otherLink.getAttribute("data-name");
         };
     });
 
     // Periodic "Power Surge"
     setInterval(() => {
-        if (Math.random() > 0.5) {
+        if (!footer.classList.contains("linking") && Math.random() > 0.5) {
             multiplier.style.textShadow = "0 0 40px white, 0 0 20px #a855f7";
             setTimeout(() => {
                 multiplier.style.textShadow = "0 0 20px #a855f7, 0 0 5px white";
             }, 500);
         }
-    }, 4000);
+    }, 5000);
 }
 
 window.addEventListener('DOMContentLoaded', initProductEngine);
