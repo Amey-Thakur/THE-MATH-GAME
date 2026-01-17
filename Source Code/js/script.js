@@ -344,7 +344,7 @@ function startCountdown() {
 
             //change the mode of playing
             playing = false;
-            document.querySelector("#startreset").innerHTML = "Start Game";
+            document.querySelector("#startreset").innerHTML = "Play Again";
         }
     }, 1000);
 }
