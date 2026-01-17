@@ -513,36 +513,25 @@ h1 {
 
 /* Countdown Animation Class */
 .hud-animate {
-    animation: glitch-flash 0.8s ease-out forwards;
+    animation: count-pulse 0.6s ease-out forwards;
     font-size: 8rem !important;
-    /* Large countdown numbers */
+    color: white !important;
 }
 
-@keyframes glitch-flash {
+@keyframes count-pulse {
     0% {
         transform: scale(0.5);
         opacity: 0;
-        text-shadow: 2px 2px 0px #ff00ff, -2px -2px 0px #00ffff;
     }
 
-    20% {
+    50% {
+        transform: scale(1.2);
         opacity: 1;
-        transform: scale(1.4);
-        color: #fff;
-        text-shadow: 0 0 40px #fff, 0 0 80px #a855f7;
-    }
-
-    40% {
-        transform: scale(1.1);
-        color: rgba(255, 255, 255, 0.9);
-        text-shadow: 5px 0 0 rgba(255, 0, 0, 0.5), -5px 0 0 rgba(0, 255, 255, 0.5);
     }
 
     100% {
         transform: scale(1);
         opacity: 1;
-        color: rgba(255, 255, 255, 0.9);
-        text-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
     }
 }
 
