@@ -330,20 +330,37 @@ function generateQA() {
 }
 
 // =========================================
-//   COMMUTATIVE SINGULARITY (FOOTER) 🛰️
+//   COMMUTATIVE SINGULARITY & ATMOSPHERE 🌌
 // =========================================
-const mathSymbols = "0123456789×÷+-∑√π∮∇";
+const mathSymbols = "0123456789×÷+-∑√π∮∇∆";
 
 function initCommutativeSingularity() {
     const nodeA = document.querySelector(".node-a");
     const nodeB = document.querySelector(".node-b");
     const singularity = document.querySelector(".singularity");
-    const footer = document.querySelector(".footer");
+    const atmosphere = document.querySelector("#math-atmosphere");
 
     if (!nodeA || !nodeB || !singularity) return;
 
     let isSwapped = false;
 
+    // --- Math Atmosphere Logic ---
+    const spawnParticle = () => {
+        const symbol = document.createElement("div");
+        symbol.className = "math-symbol";
+        symbol.innerText = mathSymbols[Math.floor(Math.random() * mathSymbols.length)];
+        symbol.style.left = Math.random() * 100 + "vw";
+        symbol.style.fontSize = (Math.random() * 1.5 + 1) + "rem";
+        if (atmosphere) atmosphere.appendChild(symbol);
+
+        symbol.onanimationend = () => symbol.remove();
+    };
+
+    // Initial burst and periodic spawn
+    for (let i = 0; i < 8; i++) setTimeout(spawnParticle, i * 300);
+    setInterval(spawnParticle, 2000);
+
+    // --- Singularity Swap Logic ---
     const triggerSingularity = () => {
         if (nodeA.classList.contains("tunneling")) return;
 
@@ -386,7 +403,7 @@ function initCommutativeSingularity() {
                 singularity.classList.remove("active");
                 nodeA.classList.remove("tunneling");
                 nodeB.classList.remove("tunneling");
-            }, 600);
+            }, 550); // Snappier resolution
         }, 1200);
     };
 
