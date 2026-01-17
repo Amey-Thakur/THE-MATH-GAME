@@ -242,8 +242,13 @@ function startGameLogic() {
     document.querySelector("#startreset").innerHTML = "Reset Game";
 
     startCountdown(); // Game timer
-    document.querySelector("#question").classList.remove('hud-animate');
-    document.querySelector("#question").style.fontSize = "5rem";
+
+    // ENSURE question is visible
+    const questionEl = document.querySelector("#question");
+    questionEl.classList.remove('hud-animate');
+    questionEl.style.display = "flex";
+    questionEl.style.fontSize = "5rem";
+
     generateQA();
 }
 
@@ -367,8 +372,10 @@ function generateQA() {
 
     console.log("New Question:", x, "x", y, "=", correctAnswer);
 
-    // Set Question Text
-    document.querySelector("#question").textContent = x + " x " + y;
+    // Set Question Text - ENSURE visibility!
+    const questionEl = document.querySelector("#question");
+    questionEl.textContent = x + " x " + y;
+    questionEl.style.display = "flex";
 
     // Pick random box for correct answer
     const correctPos = Math.floor(Math.random() * 4) + 1;
