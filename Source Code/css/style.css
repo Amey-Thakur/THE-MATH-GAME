@@ -309,6 +309,19 @@ h1 {
     background: rgba(168, 85, 247, 0.3);
 }
 
+#secret-hint {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
 #startreset {
     width: 100%;
     padding: 1rem;

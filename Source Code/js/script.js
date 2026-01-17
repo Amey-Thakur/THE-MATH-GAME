@@ -78,6 +78,7 @@ document.querySelector("#startreset").onclick = () => {
         document.querySelector("#startreset").style.pointerEvents = "none"; // Disable button
         document.querySelector("#startreset").innerHTML = "Get Ready...";
 
+        hideElement("secret-hint");
         // Start 3-2-1-GO Sequence
         startCountdownSequence();
     }
@@ -282,6 +283,7 @@ function startGameLogic() {
     questionEl.style.display = "flex";
     questionEl.style.fontSize = "5rem";
 
+    hideElement("secret-hint");
     generateQA();
 }
 
@@ -423,6 +425,7 @@ function startCountdown() {
             wrapperEl.style.display = "none";
             hideElement("correct");
             hideElement("wrong");
+            showElement("secret-hint");
 
             const gameOverEl = document.querySelector("#gameOver");
 
