@@ -203,11 +203,13 @@ h1 {
 
 /* The Question Text Itself */
 #question {
-    font-size: 3rem;
+    font-size: 2.2rem;
     font-weight: 700;
     text-align: center;
-    color: white;
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.6), 0 0 30px var(--primary);
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+    letter-spacing: 2px;
+    text-transform: uppercase;
     flex-grow: 1;
     display: flex;
     align-items: center;
