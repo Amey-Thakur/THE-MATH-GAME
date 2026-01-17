@@ -284,7 +284,7 @@ for (let i = 1; i < 5; i++) {
                 clickedBox.style.background = '';
                 clickedBox.style.boxShadow = '';
                 generateQA(); // Generate AFTER color resets
-            }, 600);
+            }, 300);
 
             hideElement("wrong");
             hideElement("correct");
@@ -314,7 +314,7 @@ for (let i = 1; i < 5; i++) {
                     correctBox.style.boxShadow = '';
                 }
                 generateQA(); // Generate AFTER colors reset
-            }, 800); // Longer delay for wrong so player can see correct answer
+            }, 500); // Delay for wrong so player can see correct answer
 
             hideElement("correct");
             hideElement("wrong");
