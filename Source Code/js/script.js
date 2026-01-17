@@ -242,6 +242,7 @@ function startGameLogic() {
     document.querySelector("#startreset").innerHTML = "Reset Game";
 
     startCountdown(); // Game timer
+    document.querySelector("#question").classList.remove('hud-animate');
     document.querySelector("#question").style.fontSize = "5rem";
     generateQA();
 }
