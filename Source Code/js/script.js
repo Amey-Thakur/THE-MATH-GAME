@@ -9,82 +9,383 @@
  * License: MIT
  */
 
+// Global Variables
+let playing = false;
+let score = 0;
+let wrongScore = 0;
+let action;
+let timeRemaining;
+let correctAnswer;
+let correctBoxId;
 
-// =========================================
-//   THE MULTIPLICATION PARADOX ENGINE 🌀
-// =========================================
-function initParadoxEngine() {
-    const rainContainer = document.querySelector("#math-matrix-rain");
-    const singularity = document.querySelector(".singularity-container");
-    const viewport = document.querySelector(".paradox-viewport");
-    const symbols = "0123456789×+÷∑∞√π";
+// Audio Context for Sound Effects
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
-    // 1. Gravitational Matrix Rain
-    function createRainDrop() {
-        const drop = document.createElement("span");
-        drop.innerText = symbols[Math.floor(Math.random() * symbols.length)];
-        drop.style.position = "absolute";
-        drop.style.color = "#38bdf8";
-        drop.style.fontSize = (Math.random() * 0.5 + 0.5) + "rem";
-        drop.style.left = Math.random() * 100 + "%";
-        drop.style.top = "-20px";
-        drop.style.transition = "all 4s linear";
-        drop.style.opacity = "0.5";
-        
-        rainContainer.appendChild(drop);
+/**
+ * Common Sound Effect Generator
+ * Generates procedural beeps for game events (start, correct, wrong, gameover).
+ */
+function playBeep(type) {
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
 
-        // Core position for gravity
-        const coreRect = singularity.getBoundingClientRect();
-        const dropRect = drop.getBoundingClientRect();
-        
-        // Final position - pulled toward center
-        const destY = 200;
-        const centerX = 50; // percentage
-        const currentX = parseFloat(drop.style.left);
-        const drift = (centerX - currentX) * 0.4; // Pull factor
+    const now = audioCtx.currentTime;
 
-        setTimeout(() => {
-            drop.style.top = destY + "px";
-            drop.style.left = (currentX + drift) + "%";
-            drop.style.opacity = "0";
-            drop.style.transform = "scale(0.2) rotate(360deg)";
-        }, 50);
-
-        setTimeout(() => drop.remove(), 4000);
+    if (type === 'start') {
+        osc.frequency.setValueAtTime(440, now);
+        osc.frequency.exponentialRampToValueAtTime(880, now + 0.1);
+        gain.gain.setValueAtTime(0.1, now);
+        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.1);
+        osc.start(now);
+        osc.stop(now + 0.1);
+    } else if (type === 'correct') {
+        osc.frequency.setValueAtTime(880, now);
+        osc.frequency.exponentialRampToValueAtTime(1320, now + 0.1);
+        gain.gain.setValueAtTime(0.1, now);
+        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.1);
+        osc.start(now);
+        osc.stop(now + 0.1);
+    } else if (type === 'wrong') {
+        osc.frequency.setValueAtTime(220, now);
+        osc.frequency.exponentialRampToValueAtTime(110, now + 0.2);
+        gain.gain.setValueAtTime(0.1, now);
+        gain.gain.linearRampToValueAtTime(0, now + 0.2);
+        osc.start(now);
+        osc.stop(now + 0.2);
+    } else if (type === 'gameover') {
+        osc.frequency.setValueAtTime(110, now);
+        osc.frequency.linearRampToValueAtTime(55, now + 0.5);
+        gain.gain.setValueAtTime(0.1, now);
+        gain.gain.linearRampToValueAtTime(0, now + 0.5);
+        osc.start(now);
+        osc.stop(now + 0.5);
+    } else if (type === 'count') {
+        osc.frequency.setValueAtTime(660, now);
+        gain.gain.setValueAtTime(0.05, now);
+        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.05);
+        osc.start(now);
+        osc.stop(now + 0.05);
     }
-
-    setInterval(createRainDrop, 100);
-
-    // 2. Cinematic Screen Shake on Core Hover
-    singularity.addEventListener("mouseenter", () => {
-        viewport.animate([
-            { transform: 'translate(1px, 1px) rotate(0deg)' },
-            { transform: 'translate(-1px, -2px) rotate(-1deg)' },
-            { transform: 'translate(-3px, 0px) rotate(1deg)' },
-            { transform: 'translate(3px, 2px) rotate(0deg)' },
-            { transform: 'translate(1px, -1px) rotate(1deg)' },
-            { transform: 'translate(-1px, 2px) rotate(-1deg)' },
-            { transform: 'translate(-3px, 1px) rotate(0deg)' },
-            { transform: 'translate(3px, 1px) rotate(-1deg)' },
-            { transform: 'translate(-1px, -1px) rotate(1deg)' },
-            { transform: 'translate(1px, 2px) rotate(0deg)' },
-            { transform: 'translate(1px, -2px) rotate(-1deg)' }
-        ], {
-            duration: 500,
-            iterations: Infinity
-        });
-    });
-
-    singularity.addEventListener("mouseleave", () => {
-        viewport.getAnimations().forEach(anim => {
-            if (anim.effect.getKeyframes().length > 5) anim.cancel();
-        });
-    });
 }
 
-// Cleanup and Start
-window.addEventListener('DOMContentLoaded', () => {
-    // Remove previous footer scripts if any
-    const scripts = document.querySelectorAll('script');
-    initParadoxEngine();
-});
+/**
+ * Tick Sound for the Urgency Timer
+ */
+function playTick() {
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.type = 'sine';
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+
+    const now = audioCtx.currentTime;
+    osc.frequency.setValueAtTime(1200, now);
+    gain.gain.setValueAtTime(0.05, now);
+    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.05);
+
+    osc.start(now);
+    osc.stop(now + 0.05);
+}
+
+/**
+ * HUD Pulse Animation
+ * Used during the countdown sequence (3, 2, 1, GO!)
+ */
+function hudAnimate(text, isGo = false) {
+    const questionEl = document.querySelector("#question");
+    questionEl.innerHTML = `<span class="hud-animate">${text}</span>`;
+
+    const span = questionEl.querySelector("span");
+    if (isGo) {
+        span.style.color = "#38bdf8";
+        span.style.textShadow = "0 0 30px #38bdf8";
+    }
+}
+
+/**
+ * Pre-Game Countdown Sequence (3-2-1-GO)
+ * Blocks gameplay until the sequence completes.
+ */
+function startCountdownSequence() {
+    playing = "countdown"; // Special state to prevent clicking during countdown
+    score = 0;
+    wrongScore = 0;
+    document.querySelector("#scorevalue").textContent = score;
+    document.querySelector("#wrong-score").textContent = wrongScore;
+
+    // Hide UI elements
+    hideElement("gameOver");
+    hideElement("correct");
+    hideElement("wrong");
+    hideElement("secret-hint"); // Hide hint immediately
+    document.querySelector("#hud-metrics").style.display = "none";
+    document.querySelector("#timeremaining").style.display = "none";
+
+    document.querySelector("#startreset").innerHTML = "Reset Game";
+
+    // Sequence
+    setTimeout(() => { hudAnimate("3"); playBeep('count'); }, 0);
+    setTimeout(() => { hudAnimate("2"); playBeep('count'); }, 1000);
+    setTimeout(() => { hudAnimate("1"); playBeep('count'); }, 2000);
+    setTimeout(() => {
+        hudAnimate("GO!", true);
+        playBeep('start');
+        setTimeout(startGameLogic, 500); // Start game after GO!
+    }, 3000);
+}
+
+/**
+ * Main Game Initialization
+ * Resets scores, starts the main timer, and generates the first question.
+ */
+function startGameLogic() {
+    playing = true;
+    timeRemaining = 60;
+    document.querySelector("#timeremainingvalue").textContent = timeRemaining;
+    showElement("timeremaining");
+    document.querySelector("#hud-metrics").style.display = "flex";
+
+    const questionEl = document.querySelector("#question");
+    questionEl.style.fontSize = "6rem"; // Reset from fact size
+
+    generateQA();
+    startCountdown();
+}
+
+// Click-to-Start or Reset
+document.querySelector("#startreset").onclick = function () {
+    if (playing === true || playing === "countdown") {
+        location.reload(); // Hard reset
+    } else {
+        startCountdownSequence();
+    }
+};
+
+/**
+ * Answer Selection Multiplier Interaction
+ */
+for (let i = 1; i < 5; i++) {
+    document.querySelector("#box" + i).onclick = (function (boxIndex) {
+        return function () {
+            if (playing === true) {
+                handleAnswerSelection.call(this, boxIndex);
+            } else if (playing === false) {
+                // Lobby Mode Interaction
+                try { playBeep('count'); } catch (e) { }
+
+                const facts = [
+                    "40 is the only number whose letters are in alphabetical order.",
+                    "Zero is the only number that can't be represented in Roman numerals.",
+                    "Multiplying any number by 9? The sum of digits of the answer is always 9!",
+                    "Have you heard of Fibonacci? 1, 1, 2, 3, 5, 8, 13...",
+                    "A 'jiffy' is an actual unit of time: 1/100th of a second.",
+                    "The symbol for division (÷) is called an obelus.",
+                    "Pi (3.14...) is irrational - it goes on forever without repeating!",
+                    "-40°C is exactly the same as -40°F.",
+                    "The spiral shapes of sunflowers follow the Fibonacci sequence.",
+                    "There are different sizes of infinity!"
+                ];
+                const randomFact = facts[Math.floor(Math.random() * facts.length)];
+                const questionEl = document.querySelector("#question");
+
+                questionEl.style.fontSize = "2.2rem";
+                questionEl.innerHTML = randomFact;
+            }
+        };
+    })(i);
+}
+
+function handleAnswerSelection(i) {
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+
+    const clickedValue = parseInt(this.textContent, 10);
+
+    if (clickedValue === correctAnswer) {
+        score++;
+        document.querySelector("#scorevalue").textContent = score;
+        playBeep('correct');
+
+        this.style.background = 'linear-gradient(135deg, #38bdf8, #0ea5e9)';
+        this.style.boxShadow = '0 0 30px rgba(56, 189, 248, 0.8)';
+
+        const clickedBox = this;
+        setTimeout(() => {
+            clickedBox.style.background = '';
+            clickedBox.style.boxShadow = '';
+            generateQA();
+        }, 300);
+
+        hideElement("wrong");
+    } else {
+        wrongScore++;
+        document.querySelector("#wrong-score").textContent = wrongScore;
+        playBeep('wrong');
+
+        this.style.background = 'linear-gradient(135deg, #ef4444, #dc2626)';
+        this.style.boxShadow = '0 0 30px rgba(239, 68, 68, 0.8)';
+
+        const correctBox = document.querySelector(correctBoxId);
+        if (correctBox) {
+            correctBox.style.background = 'linear-gradient(135deg, #38bdf8, #0ea5e9)';
+            correctBox.style.boxShadow = '0 0 30px rgba(56, 189, 248, 0.8)';
+        }
+
+        const clickedBox = this;
+        setTimeout(() => {
+            clickedBox.style.background = '';
+            clickedBox.style.boxShadow = '';
+            if (correctBox) {
+                correctBox.style.background = '';
+                correctBox.style.boxShadow = '';
+            }
+            generateQA();
+        }, 500);
+
+        hideElement("correct");
+    }
+}
+
+function startCountdown() {
+    action = setInterval(() => {
+        const timerEl = document.querySelector("#timeremainingvalue");
+        const wrapperEl = document.querySelector("#timeremaining");
+        timeRemaining -= 1;
+        timerEl.textContent = timeRemaining;
+
+        if (timeRemaining <= 10 && timeRemaining >= 1) {
+            try { playTick(); } catch (e) { }
+            wrapperEl.classList.add("timer-warning");
+        }
+
+        if (timeRemaining === 0) {
+            stopCountdown();
+            playBeep('gameover');
+
+            document.querySelector("#question").style.display = "none";
+            document.querySelector("#hud-metrics").style.display = "none";
+            wrapperEl.style.display = "none";
+            showElement("secret-hint");
+
+            // Reset boxes to A, B, C, D
+            document.querySelector("#box1").innerHTML = "A";
+            document.querySelector("#box2").innerHTML = "B";
+            document.querySelector("#box3").innerHTML = "C";
+            document.querySelector("#box4").innerHTML = "D";
+
+            const gameOverEl = document.querySelector("#gameOver");
+            let bestScore = parseInt(localStorage.getItem('mathGameBestScore')) || 0;
+            if (score > bestScore) {
+                bestScore = score;
+                localStorage.setItem('mathGameBestScore', bestScore);
+            }
+
+            const scoreColor = score >= bestScore ? '#38bdf8' : 'white';
+            gameOverEl.innerHTML = `
+                <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px;">
+                    <p style="font-size: 3rem; font-weight: 800; color: #ef4444; margin: 0; text-shadow: 0 0 20px rgba(239, 68, 68, 0.5); text-transform: uppercase;">GAME OVER</p>
+                    <p style="font-size: 2.2rem; font-weight: 700; color: ${scoreColor}; margin: 0;">SCORE: ${score}</p>
+                    <p style="font-size: 1.5rem; font-weight: 700; color: #38bdf8; margin: 0; opacity: 0.9;">BEST: ${bestScore}</p>
+                </div>
+            `;
+            gameOverEl.style.display = "flex";
+
+            playing = false;
+            document.querySelector("#startreset").innerHTML = "Play Again";
+        }
+    }, 1000);
+}
+
+function stopCountdown() { clearInterval(action); }
+function hideElement(Id) { document.querySelector("#" + Id).style.display = "none"; }
+function showElement(Id) {
+    const el = document.querySelector("#" + Id);
+    el.style.display = (Id === "gameOver" || Id === "hud-metrics") ? "flex" : "block";
+}
+
+function generateQA() {
+    const x = Math.floor(Math.random() * 10) + 1;
+    const y = Math.floor(Math.random() * 10) + 1;
+    correctAnswer = x * y;
+
+    const questionEl = document.querySelector("#question");
+    questionEl.textContent = x + " x " + y;
+    questionEl.style.display = "flex";
+
+    const correctPos = Math.floor(Math.random() * 4) + 1;
+    correctBoxId = "#box" + correctPos;
+    document.querySelector(correctBoxId).textContent = correctAnswer;
+
+    const usedAnswers = [correctAnswer];
+    for (let i = 1; i < 5; i++) {
+        if (i === correctPos) continue;
+        let wrongAnswer;
+        do {
+            wrongAnswer = (Math.floor(Math.random() * 10) + 1) * (Math.floor(Math.random() * 10) + 1);
+        } while (usedAnswers.includes(wrongAnswer));
+        document.querySelector("#box" + i).textContent = wrongAnswer;
+        usedAnswers.push(wrongAnswer);
+    }
+}
+
+// =========================================
+//   PRODUCT ENGINE (FOOTER) ⚙️
+// =========================================
+const mathSymbols = "0123456789×÷+-∑√π";
+
+function initProductEngine() {
+    const creatorLinks = document.querySelectorAll(".creator-link");
+    const multiplier = document.querySelector(".multiplier-core");
+
+    creatorLinks.forEach(link => {
+        const originalName = link.getAttribute("data-name");
+        let interval = null;
+
+        link.onmouseover = () => {
+            // Speed up the engine
+            multiplier.style.animationDuration = "2s";
+            multiplier.style.color = "white";
+
+            let iteration = 0;
+            clearInterval(interval);
+
+            interval = setInterval(() => {
+                link.innerText = originalName
+                    .split("")
+                    .map((char, index) => {
+                        if (index < iteration) return originalName[index];
+                        return mathSymbols[Math.floor(Math.random() * mathSymbols.length)];
+                    })
+                    .join("");
+
+                if (iteration >= originalName.length) {
+                    clearInterval(interval);
+                    multiplier.style.animationDuration = "10s";
+                    multiplier.style.color = "#a855f7";
+                }
+                iteration += 1 / 3;
+            }, 30);
+        };
+
+        link.onmouseleave = () => {
+            // Ensure name is restored if mouse moves too fast
+            clearInterval(interval);
+            link.innerText = originalName;
+            multiplier.style.animationDuration = "10s";
+            multiplier.style.color = "#a855f7";
+        };
+    });
+
+    // Periodic "Power Surge"
+    setInterval(() => {
+        if (Math.random() > 0.5) {
+            multiplier.style.textShadow = "0 0 40px white, 0 0 20px #a855f7";
+            setTimeout(() => {
+                multiplier.style.textShadow = "0 0 20px #a855f7, 0 0 5px white";
+            }, 500);
+        }
+    }, 4000);
+}
+
+window.addEventListener('DOMContentLoaded', initProductEngine);

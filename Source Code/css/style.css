@@ -475,15 +475,12 @@ h1 {
 }
 
 /* Authorship Footer */
+/* The Product Engine Footer */
 .footer {
     width: 100%;
     text-align: center;
     margin-top: auto;
-    /* Push to bottom of flex container */
-    padding-top: 2rem;
-    /* Space from button */
-    padding-bottom: 0.5rem;
-    /* Minimal bottom padding */
+    padding: 2.5rem 0 1rem;
     position: relative;
     z-index: 10;
 }
@@ -492,237 +489,62 @@ h1 {
     font-family: 'Play', sans-serif;
     font-size: 1rem;
     color: #38bdf8;
-    /* Blue to match theme */
-    margin: 0;
-    text-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 15px;
 }
 
-.footer.paradox-viewport {
-    position: relative;
-    width: 100%;
-    margin-top: auto;
-    padding: 3rem 0;
-    overflow: visible;
-    perspective: 2000px;
-    transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
-    z-index: 100;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.footer.paradox-viewport h3 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
-    transform-style: preserve-3d;
-    transition: transform 0.8s ease;
-    margin: 0;
-    flex-wrap: wrap;
-}
-
-.footer.paradox-viewport:hover h3 {
-    transform: rotateX(25deg) translateZ(50px);
-}
-
-/* Cinematic Letterbox Effect */
-.footer.paradox-viewport::before,
-.footer.paradox-viewport::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 0;
-    background: #000;
-    z-index: 200;
-    transition: height 0.6s ease;
-}
-
-.footer.paradox-viewport::before {
-    top: 0;
-}
-
-.footer.paradox-viewport::after {
-    bottom: 0;
-}
-
-.footer.paradox-viewport:hover::before,
-.footer.paradox-viewport:hover::after {
-    height: 40px;
-}
-
-/* Singularity Core Style */
-.singularity-container {
-    width: 80px;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    transform-style: preserve-3d;
-}
-
-.singularity-core {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transform-style: preserve-3d;
-    animation: coreRotate 10s linear infinite;
-}
-
-.singularity-core .ring {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border: 2px solid #38bdf8;
-    border-radius: 50%;
-    box-shadow: 0 0 15px #38bdf8, inset 0 0 15px #38bdf8;
-}
-
-.singularity-core .ring:nth-child(1) {
-    transform: rotateY(0deg);
-}
-
-.singularity-core .ring:nth-child(2) {
-    transform: rotateY(60deg);
-    border-color: #a855f7;
-    box-shadow: 0 0 15px #a855f7;
-}
-
-.singularity-core .ring:nth-child(3) {
-    transform: rotateX(60deg);
-    border-color: #fff;
-    box-shadow: 0 0 15px #fff;
-}
-
-.operator-void {
-    position: absolute;
-    font-size: 2.5rem;
-    font-weight: 900;
-    color: #fff;
-    text-shadow: 0 0 20px #38bdf8, 0 0 40px #a855f7;
-    animation: voidPulse 2s ease-in-out infinite;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-@keyframes coreRotate {
-    from {
-        transform: rotateX(0) rotateY(0);
-    }
-
-    to {
-        transform: rotateX(360deg) rotateY(360deg);
-    }
-}
-
-@keyframes voidPulse {
-
-    0%,
-    100% {
-        transform: scale(1) translateZ(20px);
-        opacity: 1;
-    }
-
-    50% {
-        transform: scale(1.3) translateZ(40px);
-        opacity: 0.7;
-        filter: hue-rotate(90deg);
-    }
-}
-
-/* Hologram Projections */
-.hologram-projection {
-    position: relative;
-    text-decoration: none;
+.creator-link {
     color: #38bdf8;
-    font-weight: 800;
-    font-size: 1.2rem;
-    letter-spacing: 1px;
-    display: block;
+    text-decoration: none;
+    font-weight: 700;
     padding: 10px 20px;
-}
-
-.glitch-text {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
     display: inline-block;
 }
 
-.glitch-text::before,
-.glitch-text::after {
-    content: attr(data-text);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
+.creator-link:hover {
+    background: rgba(168, 85, 247, 0.3);
+    border-color: #a855f7;
+    color: white;
+    transform: translateY(-8px) scale(1.1);
+    box-shadow: 0 15px 30px rgba(168, 85, 247, 0.5);
+    letter-spacing: 2px;
 }
 
-.hologram-projection:hover .glitch-text::before {
-    opacity: 0.5;
-    color: #ff00ff;
-    animation: glitchAnim 0.3s infinite;
-    transform: translateX(-2px);
+.multiplier-core {
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: #a855f7;
+    text-shadow: 0 0 20px #a855f7, 0 0 5px white;
+    display: inline-block;
+    animation: gearRotate 10s linear infinite;
+    cursor: default;
+    user-select: none;
+    margin: 0 8px;
 }
 
-.hologram-projection:hover .glitch-text::after {
-    opacity: 0.5;
-    color: #00ffff;
-    animation: glitchAnim 0.3s infinite reverse;
-    transform: translateX(2px);
-}
-
-@keyframes glitchAnim {
-    0% {
-        clip: rect(20px, 9999px, 40px, 0);
+@keyframes gearRotate {
+    from {
+        transform: rotate(0deg);
     }
 
-    20% {
-        clip: rect(10px, 9999px, 30px, 0);
-    }
-
-    40% {
-        clip: rect(40px, 9999px, 50px, 0);
-    }
-
-    60% {
-        clip: rect(0px, 9999px, 20px, 0);
-    }
-
-    80% {
-        clip: rect(30px, 9999px, 40px, 0);
-    }
-
-    100% {
-        clip: rect(10px, 9999px, 30px, 0);
+    to {
+        transform: rotate(360deg);
     }
 }
 
 .footer-separator,
 .footer-year {
-    color: #38bdf800;
-    /* Use color: rgba(255,255,255,0.4) for a subtle look */
-}
-
-/* Matrix Rain Layer */
-#math-matrix-rain {
-    position: absolute;
-    top: -100px;
-    left: 0;
-    width: 100%;
-    height: calc(100% + 100px);
-    pointer-events: none;
-    z-index: -1;
-    overflow: hidden;
-    opacity: 0.3;
+    opacity: 0.7;
+    font-size: 1rem;
+    color: #38bdf8;
 }
 
 /* Timer Warning Animation */
