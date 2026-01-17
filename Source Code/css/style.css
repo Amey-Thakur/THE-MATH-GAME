@@ -100,6 +100,9 @@ h1 {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    /* Stability Fix */
+    min-height: 600px;
+    /* Ensure card stays consistent size */
 }
 
 @keyframes slideUp {
