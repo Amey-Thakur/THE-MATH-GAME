@@ -147,9 +147,10 @@ THE-MATH-GAME/
   <br>
   <i>Interactive trivia before the game begins.</i>
   <br><br>
-  <img src="screenshots/02-lobby-fact-a.png" alt="Lobby 1" width="30%">
-  <img src="screenshots/02-lobby-fact-b.png" alt="Lobby 2" width="30%">
-  <img src="screenshots/02-lobby-fact-c.png" alt="Lobby 3" width="30%">
+  <img src="screenshots/02-lobby-fact-a.png" alt="Lobby 1" width="45%">
+  <img src="screenshots/02-lobby-fact-b.png" alt="Lobby 2" width="45%">
+  <br>
+  <img src="screenshots/02-lobby-fact-c.png" alt="Lobby 3" width="45%">
   <br><br>
 
   <b>3. Active Gameplay</b>
