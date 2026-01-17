@@ -76,104 +76,106 @@ document.querySelector("#startreset").onclick = () => {
     }
 }
 
+// =========================================
+//   AUDIO & VISUAL UTILS 🎵
+// =========================================
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+function playBeep(type) {
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+
+    const oscillator1 = audioCtx.createOscillator();
+    const oscillator2 = audioCtx.createOscillator();
+    const gainNode = audioCtx.createGain();
+
+    oscillator1.connect(gainNode);
+    oscillator2.connect(gainNode);
+    gainNode.connect(audioCtx.destination);
+
+    const now = audioCtx.currentTime;
+
+    if (type === 'count') {
+        // Futuristic "Charger" Sound
+        oscillator1.type = 'sawtooth';
+        oscillator1.frequency.setValueAtTime(200, now);
+        oscillator1.frequency.exponentialRampToValueAtTime(600, now + 0.1);
+
+        oscillator2.type = 'sine';
+        oscillator2.frequency.setValueAtTime(400, now);
+        oscillator2.frequency.exponentialRampToValueAtTime(800, now + 0.2);
+
+        gainNode.gain.setValueAtTime(0.2, now);
+        gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
+
+        oscillator1.start(now);
+        oscillator1.stop(now + 0.3);
+        oscillator2.start(now);
+        oscillator2.stop(now + 0.3);
+    } else {
+        // "Hyperdrive" GO Sound
+        oscillator1.type = 'square';
+        oscillator1.frequency.setValueAtTime(400, now);
+        oscillator1.frequency.exponentialRampToValueAtTime(1500, now + 0.4);
+
+        oscillator2.type = 'triangle';
+        oscillator2.frequency.setValueAtTime(800, now);
+        oscillator2.frequency.exponentialRampToValueAtTime(2000, now + 0.4);
+
+        gainNode.gain.setValueAtTime(0.3, now);
+        gainNode.gain.linearRampToValueAtTime(0.001, now + 0.8);
+
+        oscillator1.start(now);
+        oscillator1.stop(now + 0.8);
+        oscillator2.start(now);
+        oscillator2.stop(now + 0.8);
+    }
+}
+
+function playTick() {
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+    const oscillator = audioCtx.createOscillator();
+    const gainNode = audioCtx.createGain();
+
+    oscillator.connect(gainNode);
+    gainNode.connect(audioCtx.destination);
+
+    // Urgency Tick
+    oscillator.type = 'sine';
+    oscillator.frequency.setValueAtTime(1000, audioCtx.currentTime);
+    oscillator.frequency.exponentialRampToValueAtTime(1200, audioCtx.currentTime + 0.05);
+
+    gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);
+
+    oscillator.start();
+    oscillator.stop(audioCtx.currentTime + 0.05);
+}
+
+function hudAnimate(val) {
+    const questionBox = document.querySelector("#question");
+    questionBox.classList.remove('hud-animate');
+    void questionBox.offsetHeight;
+    questionBox.classList.add('hud-animate');
+    questionBox.innerHTML = val;
+}
+
 function startCountdownSequence() {
     let count = 3;
     const questionBox = document.querySelector("#question");
 
-    // Audio Context Setup
-    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-
-    function playBeep(type) {
-        if (audioCtx.state === 'suspended') audioCtx.resume();
-
-        const oscillator1 = audioCtx.createOscillator();
-        const oscillator2 = audioCtx.createOscillator();
-        const gainNode = audioCtx.createGain();
-
-        oscillator1.connect(gainNode);
-        oscillator2.connect(gainNode);
-        gainNode.connect(audioCtx.destination);
-
-        const now = audioCtx.currentTime;
-
-        if (type === 'count') {
-            // Futuristic "Charger" Sound
-            oscillator1.type = 'sawtooth';
-            oscillator1.frequency.setValueAtTime(200, now);
-            oscillator1.frequency.exponentialRampToValueAtTime(600, now + 0.1);
-
-            oscillator2.type = 'sine';
-            oscillator2.frequency.setValueAtTime(400, now);
-            oscillator2.frequency.exponentialRampToValueAtTime(800, now + 0.2);
-
-            gainNode.gain.setValueAtTime(0.2, now);
-            gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
-
-            oscillator1.start(now);
-            oscillator1.stop(now + 0.3);
-            oscillator2.start(now);
-            oscillator2.stop(now + 0.3);
-        } else {
-            // "Hyperdrive" GO Sound
-            oscillator1.type = 'square';
-            oscillator1.frequency.setValueAtTime(400, now);
-            oscillator1.frequency.exponentialRampToValueAtTime(1500, now + 0.4);
-
-            oscillator2.type = 'triangle';
-            oscillator2.frequency.setValueAtTime(800, now);
-            oscillator2.frequency.exponentialRampToValueAtTime(2000, now + 0.4);
-
-            gainNode.gain.setValueAtTime(0.3, now);
-            gainNode.gain.linearRampToValueAtTime(0.001, now + 0.8);
-
-            oscillator1.start(now);
-            oscillator1.stop(now + 0.8);
-            oscillator2.start(now);
-            oscillator2.stop(now + 0.8);
-        }
-    }
-
-    function updateDisplay(val) {
-        questionBox.classList.remove('hud-animate');
-        // Force Reflow logic: reading offsetHeight forces browser to process the removal
-        void questionBox.offsetHeight;
-        questionBox.classList.add('hud-animate');
-        questionBox.innerHTML = val;
-    }
-
-    function playTick() {
-        if (audioCtx.state === 'suspended') audioCtx.resume();
-        const oscillator = audioCtx.createOscillator();
-        const gainNode = audioCtx.createGain();
-
-        oscillator.connect(gainNode);
-        gainNode.connect(audioCtx.destination);
-
-        // Urgency Tick
-        oscillator.type = 'sine';
-        oscillator.frequency.setValueAtTime(1000, audioCtx.currentTime);
-        oscillator.frequency.exponentialRampToValueAtTime(1200, audioCtx.currentTime + 0.05);
-
-        gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
-        gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);
-
-        oscillator.start();
-        oscillator.stop(audioCtx.currentTime + 0.05);
-    }
-
     // Initial Beep
     playBeep('count');
-    updateDisplay(count);
+    hudAnimate(count);
 
     const countdownInterval = setInterval(() => {
         count--;
 
         if (count > 0) {
             playBeep('count');
-            updateDisplay(count);
+            hudAnimate(count);
         } else if (count === 0) {
             playBeep('go');
-            updateDisplay("GO!");
+            hudAnimate("GO!");
             questionBox.style.color = "#4ade80"; // Green for GO
             questionBox.style.textShadow = "0 0 30px #4ade80";
         } else {
