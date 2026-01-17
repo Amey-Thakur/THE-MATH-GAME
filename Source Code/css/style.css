@@ -61,12 +61,13 @@ body {
 }
 
 h1 {
-    font-size: 4rem;
+    font-size: 3.5rem;
     /* Slightly reduced to fit */
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 4px;
-    margin-bottom: 0;
+    margin-bottom: 1rem;
+    margin-top: 0;
     /* Let flex handle spacing */
     color: white;
     text-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary);
@@ -92,7 +93,7 @@ h1 {
     -webkit-backdrop-filter: blur(12px);
     border: 2px solid var(--glass-border);
     border-radius: 40px;
-    padding: 3.5rem 3.5rem 1rem 3.5rem;
+    padding: 2rem 3rem 1rem 3rem;
     /* Reduced bottom padding */
     position: relative;
     box-shadow: var(--shadow), 0 0 40px rgba(168, 85, 247, 0.1);
