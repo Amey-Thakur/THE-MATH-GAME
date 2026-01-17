@@ -137,6 +137,13 @@ h1 {
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
+#missed #wrong-score {
+    color: #f87171;
+    /* Red for missed number */
+    font-weight: 800;
+    text-shadow: 0 0 10px rgba(248, 113, 113, 0.5);
+}
+
 #correct,
 #wrong {
     position: absolute;
