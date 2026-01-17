@@ -75,6 +75,7 @@ document.querySelector("#startreset").onclick = () => {
         document.querySelector("#wrong-score").innerHTML = wrongScore; // Sync wrong count
 
         //show countdown box
+        document.querySelector("#hud-metrics").style.display = "flex"; // Show header row
         showElement("timeremaining");
         showElement("score");
         showElement("missed"); // Reveal counters

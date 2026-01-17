@@ -192,7 +192,8 @@ h1 {
 /* Header Row for Metrics */
 #hud-metrics {
     width: 100%;
-    display: flex;
+    display: none;
+    /* Hidden initially so it doesn't take space */
     justify-content: space-between;
     align-items: flex-start;
     margin-bottom: 2rem;
