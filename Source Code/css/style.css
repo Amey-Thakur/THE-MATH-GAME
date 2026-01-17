@@ -481,7 +481,7 @@ h1 {
     margin-top: auto;
     padding: 3rem 0 1.5rem;
     position: relative;
-    perspective: 1000px;
+    perspective: 1200px;
     z-index: 10;
     overflow: visible;
 }
@@ -494,7 +494,7 @@ h1 {
     align-items: center;
     justify-content: center;
     flex-wrap: nowrap;
-    gap: 20px;
+    gap: 25px;
     transform-style: preserve-3d;
 }
 
@@ -506,15 +506,15 @@ h1 {
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
-    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     display: inline-block;
 }
 
 .creator-link:hover {
-    background: rgba(168, 85, 247, 0.2);
+    background: rgba(168, 85, 247, 0.15);
     border-color: #a855f7;
-    box-shadow: 0 0 40px rgba(168, 85, 247, 0.4);
+    box-shadow: 0 0 30px rgba(168, 85, 247, 0.3);
     z-index: 50;
 }
 
@@ -527,33 +527,34 @@ h1 {
     cursor: pointer;
     user-select: none;
     z-index: 100;
-    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-/* 3D Slingshot States */
+/* 3D Slingshot - Refined Physics */
 .node-a.tunneling {
-    animation: slingshot-left 1.2s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+    animation: slingshot-left 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 .node-b.tunneling {
-    animation: slingshot-right 1.2s cubic-bezier(0.7, 0, 0.3, 1) forwards;
+    animation: slingshot-right 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 @keyframes slingshot-left {
     0% {
         transform: translateX(0) translateZ(0);
         opacity: 1;
+        filter: blur(0);
     }
 
-    40% {
-        transform: translateX(100px) translateZ(-200px) scale(0.2);
-        opacity: 0.5;
-        filter: blur(5px);
+    45% {
+        transform: translateX(120px) translateZ(-300px) scale(0.1);
+        opacity: 0.4;
+        filter: blur(4px);
     }
 
-    60% {
-        transform: translateX(-100px) translateZ(-200px) scale(0.2);
-        opacity: 0.5;
+    55% {
+        transform: translateX(-120px) translateZ(-300px) scale(0.1);
+        opacity: 0.4;
     }
 
     100% {
@@ -567,17 +568,18 @@ h1 {
     0% {
         transform: translateX(0) translateZ(0);
         opacity: 1;
+        filter: blur(0);
     }
 
-    40% {
-        transform: translateX(-100px) translateZ(-200px) scale(0.2);
-        opacity: 0.5;
-        filter: blur(5px);
+    45% {
+        transform: translateX(-120px) translateZ(-300px) scale(0.1);
+        opacity: 0.4;
+        filter: blur(4px);
     }
 
-    60% {
-        transform: translateX(100px) translateZ(-200px) scale(0.2);
-        opacity: 0.5;
+    55% {
+        transform: translateX(120px) translateZ(-300px) scale(0.1);
+        opacity: 0.4;
     }
 
     100% {
@@ -588,9 +590,52 @@ h1 {
 }
 
 .singularity.active {
-    transform: scale(1.5) rotate(720deg);
+    transform: scale(1.6) rotate(1080deg);
     color: white;
-    text-shadow: 0 0 50px #38bdf8, 0 0 20px #ff00ff;
+    text-shadow: 0 0 40px #38bdf8, 0 0 15px #ff00ff;
+}
+
+/* Math Atmosphere - Background Drifting Symbols */
+#math-atmosphere {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.math-symbol {
+    position: absolute;
+    color: #38bdf8;
+    opacity: 0;
+    font-weight: 900;
+    font-size: 1.5rem;
+    filter: blur(1px);
+    animation: atmosphere-drift 15s linear forwards;
+    user-select: none;
+}
+
+@keyframes atmosphere-drift {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0.15;
+    }
+
+    80% {
+        opacity: 0.15;
+    }
+
+    100% {
+        transform: translateY(-10vh) rotate(360deg);
+        opacity: 0;
+    }
 }
 
 .footer-separator,
