@@ -617,8 +617,8 @@ h1 {
     width: 100%;
     text-align: center;
     margin-top: auto;
-    padding: 1.5rem 0 0.5rem;
-    /* Reduced bottom padding */
+    padding: 0 2rem 1rem 2rem;
+    /* Reduced padding for natural centering */
     /* Reduced top padding to balance new margin */
     position: relative;
     perspective: 1200px;

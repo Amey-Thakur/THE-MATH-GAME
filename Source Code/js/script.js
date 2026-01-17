@@ -152,7 +152,7 @@ function startGameLogic() {
     document.querySelector("#hud-metrics").style.display = "flex";
 
     const questionEl = document.querySelector("#question");
-    questionEl.style.fontSize = "7rem"; // Reset from fact size
+    questionEl.style.fontSize = "5rem"; // Reset from fact size
 
     generateQA();
     startCountdown();
