@@ -66,6 +66,9 @@ document.querySelector("#startreset").onclick = () => {
     }
     // if we are not playing
     else {
+        // Unlock Audio Context immediately on user gesture
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+
         // Reset UI for countdown
         document.querySelector("#hud-metrics").style.display = "none";
         document.querySelector("#startreset").style.pointerEvents = "none"; // Disable button
@@ -223,134 +226,140 @@ function startGameLogic() {
 }
 
 for (let i = 1; i < 5; i++) {
-    //if we click on answer box
-    document.querySelector("#box" + i).onclick = () => {
-        //if we are playing
-        if (playing) {
-            //if correct answer
-            if (document.querySelector("#box" + i).innerHTML == correctAnswer) {
-                //increase score by 1
-                score++;
-                //set score value
-                document.querySelector("#scorevalue").innerHTML = score;
-
-                //hide wrong box and show correct box
-                hideElement("wrong");
-                showElement("correct");
-                setTimeout(() => {
-                    hideElement("correct");
-                }, 1000);
-                //generate new Q&A
-                generateQA();
-            }
-            //if wrong answer
-            else {
-                //increase wrong score
-                wrongScore++;
-                document.querySelector("#wrong-score").innerHTML = wrongScore; // Update UI
-
-                //show try again box for 1sec
-                hideElement("correct");
-                showElement("wrong");
-                setTimeout(() => {
-                    hideElement("wrong");
-                }, 1000);
-            }
-        }
-    }
-}
-
-/**
- * Countdown Timer Implementation
- * Uses setInterval() to decrement the time every 1000ms (1 second).
- * When time reaches zero, the game ends: score is displayed, UI is reset,
- * and the game state is set to 'not playing'.
- */
-function startCountdown() {
-    action = setInterval(() => {
-        //reduce time by 1sec in loops
-        timeRemaining -= 1;
-        //show countdown in sec
-        document.querySelector("#timeremainingvalue").innerHTML = timeRemaining;
-
-        // Pulse Animation & Sound for last 10 seconds
-        if (timeRemaining < 11 && timeRemaining > 0) {
-            document.querySelector("#timeremaining").classList.add("timer-warning");
-            try { playTick(); } catch (e) { console.error(e); }
-        } else {
-            document.querySelector("#timeremaining").classList.remove("timer-warning");
-        }
-
-        //no time left
-        if (timeRemaining == 0) {
-            //game over
-            stopCountdown();
-            //show game over box
-            showElement("gameOver");
-            //show game over message and score
-            document.querySelector("#gameOver").innerHTML = "<p>Game Over!</p><p>Your score is : " + score + ".</p>";
-            //hide countdown
-            hideElement("timeremaining");
-            //hide correct box
-            hideElement("correct");
-            //hide wrong box
-            hideElement("wrong");
-            //change the mode of playing
-            playing = false;
-            //change button to start 
-            document.querySelector("#startreset").innerHTML = "Start Game";
-        }
-    }, 1000);
-}
-
-function stopCountdown() {
-    //stop countdown
-    clearInterval(action);
-}
-
-function hideElement(Id) {
-    document.querySelector("#" + Id).style.display = "none";
-}
-
-function showElement(Id) {
-    const el = document.querySelector("#" + Id);
-    if (Id === "gameOver") {
-        el.style.display = "flex";
-    } else {
-        el.style.display = "block";
-    }
-}
-
-/**
- * Question & Answer Generation Algorithm
- * Generates two random single-digit numbers (1-9) and calculates their product.
- * Places the correct answer in a randomly selected box (1-4).
- * Fills remaining boxes with unique wrong answers using a do-while loop
- * to avoid duplicates (preventing identical distractor values).
- */
-function generateQA() {
-    //generating random number between 1-9
-    var x = 1 + Math.round(9 * Math.random());
-    var y = 1 + Math.round(9 * Math.random());
-    //correct answer
-    correctAnswer = x * y;
-    //setting question
-    document.querySelector("#question").innerHTML = x + " x " + y;
-    //setting random position for correct answer
-    var correctPosition = 1 + Math.round(3 * Math.random());
-    document.querySelector("#box" + correctPosition).innerHTML = correctAnswer;
-
-    var answers = [correctAnswer];
-
-    //checking and replacing duplicate values
     for (let i = 1; i < 5; i++) {
-        if (i != correctPosition) {
-            var wrongAnswer;
-            do {
-                wrongAnswer = (1 + Math.round(9 * Math.random())) * (1 + Math.round(9 * Math.random()));
-            } while ((answers.indexOf(wrongAnswer)) > -1)
-            document.querySelector("#box" + i).innerHTML = wrongAnswer;
-            answers.push(wrongAnswer)
+        //if we click on answer box
+        document.querySelector("#box" + i).onclick = function () {
+            //if we are playing
+            if (playing) {
+                // Explicitly unlock audio on interaction
+                if (audioCtx.state === 'suspended') audioCtx.resume();
+
+                const selectedVal = parseInt(this.textContent);
+
+                //if correct answer
+                if (selectedVal === correctAnswer) {
+                    //increase score by 1
+                    score++;
+                    //set score value
+                    document.querySelector("#scorevalue").innerHTML = score;
+
+                    //hide wrong box and show correct box
+                    hideElement("wrong");
+                    showElement("correct");
+                    setTimeout(() => {
+                        hideElement("correct");
+                    }, 1000);
+                    //generate new Q&A
+                    generateQA();
+                }
+                //if wrong answer
+                else {
+                    //increase wrong score
+                    wrongScore++;
+                    document.querySelector("#wrong-score").innerHTML = wrongScore; // Update UI
+
+                    //show try again box for 1sec
+                    hideElement("correct");
+                    showElement("wrong");
+                    setTimeout(() => {
+                        hideElement("wrong");
+                    }, 1000);
+                }
+            }
         }
     }
-}
+
+    /**
+     * Countdown Timer Implementation
+     * Uses setInterval() to decrement the time every 1000ms (1 second).
+     * When time reaches zero, the game ends: score is displayed, UI is reset,
+     * and the game state is set to 'not playing'.
+     */
+    function startCountdown() {
+        action = setInterval(() => {
+            //reduce time by 1sec in loops
+            timeRemaining -= 1;
+            //show countdown in sec
+            document.querySelector("#timeremainingvalue").innerHTML = timeRemaining;
+
+            // Pulse Animation & Sound for last 10 seconds
+            if (timeRemaining < 11 && timeRemaining > 0) {
+                document.querySelector("#timeremaining").classList.add("timer-warning");
+                try { playTick(); } catch (e) { console.error(e); }
+            } else {
+                document.querySelector("#timeremaining").classList.remove("timer-warning");
+            }
+
+            //no time left
+            if (timeRemaining == 0) {
+                //game over
+                stopCountdown();
+                //show game over box
+                showElement("gameOver");
+                //show game over message and score
+                document.querySelector("#gameOver").innerHTML = "<p>Game Over!</p><p>Your score is : " + score + ".</p>";
+                //hide countdown
+                hideElement("timeremaining");
+                //hide correct box
+                hideElement("correct");
+                //hide wrong box
+                hideElement("wrong");
+                //change the mode of playing
+                playing = false;
+                //change button to start 
+                document.querySelector("#startreset").innerHTML = "Start Game";
+            }
+        }, 1000);
+    }
+
+    function stopCountdown() {
+        //stop countdown
+        clearInterval(action);
+    }
+
+    function hideElement(Id) {
+        document.querySelector("#" + Id).style.display = "none";
+    }
+
+    function showElement(Id) {
+        const el = document.querySelector("#" + Id);
+        if (Id === "gameOver") {
+            el.style.display = "flex";
+        } else {
+            el.style.display = "block";
+        }
+    }
+
+    /**
+     * Question & Answer Generation Algorithm
+     * Generates two random single-digit numbers (1-9) and calculates their product.
+     * Places the correct answer in a randomly selected box (1-4).
+     * Fills remaining boxes with unique wrong answers using a do-while loop
+     * to avoid duplicates (preventing identical distractor values).
+     */
+    function generateQA() {
+        //generating random number between 1-9
+        var x = 1 + Math.round(9 * Math.random());
+        var y = 1 + Math.round(9 * Math.random());
+        //correct answer
+        correctAnswer = x * y;
+        //setting question
+        document.querySelector("#question").innerHTML = x + " x " + y;
+        //setting random position for correct answer
+        var correctPosition = 1 + Math.round(3 * Math.random());
+        document.querySelector("#box" + correctPosition).innerHTML = correctAnswer;
+
+        var answers = [correctAnswer];
+
+        //checking and replacing duplicate values
+        for (let i = 1; i < 5; i++) {
+            if (i != correctPosition) {
+                var wrongAnswer;
+                do {
+                    wrongAnswer = (1 + Math.round(9 * Math.random())) * (1 + Math.round(9 * Math.random()));
+                } while ((answers.indexOf(wrongAnswer)) > -1)
+                document.querySelector("#box" + i).innerHTML = wrongAnswer;
+                answers.push(wrongAnswer)
+            }
+        }
+    }
