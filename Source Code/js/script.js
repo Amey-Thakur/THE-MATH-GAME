@@ -56,6 +56,7 @@ var wrongScore = 0; // New variable for wrong answers
 var action;
 var timeRemaining;
 var correctAnswer;
+var correctBoxId = null; // Track which box has the correct answer
 
 //if we click on the start/reset
 document.querySelector("#startreset").onclick = () => {
@@ -269,16 +270,47 @@ for (let i = 1; i < 5; i++) {
         console.log("Match:", clickedValue === correctAnswer);
 
         if (clickedValue === correctAnswer) {
-            // CORRECT
+            // CORRECT - Blue flash + sound
             score++;
             document.querySelector("#scorevalue").textContent = score;
-            // Keep hideElement calls for safety (elements exist)
+            playBeep('correct');
+
+            // Blue flash on clicked box
+            this.style.background = 'linear-gradient(135deg, #38bdf8, #0ea5e9)';
+            this.style.boxShadow = '0 0 30px rgba(56, 189, 248, 0.8)';
+            setTimeout(() => {
+                this.style.background = '';
+                this.style.boxShadow = '';
+            }, 300);
+
             hideElement("wrong");
             hideElement("correct");
         } else {
-            // WRONG
+            // WRONG - Red flash on clicked + Blue on correct + sound
             wrongScore++;
             document.querySelector("#wrong-score").textContent = wrongScore;
+            playBeep('wrong');
+
+            // Red flash on wrong clicked box
+            this.style.background = 'linear-gradient(135deg, #ef4444, #dc2626)';
+            this.style.boxShadow = '0 0 30px rgba(239, 68, 68, 0.8)';
+
+            // Blue flash on correct answer box
+            const correctBox = document.querySelector(correctBoxId);
+            if (correctBox) {
+                correctBox.style.background = 'linear-gradient(135deg, #38bdf8, #0ea5e9)';
+                correctBox.style.boxShadow = '0 0 30px rgba(56, 189, 248, 0.8)';
+            }
+
+            setTimeout(() => {
+                this.style.background = '';
+                this.style.boxShadow = '';
+                if (correctBox) {
+                    correctBox.style.background = '';
+                    correctBox.style.boxShadow = '';
+                }
+            }, 400);
+
             hideElement("correct");
             hideElement("wrong");
         }
@@ -376,7 +408,8 @@ function generateQA() {
 
     // Pick random box for correct answer
     const correctPos = Math.floor(Math.random() * 4) + 1;
-    document.querySelector("#box" + correctPos).textContent = correctAnswer;
+    correctBoxId = "#box" + correctPos; // Store for highlighting wrong answers
+    document.querySelector(correctBoxId).textContent = correctAnswer;
 
     const usedAnswers = [correctAnswer];
 
