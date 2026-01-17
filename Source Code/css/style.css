@@ -334,7 +334,7 @@ h1 {
 #startreset,
 #share-score-bottom {
     flex: 1;
-    /* Both buttons share equal width on Game Over */
+    /* Twin buttons share equal width on Game Over */
     padding: 1.2rem;
     background: linear-gradient(135deg, var(--primary), #7c3aed);
     color: white;
@@ -375,25 +375,6 @@ h1 {
     width: 20px;
     height: 20px;
     fill: currentColor;
-}
-
-#share-score-bottom:hover {
-    background: rgba(168, 85, 247, 0.2);
-    border-color: var(--primary);
-    color: white;
-    box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
-}
-
-#share-score-bottom svg {
-    width: 20px;
-    height: 20px;
-    fill: currentColor;
-}
-
-#startreset:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 25px var(--primary-glow);
-    filter: brightness(1.2);
 }
 
 #timeremaining {
