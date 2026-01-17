@@ -234,13 +234,16 @@ for (let i = 1; i < 5; i++) {
             // Explicitly unlock audio on interaction
             if (audioCtx.state === 'suspended') audioCtx.resume();
 
-            const selectedVal = parseInt(this.textContent);
+            // Robust number parsing
+            const clickedText = this.innerText.trim();
+            const selectedVal = parseFloat(clickedText);
+
+            console.log("Clicked:", selectedVal, "Correct:", correctAnswer); // Debug
 
             //if correct answer
-            if (selectedVal === correctAnswer) {
+            if (selectedVal == correctAnswer) {
                 //increase score by 1
                 score++;
-                //set score value
                 document.querySelector("#scorevalue").innerHTML = score;
 
                 //hide wrong box and show correct box
@@ -249,6 +252,7 @@ for (let i = 1; i < 5; i++) {
                 setTimeout(() => {
                     hideElement("correct");
                 }, 1000);
+
                 //generate new Q&A
                 generateQA();
             }
@@ -256,7 +260,7 @@ for (let i = 1; i < 5; i++) {
             else {
                 //increase wrong score
                 wrongScore++;
-                document.querySelector("#wrong-score").innerHTML = wrongScore; // Update UI
+                document.querySelector("#wrong-score").innerHTML = wrongScore;
 
                 //show try again box for 1sec
                 hideElement("correct");
