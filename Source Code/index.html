@@ -16,7 +16,7 @@
     <link rel="canonical" href="https://amey-thakur.github.io/THE-MATH-GAME/">
 
     <link href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?v=14">
+    <link rel="stylesheet" href="css/style.css?v=15">
 
     <!-- Loading Screen Styles -->
     <style>
@@ -76,6 +76,25 @@
 </head>
 
 <body>
+    <!-- Hidden Share Card for Image Generation -->
+    <div id="share-card-container" style="position: absolute; left: -9999px; top: -9999px;">
+        <div id="share-card">
+            <div class="share-header">THE MATH GAME</div>
+            <div class="share-body">
+                <div class="share-item">
+                    <div class="share-label">SCORE</div>
+                    <div id="share-score-value" class="share-value">0</div>
+                </div>
+                <div class="share-item">
+                    <div class="share-label">BEST</div>
+                    <div id="share-best-value" class="share-value">0</div>
+                </div>
+            </div>
+            <div class="share-footer">
+                Created by Amey & Mega
+            </div>
+        </div>
+    </div>
     <!-- Apple-style Loading Screen -->
     <div id="loading-screen">
         <img id="loading-logo" src="logo.png" alt="Loading">
@@ -142,8 +161,10 @@
 
     <div id="math-atmosphere"></div>
 
+    <!-- html2canvas for Sharing -->
+    <script type="text/javascript" src="js/html2canvas.min.js"></script>
     <!-- script -->
-    <script type="text/javascript" src="js/script.js?v=14"></script>
+    <script type="text/javascript" src="js/script.js?v=15"></script>
 
     <!-- Loading Screen Animation -->
     <script>
