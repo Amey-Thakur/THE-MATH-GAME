@@ -285,16 +285,19 @@ function startCountdown() {
                 localStorage.setItem('mathGameBestScore', bestScore);
             }
 
+            stopCountdown();
+            showElement("gameOver");
+            hideElement("question");
+            hideElement("hud-metrics");
+            hideElement("secret-hint");
+            wrapperEl.style.display = "none"; // Hide timeremaining wrapper
+
             const scoreColor = score >= bestScore ? '#38bdf8' : 'white';
             gameOverEl.innerHTML = `
                 <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px;">
                     <p style="font-size: 3rem; font-weight: 800; color: #ef4444; margin: 0; text-shadow: 0 0 20px rgba(239, 68, 68, 0.5); text-transform: uppercase;">GAME OVER</p>
                     <p style="font-size: 2.2rem; font-weight: 700; color: ${scoreColor}; margin: 0;">SCORE: ${score}</p>
                     <p style="font-size: 1.5rem; font-weight: 700; color: #38bdf8; margin: 0; opacity: 0.9;">BEST: ${bestScore}</p>
-                    <button id="share-btn" onclick="shareScore()">
-                        <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92z"/></svg>
-                        Share Score
-                    </button>
                 </div>
             `;
 
@@ -302,7 +305,8 @@ function startCountdown() {
             document.querySelector("#share-score-value").textContent = score;
             document.querySelector("#share-best-value").textContent = bestScore;
 
-            gameOverEl.style.display = "flex";
+            // Show Bottom Share Button
+            showElement("share-score-bottom");
 
             playing = false;
             document.querySelector("#startreset").innerHTML = "Play Again";
@@ -314,7 +318,7 @@ function stopCountdown() { clearInterval(action); }
 function hideElement(Id) { document.querySelector("#" + Id).style.display = "none"; }
 function showElement(Id) {
     const el = document.querySelector("#" + Id);
-    el.style.display = (Id === "gameOver" || Id === "hud-metrics") ? "flex" : "block";
+    el.style.display = (Id === "gameOver" || Id === "hud-metrics" || Id === "share-score-bottom") ? "flex" : "block";
 }
 
 function generateQA() {
@@ -439,20 +443,25 @@ function initCommutativeSingularity() {
 // Generate Image & Share (Download)
 function shareScore() {
     const shareCard = document.querySelector("#share-card");
-    const shareBtn = document.querySelector("#share-btn");
+    const shareBtn = document.querySelector("#share-score-bottom");
 
     if (!shareCard) return;
 
     // Visual feedback on button
     if (shareBtn) {
+        const originalHTML = shareBtn.innerHTML;
         shareBtn.innerHTML = "Generating...";
         shareBtn.style.opacity = "0.7";
+        shareBtn.style.pointerEvents = "none";
     }
 
     // Check availability
     if (typeof html2canvas === 'undefined') {
         alert("Error: html2canvas library not loaded.");
-        if (shareBtn) shareBtn.innerHTML = "Share Error";
+        if (shareBtn) {
+            shareBtn.innerHTML = "Share Error";
+            shareBtn.style.pointerEvents = "auto";
+        }
         return;
     }
 
@@ -464,21 +473,25 @@ function shareScore() {
         logging: false
     }).then(canvas => {
         const link = document.createElement('a');
-        const score = document.querySelector("#share-score-value").textContent;
-        link.download = `MathGame-Score-${score}.png`;
+        const scoreVal = document.querySelector("#share-score-value").textContent;
+        link.download = `MathGame-Score-${scoreVal}.png`;
         link.href = canvas.toDataURL('image/png', 1.0);
         link.click();
 
         if (shareBtn) {
-            shareBtn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92z"/></svg> Shared!';
+            shareBtn.innerHTML = "Shared!";
             setTimeout(() => {
-                shareBtn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92z"/></svg> Share Score';
+                shareBtn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92z"/></svg> Share';
                 shareBtn.style.opacity = "1";
+                shareBtn.style.pointerEvents = "auto";
             }, 2000);
         }
     }).catch(err => {
         console.error("html2canvas error:", err);
-        if (shareBtn) shareBtn.innerHTML = "Error";
+        if (shareBtn) {
+            shareBtn.innerHTML = "Error";
+            shareBtn.style.pointerEvents = "auto";
+        }
     });
 }
 
