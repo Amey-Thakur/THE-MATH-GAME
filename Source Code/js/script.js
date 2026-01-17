@@ -291,9 +291,7 @@ for (let i = 1; i < 5; i++) {
         if (!playing) {
             // LOBBY INTERACTIVITY
             // 1. Play animation
-            this.classList.add("rubberBand");
             setTimeout(() => {
-                this.classList.remove("rubberBand");
             }, 600);
 
             // 2. Play sound
