@@ -541,13 +541,45 @@ h1 {
     }
 
     #hud-screen {
-        height: 180px;
+        height: auto;
+        /* Allow height to grow with wrapped content */
         min-height: 180px;
         padding: 1rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #hud-metrics {
+        flex-wrap: wrap;
+        gap: 5px;
+        margin-bottom: 0.5rem;
+    }
+
+    #missed {
+        order: 1;
+        width: 50%;
+        text-align: left;
+        font-size: 1rem;
+    }
+
+    #score {
+        order: 2;
+        width: 50%;
+        text-align: right;
+        font-size: 1rem;
+    }
+
+    #timeremaining {
+        order: 3;
+        width: 100%;
+        text-align: center;
+        margin-top: 5px;
+        font-size: 1rem;
     }
 
     #question {
         font-size: 2rem;
+        margin-top: 0.5rem;
     }
 }
 
@@ -558,8 +590,9 @@ h1 {
     }
 
     #hud-screen {
-        height: 150px;
-        min-height: 150px;
+        height: auto;
+        /* Allow height to grow */
+        min-height: 170px;
         margin-bottom: 1.5rem;
     }
 
@@ -584,6 +617,8 @@ h1 {
 
     #bottom-deck {
         gap: 10px;
+        align-items: stretch;
+        /* Ensure buttons match height */
     }
 
     #startreset,
@@ -591,6 +626,11 @@ h1 {
         padding: 1rem;
         font-size: 1.1rem;
         border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* Ensure consistent height */
+        min-height: 3.5rem;
     }
 
     /* Footer Responsive Wrap */
