@@ -304,15 +304,19 @@ for (let i = 1; i < 5; i++) {
  */
 function startCountdown() {
     action = setInterval(() => {
+        // Play tick FIRST for instant sync
+        if (timeRemaining <= 10 && timeRemaining > 0) {
+            try { playTick(); } catch (e) { console.error(e); }
+        }
+
         //reduce time by 1sec in loops
         timeRemaining -= 1;
         //show countdown in sec
         document.querySelector("#timeremainingvalue").innerHTML = timeRemaining;
 
-        // Pulse Animation & Sound for last 10 seconds
-        if (timeRemaining < 11 && timeRemaining > 0) {
+        // Pulse Animation for last 10 seconds
+        if (timeRemaining < 10 && timeRemaining > 0) {
             document.querySelector("#timeremaining").classList.add("timer-warning");
-            try { playTick(); } catch (e) { console.error(e); }
         } else {
             document.querySelector("#timeremaining").classList.remove("timer-warning");
         }
@@ -321,28 +325,25 @@ function startCountdown() {
         if (timeRemaining == 0) {
             //game over
             stopCountdown();
-            //show game over box
-            // Manually Toggle HUD elements
+
+            // Play Game Over Sound immediately
+            playBeep('gameover');
+
+            // Toggle HUD elements
             document.querySelector("#question").style.display = "none";
             document.querySelector("#hud-metrics").style.display = "none";
+            hideElement("timeremaining");
+            hideElement("correct");
+            hideElement("wrong");
+
+            // Animated Game Over Sequence
+            const gameOverEl = document.querySelector("#gameOver");
+            gameOverEl.innerHTML = "<p class='go-title'>GAME OVER</p><p class='go-score'>FINAL SCORE: " + score + "</p>";
             showElement("gameOver");
 
-            //show game over message and score
-            document.querySelector("#gameOver").innerHTML = "<p>Game Over!</p><p>Your score is : " + score + ".</p>";
-
-            //hide countdown
-            hideElement("timeremaining");
-            //hide correct box
-            hideElement("correct");
-            //hide wrong box
-            hideElement("wrong");
             //change the mode of playing
             playing = false;
-            //change button to start 
             document.querySelector("#startreset").innerHTML = "Start Game";
-
-            // Play Game Over Sound
-            playBeep('gameover');
         }
     }, 1000);
 }
