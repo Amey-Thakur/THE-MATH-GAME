@@ -16,7 +16,7 @@
     <link rel="canonical" href="https://amey-thakur.github.io/THE-MATH-GAME/">
 
     <link href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?v=24">
+    <link rel="stylesheet" href="css/style.css?v=25">
 
     <!-- Loading Screen Styles -->
     <style>
@@ -198,35 +198,34 @@
                 <span class="footer-separator">|</span> <span class="footer-year">2022</span>
             </h3>
         </div>
-    </div>
 
-    <div id="math-atmosphere"></div>
+        <div id="math-atmosphere"></div>
 
-    <!-- html2canvas for Sharing -->
-    <script type="text/javascript" src="js/html2canvas.min.js"></script>
-    <!-- script -->
-    <script type="text/javascript" src="js/script.js?v=24"></script>
+        <!-- html2canvas for Sharing -->
+        <script type="text/javascript" src="js/html2canvas.min.js"></script>
+        <!-- script -->
+        <script type="text/javascript" src="js/script.js?v=25"></script>
 
-    <!-- Loading Screen Animation -->
-    <script>
-        (function () {
-            const loadingBar = document.getElementById('loading-bar');
-            const loadingScreen = document.getElementById('loading-screen');
-            let progress = 0;
+        <!-- Loading Screen Animation -->
+        <script>
+            (function () {
+                const loadingBar = document.getElementById('loading-bar');
+                const loadingScreen = document.getElementById('loading-screen');
+                let progress = 0;
 
-            const interval = setInterval(() => {
-                progress += Math.random() * 30 + 10;
-                if (progress >= 100) {
-                    progress = 100;
-                    clearInterval(interval);
-                    setTimeout(() => {
-                        loadingScreen.classList.add('hidden');
-                    }, 300);
-                }
-                loadingBar.style.width = progress + '%';
-            }, 200);
-        })();
-    </script>
+                const interval = setInterval(() => {
+                    progress += Math.random() * 30 + 10;
+                    if (progress >= 100) {
+                        progress = 100;
+                        clearInterval(interval);
+                        setTimeout(() => {
+                            loadingScreen.classList.add('hidden');
+                        }, 300);
+                    }
+                    loadingBar.style.width = progress + '%';
+                }, 200);
+            })();
+        </script>
 </body>
 
 </html>
