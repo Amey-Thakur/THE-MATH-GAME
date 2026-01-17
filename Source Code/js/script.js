@@ -76,6 +76,8 @@ document.querySelector("#startreset").onclick = () => {
 
         //show countdown box
         showElement("timeremaining");
+        showElement("score");
+        showElement("missed"); // Reveal counters
         //countdown time
         timeRemaining = 60;
         //show countdown in sec
