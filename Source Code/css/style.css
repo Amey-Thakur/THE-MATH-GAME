@@ -61,13 +61,12 @@ body {
 }
 
 h1 {
-    font-size: 3rem;
-    /* Reduced from 4rem */
+    font-size: 3.5rem;
+    /* Balanced size */
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 4px;
-    margin-bottom: 1rem;
-    /* Reduced from 2rem */
+    margin-bottom: 1.5rem;
     color: white;
     text-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary);
     animation: glow 2s ease-in-out infinite alternate;
@@ -85,14 +84,15 @@ h1 {
 
 #container {
     width: 90%;
-    max-width: 600px;
+    max-width: 500px;
+    /* Slightly tighter width for better proportions */
     background: var(--glass);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 2px solid var(--glass-border);
     border-radius: 30px;
-    padding: 2rem;
-    /* Reduced padding */
+    padding: 3rem;
+    /* Restored padding */
     position: relative;
     box-shadow: var(--shadow), 0 0 40px rgba(168, 85, 247, 0.1);
     animation: slideUp 0.8s ease-out;
@@ -155,12 +155,11 @@ h1 {
 }
 
 #question {
-    font-size: 4rem;
-    /* Reduced from 5rem */
+    font-size: 4.5rem;
+    /* Balanced size */
     font-weight: 700;
     text-align: center;
-    margin: 0.5rem 0;
-    /* Minimal margin */
+    margin: 1rem 0;
     color: white;
     text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
@@ -168,37 +167,30 @@ h1 {
 #instruction {
     text-align: center;
     color: var(--secondary);
-    font-size: 1rem;
-    /* Smaller text */
-    margin-bottom: 1.5rem;
-    /* Reduced margin */
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
     opacity: 0.8;
 }
 
 #choices {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-    /* Reduced gap */
-    margin-bottom: 1.5rem;
-    /* Reduced margin */
+    gap: 1.2rem;
+    margin-bottom: 2.5rem;
 }
 
 .box {
-    height: 80px;
-    /* Fixed height for consistency */
-    width: 80px;
-    /* Fixed width */
+    height: 100px;
+    /* Larger boxes */
+    width: 100px;
     margin: 0 auto;
-    /* Center in grid cell */
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 15px;
+    border-radius: 18px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2rem;
-    /* Reduced font size */
+    font-size: 2.5rem;
     font-weight: 700;
     cursor: pointer;
     transition: var(--transition);
