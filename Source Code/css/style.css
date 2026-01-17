@@ -185,7 +185,8 @@ h1 {
     box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
-    margin-bottom: 0.5rem;
+    margin-bottom: 1.15rem;
+    /* Increased slightly for clear separation */
     /* Tightened to keep instruction close */
     position: relative;
     overflow: hidden;
@@ -251,7 +252,7 @@ h1 {
     text-align: center;
     color: var(--secondary);
     font-size: 1.4rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.2rem;
     /* Standardized gap to choices */
     opacity: 0.8;
 }
@@ -260,7 +261,8 @@ h1 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 0.8rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.2rem;
+    /* Standardized gap to button */
     /* Standardized gap to button */
     padding: 0 1rem;
     flex-grow: 1;
