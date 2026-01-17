@@ -460,17 +460,16 @@ h1 {
 
 .footer h3 {
     font-family: 'Play', sans-serif;
-    font-size: 1.1rem;
-    /* Increased size */
-    color: rgba(255, 255, 255, 0.6);
+    font-size: 1rem;
+    color: #38bdf8;
+    /* Blue to match theme */
     margin: 0;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    text-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
     gap: 8px;
-    /* Increased gap */
 }
 
 .footer a {
