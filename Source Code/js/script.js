@@ -135,20 +135,27 @@ function playTick() {
     if (audioCtx.state === 'suspended') audioCtx.resume();
     const oscillator = audioCtx.createOscillator();
     const gainNode = audioCtx.createGain();
+    try {
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        const oscillator = audioCtx.createOscillator();
+        const gainNode = audioCtx.createGain();
 
-    oscillator.connect(gainNode);
-    gainNode.connect(audioCtx.destination);
+        oscillator.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
 
-    // Urgency Tick
-    oscillator.type = 'sine';
-    oscillator.frequency.setValueAtTime(1000, audioCtx.currentTime);
-    oscillator.frequency.exponentialRampToValueAtTime(1200, audioCtx.currentTime + 0.05);
+        // Urgency Tick
+        oscillator.type = 'sine';
+        oscillator.frequency.setValueAtTime(800, audioCtx.currentTime); // Slightly lower pitch
+        oscillator.frequency.exponentialRampToValueAtTime(600, audioCtx.currentTime + 0.1);
 
-    gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
-    gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);
+        gainNode.gain.setValueAtTime(0.3, audioCtx.currentTime); // Low volume but audible
+        gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.1); // 100ms duration
 
-    oscillator.start();
-    oscillator.stop(audioCtx.currentTime + 0.05);
+        oscillator.start();
+        oscillator.stop(audioCtx.currentTime + 0.1);
+    } catch (e) {
+        console.error("Error playing tick sound:", e);
+    }
 }
 
 function hudAnimate(val) {
@@ -200,6 +207,9 @@ function startGameLogic() {
     showElement("timeremaining");
     showElement("score");
     showElement("missed");
+
+    // Ensure Audio Context is ready
+    if (audioCtx.state === 'suspended') audioCtx.resume();
 
     timeRemaining = 60;
     document.querySelector("#timeremainingvalue").innerHTML = timeRemaining;
@@ -263,11 +273,10 @@ function startCountdown() {
         //show countdown in sec
         document.querySelector("#timeremainingvalue").innerHTML = timeRemaining;
 
-        // Pulse Animation for last 10 seconds
         // Pulse Animation & Sound for last 10 seconds
         if (timeRemaining < 11 && timeRemaining > 0) {
             document.querySelector("#timeremaining").classList.add("timer-warning");
-            playTick();
+            try { playTick(); } catch (e) { console.error(e); }
         } else {
             document.querySelector("#timeremaining").classList.remove("timer-warning");
         }
