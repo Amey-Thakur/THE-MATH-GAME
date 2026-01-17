@@ -124,8 +124,10 @@ h1 {
 
 #score {
     position: absolute;
-    top: -20px;
-    right: 30px;
+    top: 20px;
+    /* Brought inside container */
+    right: 25px;
+    /* Slightly adjusted right margin */
     background: linear-gradient(135deg, var(--primary), #7c3aed);
     color: white;
     padding: 0.8rem 1.8rem;
