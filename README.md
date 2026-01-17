@@ -181,13 +181,6 @@ THE-MATH-GAME/
   <br><br>
   <img src="screenshots/05-share-card-a.png" alt="Share Card A" width="45%">
   <img src="screenshots/05-share-card-b.png" alt="Share Card B" width="45%">
-  <br><br>
-
-  <b>6. Signed Attribution</b>
-  <br>
-  <i>Digitally signed by the creators.</i>
-  <br><br>
-  <img src="screenshots/06-author-signature.jpg" alt="Signature" width="90%">
 </div>
 
 ---
