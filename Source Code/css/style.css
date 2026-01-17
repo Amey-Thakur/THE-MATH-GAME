@@ -134,6 +134,13 @@ h1 {
     /* Subtle glow */
 }
 
+#score #scorevalue {
+    color: #38bdf8;
+    /* Blue for score number */
+    font-weight: 800;
+    text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+}
+
 #missed #wrong-score {
     color: #f87171;
     /* Red for missed number */
