@@ -29,10 +29,12 @@ body {
     font-family: 'Play', sans-serif;
     color: white;
     background-color: var(--bg-dark);
-    background-image: url('../assets/bg-desktop.png');
+    background-image: url('../assets/bg.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    background-attachment: fixed;
+    /* Parallax-like effect ensures best fit */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -42,7 +44,8 @@ body {
 
 @media (max-width: 768px) {
     body {
-        background-image: url('../assets/bg-mobile.png');
+        /* background-image: url('../assets/bg-mobile.png');  User prefers single bg.png */
+        background-position: center;
     }
 }
 
