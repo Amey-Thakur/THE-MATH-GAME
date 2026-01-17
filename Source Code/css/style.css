@@ -95,8 +95,8 @@ h1 {
     -webkit-backdrop-filter: blur(12px);
     border: 2px solid var(--glass-border);
     border-radius: 40px;
-    padding: 1.5rem 1.5rem 0.5rem 1.5rem;
-    /* Reduced bottom padding on container */
+    padding: 0.8rem 1.5rem 0.5rem 1.5rem;
+    /* Reduced top padding */
     position: relative;
     box-shadow: var(--shadow), 0 0 40px rgba(168, 85, 247, 0.1);
     animation: slideUp 0.8s ease-out;
@@ -251,8 +251,8 @@ h1 {
     text-align: center;
     color: var(--secondary);
     font-size: 1.4rem;
-    margin-bottom: 1.5rem;
-    /* Reduced from 2.5rem */
+    margin-bottom: 2rem;
+    /* Adjusted for symmetry with choices bottom margin */
     opacity: 0.8;
 }
 
@@ -260,9 +260,9 @@ h1 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 0.8rem;
-    margin-bottom: 2.5rem;
-    /* Increased to push button down */
-    /* Increased gap between boxes and button */
+    margin-bottom: 2rem;
+    /* Adjusted for symmetry */
+    /* Equalized with instruction margin */
     /* Increased to 2rem to match HUD margin for symmetry */
     padding: 0 1rem;
     flex-grow: 1;
