@@ -136,14 +136,14 @@ THE-MATH-GAME/
 ## Visual Walkthrough
 
 <div align="center">
-  <b>1. Main Menu</b>
+  <b>Main Menu</b>
   <br>
   <i>The entry point to the challenge.</i>
   <br><br>
   <img src="screenshots/01-main-menu.png" alt="Main Menu" width="90%">
   <br><br>
 
-  <b>2. The Lobby: Curated Math Facts</b>
+  <b>The Lobby: Curated Math Facts</b>
   <br>
   <i>Interactive trivia before the game begins.</i>
   <br><br>
@@ -153,7 +153,7 @@ THE-MATH-GAME/
   <img src="screenshots/02-lobby-fact-c.png" alt="Lobby 3" width="45%">
   <br><br>
 
-  <b>3. Active Gameplay</b>
+  <b>Active Gameplay</b>
   <br>
   <i>Fast-paced multiplication drills with immediate feedback.</i>
   <br><br>
@@ -167,14 +167,14 @@ THE-MATH-GAME/
   <img src="screenshots/03-gameplay-var-5.png" alt="Gameplay Var 5" width="45%">
   <br><br>
 
-  <b>4. Game Over & Challenge</b>
+  <b>Game Over & Challenge</b>
   <br>
   <i>"Challenge: 31 is the author score to beat!"</i>
   <br><br>
   <img src="screenshots/04-game-over.png" alt="Game Over" width="90%">
   <br><br>
 
-  <b>5. Social Sharing & Stats</b>
+  <b>Social Sharing & Stats</b>
   <br>
   <i>High-fidelity shareable scorecards.</i>
   <br><br>
