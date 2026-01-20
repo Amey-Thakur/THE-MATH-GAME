@@ -116,9 +116,13 @@ THE-MATH-GAME/
 │   └── 06-author-signature.jpg      # Signed Asset
 │
 ├── Source Code/                     # Primary Application Layer
+│   ├── assets/                      # Background Assets
 │   ├── css/                         # Game Visuals
 │   ├── js/                          # Game Logic
 │   ├── images/                      # Game Assets
+│   ├── favicon.png                  # Application Icon
+│   ├── logo.png                     # Application Logo
+│   ├── 404.html                     # Error Page
 │   └── index.html                   # Game Entry Point
 │
 ├── .gitattributes                   # Git configuration
