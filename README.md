@@ -57,7 +57,7 @@ The development of this interface was guided by core **Human-Machine Interaction
 > [!TIP]
 > **Aesthetic-Usability Effect**
 >
-> The design utilizes a skeuomorphic "chalkboard" background not just for style, but to invoke the **Aesthetic-Usability Effect**. By triggering the user's existing mental association with a classroom setting, the interface inherently signals "learning mode," priming the user for educational interaction and increasing tolerance for minor errors during the learning curve.
+> The design utilizes a high-fidelity **Neon HUD (Heads-Up Display)** and **Glassmorphic interface** to invoke the **Aesthetic-Usability Effect**. By creating a visually stunning and modern environment, the system increases perceived usability and user engagement, effectively managing cognitive focus during high-intensity arithmetic sessions.
 
 ---
 
@@ -211,9 +211,9 @@ THE-MATH-GAME/
     Open `Source Code/index.html` in your preferred browser.
 
 > [!TIP]
-> **Skeuomorphic Arithmetic Simulation | The Math Game**
+> **Neon Glassmorphic Simulation | The Math Game**
 > 
-> Experience a high-fidelity web simulation of this arithmetic platform, featuring a "chalkboard" skeuomorphic design that leverages the **Aesthetic-Usability Effect** to prime users for educational interaction and improve learning efficiency through HMI-optimized multiplication drills.
+> Experience a high-fidelity web simulation of this arithmetic platform, featuring a premium **Neon HUD** and **Glassmorphic interface** that leverages the **Aesthetic-Usability Effect** to maximize user engagement and cognitive focus during HMI-optimized multiplication drills.
 >
 > [**Launch Live Demo**](https://amey-thakur.github.io/THE-MATH-GAME/)
 
