@@ -210,6 +210,13 @@ THE-MATH-GAME/
 2.  **Launch**:
     Open `Source Code/index.html` in your preferred browser.
 
+> [!TIP]
+> **Skeuomorphic Arithmetic Simulation | The Math Game**
+> 
+> Experience a high-fidelity web simulation of this arithmetic platform, featuring a "chalkboard" skeuomorphic design that leverages the **Aesthetic-Usability Effect** to prime users for educational interaction and improve learning efficiency through HMI-optimized multiplication drills.
+>
+> [**Launch Live Demo**](https://amey-thakur.github.io/THE-MATH-GAME/)
+
 ---
 
 <!-- =========================================================================================
