@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Math Game - Social Preview</title>
+<!-- Renders the 1280x640 social preview from this repository's own assets. -->
+</head>
+<body>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1280px;height:640px;overflow:hidden;font-family:"Segoe UI",system-ui,sans-serif}
+.card{position:relative;width:1280px;height:640px;overflow:hidden;
+      background-position:center 22%;background:url(Source%20Code/assets/bg-landscape-v2.png) center 22%/cover no-repeat;background-color:#150a2b}
+.scrim{position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(16,6,34,.92) 0%,rgba(16,6,34,.74) 42%,rgba(16,6,34,.26) 68%,rgba(16,6,34,.06) 100%)}
+.left{position:absolute;left:78px;top:140px;width:560px}
+.tag{font-size:15px;font-weight:700;letter-spacing:.22em;color:#c4a6ff}
+.title{margin-top:16px;font-size:80px;font-weight:800;line-height:.99;letter-spacing:-.02em;color:#fff;
+  text-shadow:0 0 30px rgba(168,85,247,.85),0 0 62px rgba(56,189,248,.35)}
+.stack{margin-top:26px;font-size:17px;font-weight:700;letter-spacing:.14em;color:#38bdf8}
+.by{margin-top:30px;font-size:21px;font-weight:700;color:#f2e9ff;line-height:1.6}
+.by span{display:block;font-size:14px;font-weight:600;letter-spacing:.16em;color:#a98fd0;margin-bottom:9px}
+.panel{position:absolute;right:76px;top:78px;width:470px;padding:30px;border-radius:20px;
+  background:rgba(45,20,78,.90);border:1px solid rgba(168,85,247,.45);
+  box-shadow:0 26px 66px rgba(0,0,0,.60),0 0 70px rgba(124,58,237,.30)}
+.hd{text-align:center;font-size:31px;font-weight:800;color:#fff;letter-spacing:.01em;
+    text-shadow:0 0 22px rgba(216,180,254,.8)}
+.q{margin-top:22px;border-radius:14px;background:rgba(76,29,124,.62);
+   border:1px solid rgba(168,85,247,.35);padding:20px 24px 26px}
+.stats{display:flex;justify-content:space-between;font-size:15px;font-weight:700;color:#e9d5ff}
+.stats b{font-weight:800}
+.stats .m{color:#f87171}.stats .s{color:#38bdf8}
+.eq{margin-top:14px;text-align:center;font-size:66px;font-weight:800;color:#fff;letter-spacing:.02em}
+.opts{margin-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.o{padding:22px 0;text-align:center;border-radius:12px;font-size:31px;font-weight:800;
+   background:rgba(72,32,116,.75);color:#efe6ff;border:1px solid rgba(168,85,247,.30)}
+.o.bad{background:#ef4444;color:#fff;border-color:#ef4444}
+.o.good{background:#38bdf8;color:#06283d;border-color:#38bdf8}
+.reset{margin-top:20px;padding:17px 0;text-align:center;border-radius:12px;font-size:19px;
+  font-weight:800;letter-spacing:.09em;color:#fff;
+  background:linear-gradient(90deg,#7c3aed,#a855f7)}
+</style>
+<div class="card">
+  <div class="scrim"></div>
+  <div class="panel">
+    <div class="hd">THE MATH GAME</div>
+    <div class="q">
+      <div class="stats"><div>Missed: <b class="m">1</b></div><div>Time remaining: <b>44 sec</b></div><div>Score: <b class="s">3</b></div></div>
+      <div class="eq">8 &nbsp;&times;&nbsp; 3</div>
+    </div>
+    <div class="opts">
+      <div class="o">5</div><div class="o bad">36</div>
+      <div class="o">21</div><div class="o good">24</div>
+    </div>
+    <div class="reset">RESET GAME</div>
+  </div>
+  <div class="left">
+    <div class="tag">PROJECT</div>
+    <div class="title">The Math<br>Game</div>
+    <div class="stack">HTML &middot; CSS &middot; JAVASCRIPT &middot; 2022</div>
+    <div class="by"><span>CREATED BY</span>Amey Thakur &middot; Mega Satish</div>
+  </div>
+</div>
+</body>
+</html>
